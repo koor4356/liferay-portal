@@ -1,4 +1,4 @@
-CPPagetemplatesAdd#NAME_FIELD|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-CPPagetemplatesAdd#DESCRIPTION_FIELD|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-CPPagetemplatesAdd#ACTIVE_CHECKBOX|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-CPPagetemplatesAdd#SAVE_BUTTON|xxxxxxxxxxxxx#xxxxxxxxxxxxx
+CPPagetemplatesAdd#NAME_FIELD|InputField#NAME
+CPPagetemplatesAdd#DESCRIPTION_FIELD|InputField#DESCRIPTION
+CPPagetemplatesAdd#ACTIVE_CHECKBOX|Pagetemplates#ACTIVE_CHECKBOX
+CPPagetemplatesAdd#SAVE_BUTTON|Button#SAVE
