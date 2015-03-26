@@ -1,2 +1,2 @@
-PGEmbedded#EMBEDDED_IFRAME|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-PGEmbedded#EMBEDDED_LIFERAY_COPYRIGHT_TEXT|xxxxxxxxxxxxx#xxxxxxxxxxxxx
+PGEmbedded#EMBEDDED_IFRAME|Embedded#EMBEDDED_IFRAME
+PGEmbedded#EMBEDDED_LIFERAY_COPYRIGHT_TEXT|Embedded#EMBEDDED_SITE_TEXT

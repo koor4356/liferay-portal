@@ -1,4 +1,4 @@
-PGPanel#PANEL_TITLE|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-PGPanel#PANEL_PAGE_TITLE|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-PGPanel#INFO_MESSAGE|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-PGPanel#MENU_ITEM|xxxxxxxxxxxxx#xxxxxxxxxxxxx
+PGPanel#PANEL_TITLE|Panel#PANEL_TITLE
+PGPanel#PANEL_PAGE_TITLE|Panel#PANEL_PAGE_TITLE
+PGPanel#INFO_MESSAGE|Message#INFO
+PGPanel#MENU_ITEM|Panel#MENU_ITEM
