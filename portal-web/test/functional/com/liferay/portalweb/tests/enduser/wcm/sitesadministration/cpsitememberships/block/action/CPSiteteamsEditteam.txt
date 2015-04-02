@@ -1,4 +1,4 @@
-CPSiteteamsEditteam#NAME_FIELD|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-CPSiteteamsEditteam#DESCRIPTION_FIELD|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-CPSiteteamsEditteam#SAVE_BUTTON|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-CPSiteteamsEditteam#CANCEL_BUTTON|xxxxxxxxxxxxx#xxxxxxxxxxxxx
+CPSiteteamsEditteam#NAME_FIELD|InputField#NAME
+CPSiteteamsEditteam#DESCRIPTION_FIELD|InputField#DESCRIPTION
+CPSiteteamsEditteam#SAVE_BUTTON|Button#SAVE
+CPSiteteamsEditteam#CANCEL_BUTTON|Button#CANCEL

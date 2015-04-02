@@ -1,2 +1,2 @@
-CPSitemembershipsUsers#USER_SEARCH_FIELD|xxxxxxxxxxxxx#xxxxxxxxxxxxx
-CPSitemembershipsUsers#USER_SEARCH_BUTTON|xxxxxxxxxxxxx#xxxxxxxxxxxxx
+CPSitemembershipsUsers#USER_SEARCH_FIELD|Search#BASIC_SEARCH_FIELD
+CPSitemembershipsUsers#USER_SEARCH_BUTTON|Search#BASIC_SEARCH_BUTTON
