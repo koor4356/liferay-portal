@@ -29,6 +29,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>ADD_CHILD_SITE</td>
+	<td>//a[@role='menuitem' and contains(.,'Add Child Site')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>ADD_LOCATION</td>
 	<td>//a[@role='menuitem' and contains(.,'Add Location')]</td>
 	<td></td>
@@ -59,6 +64,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>ASSIGN_SITE_ROLES</td>
+	<td>//a[@role='menuitem' and contains(.,'Assign Site Roles')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>ASSIGN_USERS</td>
 	<td>//a[@role='menuitem' and contains(.,'Assign Users')]</td>
 	<td></td>
@@ -66,6 +76,11 @@
 <tr>
 	<td>BASIC_DOCUMENT</td>
 	<td>//a[@role='menuitem' and @title='Basic Document']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>BLANK_SITE</td>
+	<td>//a[@role='menuitem' and contains(.,'Blank Site')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -81,6 +96,11 @@
 <tr>
 	<td>CHECKOUT</td>
 	<td>//a[@role='menuitem' and contains(.,'Checkout')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>COMMUNITY_SITE</td>
+	<td>//a[@role='menuitem' and contains(.,'Community Site')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -159,6 +179,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>INTRANET_SITE</td>
+	<td>//a[@role='menuitem' and contains(.,'Intranet Site')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>LEAVE</td>
+	<td>//a[@role='menuitem' and contains(.,'Leave')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>PERMISSIONS</td>
 	<td>//a[@role='menuitem' and contains(.,'Permissions')]</td>
 	<td></td>
@@ -181,6 +211,11 @@
 <tr>
 	<td>MANAGE_SITE_PAGES</td>
 	<td>//a[@role='menuitem' and contains(.,'Manage Site Pages')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MANAGE_SITES_TEMPLATES</td>
+	<td>//a[@role='menuitem' and contains(.,'Manage Sites Templates')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -214,6 +249,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>ORGANIZATION</td>
+	<td>//ul[contains(@class,'dropdown-menu')]/li/a[contains(.,'Organization')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>ORGANIZATION_ROLE</td>
 	<td>//a[@role='menuitem' and contains(.,'Organization Role')]</td>
 	<td></td>
@@ -226,6 +266,11 @@
 <tr>
 	<td>REGULAR_ROLE</td>
 	<td>//a[@role='menuitem' and contains(.,'Regular Role')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>REMOVE_MEMBERSHIP</td>
+	<td>//a[@role='menuitem' and contains(.,'Remove Membership')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -244,6 +289,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>SITE_ADMINISTRATION</td>
+	<td>//a[@role='menuitem' and contains(.,'Site Administration')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>SITE_PERMISSIONS</td>
 	<td>//a[@role='menuitem' and contains(.,'Site Permissions')]</td>
 	<td></td>
@@ -251,6 +301,11 @@
 <tr>
 	<td>SITE_ROLE</td>
 	<td>//a[@role='menuitem' and contains(.,'Site Role')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SITE_TEMPLATE_SITE</td>
+	<td>//a[@role='menuitem' and contains(.,'${key_siteTemplateName}')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -286,6 +341,26 @@
 <tr>
 	<td>TEMPLATES</td>
 	<td>//a[@role='menuitem' and contains(.,'Templates')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>USER</td>
+	<td>//ul[contains(@class,'dropdown-menu')]/li/a[contains(.,'User')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>USER_GROUP</td>
+	<td>//ul[contains(@class,'dropdown-menu')]/li/a[contains(.,'User Group')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>USERS</td>
+	<td>//ul[contains(@class,'dropdown-menu')]/li/a[contains(.,'Users')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>USER_GROUPS</td>
+	<td>//ul[contains(@class,'dropdown-menu')]/li/a[contains(.,'User Groups')]</td>
 	<td></td>
 </tr>
 <tr>
