@@ -54,6 +54,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>PAGE_NAME_FIELD</td>
+	<td>//span[contains(@class,'input-localized-input')]/input[contains(@id,'addLayoutName')]</td>
+	<td>New Page Name Field</td>
+</tr>
+<tr>
 	<td>PIWIK</td>
 	<td>//textarea[contains(@id,'_analytics_piwik')]</td>
 	<td></td>
