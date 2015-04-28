@@ -1187,6 +1187,28 @@
 		<execute function="AssertTextEquals#assertPartialText" locator1="CPWebcontent#SUCCESS_MESSAGE_RECYCLE_BIN" value1="The Web Content Article ${webContentTitle} was moved to the Recycle Bin. Undo" />
 	</command>
 
+	<command name="paginateRelatedAssets">
+		<execute function="AssertClick" locator1="CPWebcontentEditwebcontent#MENU_RELATED_ASSETS" value1="Related Assets" />
+
+		<execute function="Click" locator1="CPWebcontentRelatedassets#SELECT_BUTTON" />
+
+		<var name="key_assetType" value="${assetType}" />
+
+		<execute function="AssertClick" locator1="CPWebcontentRelatedassets#RELATED_ASSETS_SELECT_MENULIST_ASSET" value1="${assetType}" />
+
+		<execute function="SelectFrame" locator1="CPWebcontentRelatedassets#IFRAME" />
+
+		<var name="key_assetTitle" value="${assetTitle}" />
+
+		<execute function="AssertElementNotPresent" locator1="CPWebcontentRelatedassets#CHOOSE_BUTTON" value1="Choose" />
+
+		<execute function="AssertClick#assertPartialTextClickAt" locator1="Pagination#ITEMS_PER_PAGE_SELECT" value1="Items per Page" />
+
+		<var name="key_itemsPerPage" value="${itemsPerPage}" />
+
+		<execute function="AssertClick" locator1="MenuItem#ITEMS_PER_PAGE" value1="${itemsPerPage}" />
+	</command>
+
 	<command name="previewCPwithStructureTemplateXSL">
 		<var name="key_webContentTitle" value="${webContentTitle}" />
 
@@ -1200,6 +1222,10 @@
 
 		<execute function="SelectFrame" locator1="CPWebcontentPreview#PREVIEW_IFRAME" />
 		<execute function="AssertTextEquals" locator1="CPWebcontentPreview#BODY_FIELD" value1="Text: ${webContentText}" />
+	</command>
+
+	<command name="publish">
+		<execute function="AssertClick" locator1="Button#PUBLISH" value1="Publish" />
 	</command>
 
 	<command name="publishBasicCP">
@@ -1218,6 +1244,10 @@
 		<execute function="AssertClick" locator1="CPWebcontentEditwebcontent#PUBLISH_BUTTON" value1="Publish" />
 
 		<execute function="AssertTextEquals" locator1="CPWebcontent#SUCCESS_MESSAGE" value1="Your request completed successfully." />
+	</command>
+
+	<command name="saveAsDraft">
+		<execute function="AssertClick" locator1="Button#SAVE_AS_DRAFT" value1="Save as Draft" />
 	</command>
 
 	<command name="searchCP">
@@ -1582,6 +1612,30 @@
 		<execute function="AssertElementNotPresent" locator1="CPWebcontentEditwebcontent#TITLE_FIELD" value1="${webContentTitle}" />
 	</command>
 
+	<command name="viewPaginateRelatedAssets">
+		<var name="key_assetTitle" value="${assetTitle}" />
+
+		<if>
+			<equals arg1="${firstPage}" arg2="true" />
+			<then>
+				<execute function="AssertTextEquals" locator1="AssetRelatedAssets#ASSETS_TABLE_TITLE" value1="${assetTitle}" />
+			</then>
+			<elseif>
+				<equals arg1="${secondPage}" arg2="true" />
+				<then>
+					<execute function="AssertClick" locator1="Pagination#NEXT_LINK" value1="Next" />
+					<execute function="AssertTextEquals" locator1="AssetRelatedAssets#ASSETS_TABLE_TITLE" value1="${assetTitle}" />
+				</then>
+			</elseif>
+			<else>
+				<execute function="AssertTextEquals" locator1="AssetRelatedAssets#ASSETS_TABLE_TITLE" value1="${assetTitle}" />
+			</else>
+		</if>
+
+		<execute function="AssertTextEquals" locator1="Pagination#ITEMS_PER_PAGE_SELECT" value1="${itemsPerPage}" />
+		<execute function="AssertTextEquals" locator1="Pagination#CURRENT_PAGE_SELECT" value1="${numberOfPages}" />
+	</command>
+
 	<command name="viewPGViaAP">
 		<var name="key_assetTitle" value="${webContentTitle}" />
 
@@ -1643,6 +1697,11 @@
 				<execute function="AssertTextNotPresent" locator1="PGWebcontentdisplayEditwebcontent#ADD_TRANSLATION_MENULIST_LANGUAGE" value1="${webContentTranslationLanguage2}" />
 			</then>
 		</if>
+	</command>
+
+	<command name="viewRelatedAssetsPGViaWCD">
+		<execute function="AssertElementPresent" locator1="PGRelatedassets#ASSET_TITLE_IMAGE_1" />
+		<execute function="AssertTextEquals" locator1="PGRelatedassets#ASSET_TITLE_1" value1="${assetTitle}" />
 	</command>
 
 	<command name="viewSelectedTemplateCP">
