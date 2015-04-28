@@ -14,6 +14,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>SELECT_STRUCTURE</td>
+	<td>//a[contains(@id,'selectStructure') and contains(@class,'btn')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>

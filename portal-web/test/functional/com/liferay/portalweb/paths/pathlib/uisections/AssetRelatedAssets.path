@@ -9,6 +9,11 @@
 </thead>
 <tbody>
 <tr>
+	<td>ASSETS_TABLE_TITLE</td>
+	<td>//tr[contains(.,'${key_assetTitle}')]/td[1]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>BACK_TO_HEADER</td>
 	<td>//h3[@class='header-title']/span</td>
 	<td></td>
