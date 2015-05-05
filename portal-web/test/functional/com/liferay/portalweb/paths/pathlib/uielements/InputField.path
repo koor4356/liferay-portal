@@ -19,6 +19,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>COMMENTS</td>
+	<td>//textarea[contains(@id,'comments')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>DESCRIPTION</td>
 	<td>//textarea[contains(@id,'description')]</td>
 	<td></td>
