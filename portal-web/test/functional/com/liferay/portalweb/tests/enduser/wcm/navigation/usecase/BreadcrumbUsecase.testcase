@@ -211,8 +211,6 @@
 	</command>
 
 	<command name="BreadcrumbLinkPointsToLocalhost" priority="4">
-		<property name="custom.properties" value="show.guest.group=true" />
-
 		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Sites" />
 		</execute>
