@@ -454,8 +454,54 @@
 			<var name="virtualHostsURL" value="${virtualHostsURL}" />
 		</execute>
 
-		<execute function="AssertClick#assertTextClickAtClickDockbar" locator1="Dockbar#ADMIN" value1="Admin" />
-		<execute function="AssertClick" locator1="Dockbar#ADMIN_CONTROL_PANEL" value1="Control Panel" />
+		<var name="tabName" value="Control Panel" />
+
+		<execute function="AssertClick" locator1="ProductMenu#TAB_NAME" value1="Control Panel" />
+
+		<var name="appsPortletList" value="App Manager,Purchased,Store,Plugins Configuration,License Manager" />
+		<var name="configurationPortletList" value="Portal Settings,Custom Fields,Server Administration,Portal Instances,Configuration Admin,Server Access Control Panel" />
+		<var name="sitesPortletList" value="Sites,Site Templates,Page Templates" />
+		<var name="usersPortletList" value="Users and Organizations,User Groups,Roles,Password Policies,Monitoring" />
+
+		<for list="${usersPortletList}" param="usersPortletName">
+			<if>
+				<equals arg1="${portletName}" arg2="${usersPortletName}" />
+				<then>
+					<var name="portletCategoryName" value="Users" />
+				</then>
+			</if>
+		</for>
+
+		<for list="${sitesPortletList}" param="sitesPortletName">
+			<if>
+				<equals arg1="${portletName}" arg2="${sitesPortletName}" />
+				<then>
+					<var name="portletCategoryName" value="Sites" />
+				</then>
+			</if>
+		</for>
+
+		<for list="${appsPortletList}" param="appsPortletName">
+			<if>
+				<equals arg1="${portletName}" arg2="${appsPortletName}" />
+				<then>
+					<var name="portletCategoryName" value="Apps" />
+				</then>
+			</if>
+		</for>
+
+		<for list="${configurationPortletList}" param="configurationPortletName">
+			<if>
+				<equals arg1="${portletName}" arg2="${configurationPortletName}" />
+				<then>
+					<var name="portletCategoryName" value="Configuration" />
+				</then>
+			</if>
+		</for>
+
+		<var method="StringUtil#lowerCase('${portletCategoryName}')" name="key_portletCategoryName" />
+
+		<execute function="AssertClick" locator1="ProductMenu#CONTROL_PANEL_PANEL_TITLE" value1="${portletCategoryName}" />
 
 		<if>
 			<isset var="portletName" />
