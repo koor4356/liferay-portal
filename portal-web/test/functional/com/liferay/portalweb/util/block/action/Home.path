@@ -526,7 +526,7 @@
 </tr>
 <tr>
 	<td>CONTROL_PANEL_NAVIGATION</td>
-	<td>//a[contains(.,'${key_portletName}') and contains(@id,'_190_controlPanelPortletLink')]</td>
+	<td>//a[contains(.,'${key_portletName}') and contains(@role,'menuitem')]</td>
 	<td></td>
 </tr>
 <tr>
