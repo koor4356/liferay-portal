@@ -292,21 +292,19 @@
 		<if>
 			<isset var="siteScopeName" />
 			<then>
-				<execute function="Click" locator1="Productmenu#CURRENT_SITE_NAME" />
+				<execute function="Click" locator1="ProductMenu#CURRENT_SITE_NAME" />
 
 				<var name="key_siteScopeName" value="${siteScopeName}" />
 
-				<execute function="Click" locator1="Productmenu#SITE_NAME" />
+				<execute function="Click" locator1="ProductMenu#SITE_NAME" />
 			</then>
 		</if>
 
-		<var name="tabName" value="Sites" />
-
-		<execute function="AssertClick" locator1="Productmenu#TAB_NAME" value1="Sites" />
+		<execute function="AssertClick" locator1="ProductMenu#SITES_NAVIGATION" value1="Sites" />
 
 		<var method="StringUtil#lowerCase('${portletCategoryName}')" name="key_portletCategoryName" />
 
-		<execute function="AssertClick" locator1="Productmenu#SITES_PANEL_TITLE" value1="${portletCategoryName}" />
+		<execute function="AssertClick" locator1="ProductMenu#SITES_PANEL_TITLE" value1="${portletCategoryName}" />
 
 		<var name="key_portletCategoryName" value="${portletCategoryName}" />
 

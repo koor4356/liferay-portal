@@ -93,9 +93,9 @@
 		</if>
 
 		<if>
-			<condition function="IsVisible" locator1="Productmenu#PRODUCT_MENU_SIDEBAR" />
+			<condition function="IsVisible" locator1="ProductMenu#PRODUCT_MENU_SIDEBAR" />
 			<then>
-				<execute function="Click#clickAt" locator1="Productmenu#TOGGLE_BUTTON" />
+				<execute function="Click#clickAt" locator1="Button#CLOSE_SIDE_NAVIGATION" />
 			</then>
 		</if>
 
