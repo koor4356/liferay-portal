@@ -95,7 +95,7 @@
 		<if>
 			<condition function="IsVisible" locator1="ProductMenu#PRODUCT_MENU_SIDEBAR" />
 			<then>
-				<execute function="Click#clickAt" locator1="ProductMenu#TOGGLE_BUTTON" />
+				<execute function="Click#clickAt" locator1="Button#CLOSE_SIDE_NAVIGATION" />
 			</then>
 		</if>
 

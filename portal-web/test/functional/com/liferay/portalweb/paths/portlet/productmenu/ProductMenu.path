@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Productmenu</title>
+<title>ProductMenu</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -9,7 +9,7 @@
 </thead>
 <tbody>
 <tr>
-	<td>TOGGLE_BUTTON</td>
+	<td>CONTROL_PANEL_SIDE_NAVIGATION_TOGGLE</td>
 	<td>//a[contains(@class,'sidenav-toggler')]/span</td>
 	<td></td>
 </tr>
@@ -30,11 +30,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>CLOSE_BUTTON</td>
-	<td>//span[contains(class,'sidenav-close')]</td>
-	<td></td>
-</tr>
-<tr>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -46,10 +41,20 @@
 	<td></td>
 </tr>
 <tr>
-	<td>TAB_NAME</td>
-	<td>//div[contains(.,'${tabName}')]/../div[contains(@class,'tab-text')]</td>
+	<td>SITES_NAVIGATION</td>
+	<td>//div[contains(.,'Sites')]/../div[contains(@class,'tab-text')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MY_SPACE_NAVIGATION</td>
+	<td>//div[contains(.,'My Space')]/../div[contains(@class,'tab-text')]</td>
 	<td></td>
 </tr>	
+<tr>
+	<td>CONTROL_PANEL_NAVIGATION</td>
+	<td>//div[contains(.,'Control Panel')]/../div[contains(@class,'tab-text')]</td>
+	<td></td>
+</tr>		
 <tr>
 	<td></td>
 	<td></td>
@@ -64,11 +69,6 @@
 <tr>
 	<td>USER_FULL_NAME</td>
 	<td>//div[contains(@class,'nameplate')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>LOGOUT_BUTTON</td>
-	<td>//a[contains(@class,'signout')]</td>
 	<td></td>
 </tr>
 <tr>
