@@ -269,7 +269,7 @@
 		</execute>
 
 		<execute macro="Portlet#gotoPortletOptions">
-			<var name="portletNameBorderless" value="Breadcrumb" />
+			<var name="portletName" value="Breadcrumb" />
 			<var name="portletOption" value="Configuration" />
 		</execute>
 
