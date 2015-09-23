@@ -129,6 +129,7 @@
 
 	<command name="editAllowSiteAdminToModifyPageCP">
 		<execute macro="SiteTemplates#gotoSettingsCP">
+			<var name="category" value="Configuration" />
 			<var name="siteTemplateName" value="${siteTemplateName}" />
 		</execute>
 
@@ -150,6 +151,7 @@
 
 	<command name="editCP">
 		<execute macro="SiteTemplates#gotoSettingsCP">
+			<var name="category" value="Configuration" />
 			<var name="siteTemplateName" value="${siteTemplateName}" />
 		</execute>
 
@@ -159,6 +161,7 @@
 
 	<command name="editTemplateStatusCP">
 		<execute macro="SiteTemplates#gotoSettingsCP">
+			<var name="category" value="Configuration" />
 			<var name="siteTemplateName" value="${siteTemplateName}" />
 		</execute>
 
