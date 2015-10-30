@@ -78,7 +78,7 @@
 	<command name="viewFeedContentTitle">
 		<var name="key_feedContentTitle" value="${feedContentTitle}" />
 
-		<execute function="AssertTextEquals#assertPartialText" locator1="RSSFeed#FEEDS_CONTENT_TITLE" value1="${feedContentTitle}" />
+		<execute function="AssertTextEquals#assertPartialText" locator1="RSSFeed#FEEDS_ASSET_AP_TITLE" value1="${feedContentTitle}" />
 	</command>
 
 	<command name="viewNavigationDisplayFeedTitle">
