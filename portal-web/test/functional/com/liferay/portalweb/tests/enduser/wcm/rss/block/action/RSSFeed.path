@@ -55,6 +55,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>FEEDS_ASSET_AP_TITLE</td>
+	<td>//section[@class='portlet']//h4[@class='asset-title']/a[contains(.,'${key_feedContentTitle}')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>FEEDS_DELETE_ROW_BUTTON</td>
 	<td>xpath=(//button[contains(@class,'delete-row')])[${key_buttonRowIndexNumber}]</td>
 	<td></td>
