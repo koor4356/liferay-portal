@@ -115,7 +115,6 @@ Group group = layoutsAdminDisplayContext.getGroup();
 
 		<liferay-ui:layouts-tree
 			groupId="<%= selGroup.getGroupId() %>"
-			portletNamespace="<%= StringPool.UNDERLINE + LayoutAdminPortletKeys.GROUP_PAGES + StringPool.UNDERLINE %>"
 			portletURL="<%= editPublicLayoutURL %>"
 			privateLayout="<%= false %>"
 			rootNodeName="<%= liveGroup.getLayoutRootNodeName(false, themeDisplay.getLocale()) %>"
@@ -136,7 +135,6 @@ Group group = layoutsAdminDisplayContext.getGroup();
 
 	<liferay-ui:layouts-tree
 		groupId="<%= selGroup.getGroupId() %>"
-		portletNamespace="<%= StringPool.UNDERLINE + LayoutAdminPortletKeys.GROUP_PAGES + StringPool.UNDERLINE %>"
 		portletURL="<%= editPrivateLayoutURL %>"
 		privateLayout="<%= true %>"
 		rootNodeName="<%= liveGroup.getLayoutRootNodeName(true, themeDisplay.getLocale()) %>"
