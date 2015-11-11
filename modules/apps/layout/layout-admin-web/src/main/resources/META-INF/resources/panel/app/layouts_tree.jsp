@@ -111,7 +111,7 @@ String selectedLayoutIds = ParamUtil.getString(request, "selectedLayoutIds");
 	PortletURL editPublicLayoutURL = PortalUtil.getControlPanelPortletURL(request, LayoutAdminPortletKeys.GROUP_PAGES, 0, PortletRequest.RENDER_PHASE);
 
 	editPublicLayoutURL.setParameter("privateLayout", Boolean.FALSE.toString());
-	editPublicLayoutURL.setParameter("groupId", String.valueOf(liveGroup.getLiveGroupId()));
+	editPublicLayoutURL.setParameter("groupId", String.valueOf(liveGroup.getGroupId()));
 	editPublicLayoutURL.setParameter("viewLayout", Boolean.TRUE.toString());
 	%>
 
@@ -130,7 +130,7 @@ String selectedLayoutIds = ParamUtil.getString(request, "selectedLayoutIds");
 PortletURL editPrivateLayoutURL = PortalUtil.getControlPanelPortletURL(request, LayoutAdminPortletKeys.GROUP_PAGES, 0, PortletRequest.RENDER_PHASE);
 
 editPrivateLayoutURL.setParameter("privateLayout", Boolean.TRUE.toString());
-editPrivateLayoutURL.setParameter("groupId", String.valueOf(liveGroup.getLiveGroupId()));
+editPrivateLayoutURL.setParameter("groupId", String.valueOf(liveGroup.getGroupId()));
 editPrivateLayoutURL.setParameter("viewLayout", Boolean.TRUE.toString());
 %>
 
