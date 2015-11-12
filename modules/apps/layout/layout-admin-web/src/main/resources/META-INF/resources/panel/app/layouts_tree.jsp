@@ -97,12 +97,6 @@ if (group == null) {
 			</aui:nav-bar>
 		</c:when>
 	</c:choose>
-
-	<%
-	request.setAttribute(WebKeys.PRIVATE_LAYOUT, privateLayout);
-	%>
-
-	<liferay-staging:menu cssClass="manage-pages-branch-menu" extended="<%= true %>" icon="/common/tool.png" message="" selPlid="<%= selPlid %>" showManageBranches="<%= true %>"  />
 </c:if>
 
 <%
