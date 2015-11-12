@@ -80,9 +80,13 @@ if (group == null) {
 							layoutSetBranchURL.setParameter("groupId", String.valueOf(curLayoutSetBranch.getGroupId()));
 							layoutSetBranchURL.setParameter("privateLayout", String.valueOf(privateLayout));
 							layoutSetBranchURL.setParameter("layoutSetBranchId", String.valueOf(curLayoutSetBranch.getLayoutSetBranchId()));
+
+							Map<String, Object> data = new HashMap<String, Object>();
+
+							data.put("navigation", true);
 						%>
 
-							<aui:nav-item cssClass='<%= selected ? "disabled" : StringPool.BLANK %>' href="<%= selected ? null : layoutSetBranchURL.toString() %>" label="<%= HtmlUtil.escape(curLayoutSetBranch.getName()) %>" />
+							<aui:nav-item anchorData="<%= data %>" cssClass='<%= selected ? "disabled" : StringPool.BLANK %>' href="<%= selected ? null : layoutSetBranchURL.toString() %>" label="<%= HtmlUtil.escape(curLayoutSetBranch.getName()) %>" />
 
 						<%
 						}
