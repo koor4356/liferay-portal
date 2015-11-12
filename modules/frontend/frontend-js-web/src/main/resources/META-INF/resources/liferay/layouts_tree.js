@@ -7,7 +7,7 @@ AUI.add(
 
 		var NODE_ID_TPL = '{treeId}_layoutId_{layoutId}_plid_{plid}_groupId_{groupId}';
 
-		var NODE_LINK_TPL = '<a class="{cssClass}" data-url="{url}" data-uuid="{uuid}" href="{layoutURL}" id="{id}" title="{title}">{label}</a>';
+		var NODE_LINK_TPL = '<a class="{cssClass}" data-navigation="{navigation}" data-url="{url}" data-uuid="{uuid}" href="{layoutURL}" id="{id}" title="{title}">{label}</a>';
 
 		var STR_BOUNDING_BOX = 'boundingBox';
 
@@ -190,6 +190,8 @@ AUI.add(
 				data.url = data.url ? LString.escapeHTML(data.url) : STR_EMPTY;
 
 				data.uuid = data.uuid ? LString.escapeHTML(data.uuid) : STR_EMPTY;
+
+				data.navigation = data.navigation ? data.navigation : true;
 
 				return A.Lang.sub(template, data);
 			},
