@@ -64,37 +64,48 @@ if (group == null) {
 
 	<c:choose>
 		<c:when test="<%= layoutSetBranches.size() > 1 %>">
-			<aui:nav-bar>
-				<aui:nav cssClass="navbar-nav">
-					<aui:nav-item dropdown="<%= true %>" label="<%= HtmlUtil.escape(layoutSetBranch.getName()) %>">
+			<ul class="nav nav-equal-height nav-nested">
+				<li>
+					<div class="nav-equal-height-heading">
+						<span><%= HtmlUtil.escape(LanguageUtil.get(request, layoutSetBranch.getName())) %></span>
 
-						<%
-						for (int i = 0; i < layoutSetBranches.size(); i++) {
-							LayoutSetBranch curLayoutSetBranch = layoutSetBranches.get(i);
+						<span class="nav-equal-height-heading-field">
+							<liferay-ui:icon-menu direction="down" icon="../aui/cog" message="" showArrow="<%= false %>">
 
-							boolean selected = (curLayoutSetBranch.getLayoutSetBranchId() == layoutSetBranch.getLayoutSetBranchId());
+								<%
+								Map<String, Object> data = new HashMap<String, Object>();
 
-							PortletURL layoutSetBranchURL = PortalUtil.getControlPanelPortletURL(request, LayoutAdminPortletKeys.GROUP_PAGES, 0, PortletRequest.RENDER_PHASE);
+								data.put("navigation", Boolean.TRUE.toString());
 
-							layoutSetBranchURL.setParameter("mvcPath", "/view.jsp");
-							layoutSetBranchURL.setParameter("groupId", String.valueOf(curLayoutSetBranch.getGroupId()));
-							layoutSetBranchURL.setParameter("privateLayout", String.valueOf(privateLayout));
-							layoutSetBranchURL.setParameter("layoutSetBranchId", String.valueOf(curLayoutSetBranch.getLayoutSetBranchId()));
+								for (int i = 0; i < layoutSetBranches.size(); i++) {
+									LayoutSetBranch curLayoutSetBranch = layoutSetBranches.get(i);
 
-							Map<String, Object> data = new HashMap<String, Object>();
+									boolean selected = (curLayoutSetBranch.getLayoutSetBranchId() == layoutSetBranch.getLayoutSetBranchId());
 
-							data.put("navigation", true);
-						%>
+									PortletURL layoutSetBranchURL = PortalUtil.getControlPanelPortletURL(request, LayoutAdminPortletKeys.GROUP_PAGES, 0, PortletRequest.RENDER_PHASE);
 
-							<aui:nav-item anchorData="<%= data %>" cssClass='<%= selected ? "disabled" : StringPool.BLANK %>' href="<%= selected ? null : layoutSetBranchURL.toString() %>" label="<%= HtmlUtil.escape(curLayoutSetBranch.getName()) %>" />
+									layoutSetBranchURL.setParameter("mvcPath", "/view.jsp");
+									layoutSetBranchURL.setParameter("groupId", String.valueOf(curLayoutSetBranch.getGroupId()));
+									layoutSetBranchURL.setParameter("privateLayout", String.valueOf(privateLayout));
+									layoutSetBranchURL.setParameter("layoutSetBranchId", String.valueOf(curLayoutSetBranch.getLayoutSetBranchId()));
+								%>
 
-						<%
-						}
-						%>
+									<liferay-ui:icon
+										cssClass='<%= selected ? "disabled" : StringPool.BLANK %>'
+										data="<%= data %>"
+										message="<%= HtmlUtil.escape(curLayoutSetBranch.getName()) %>"
+										url="<%= selected ? null : layoutSetBranchURL.toString() %>"
+									/>
 
-					</aui:nav-item>
-				</aui:nav>
-			</aui:nav-bar>
+								<%
+								}
+								%>
+
+							</liferay-ui:icon-menu>
+						</span>
+					</div>
+				</li>
+			</ul>
 		</c:when>
 	</c:choose>
 </c:if>
