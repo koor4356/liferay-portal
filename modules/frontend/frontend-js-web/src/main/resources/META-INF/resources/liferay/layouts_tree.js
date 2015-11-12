@@ -191,8 +191,6 @@ AUI.add(
 
 				data.uuid = data.uuid ? LString.escapeHTML(data.uuid) : STR_EMPTY;
 
-				data.navigation = data.navigation ? data.navigation : true;
-
 				return A.Lang.sub(template, data);
 			},
 
@@ -313,6 +311,7 @@ AUI.add(
 					{
 						cssClass: cssClass,
 						label: name,
+						navigation: false,
 						plid: node.plid,
 						title: title,
 						url: node.friendlyURL,
@@ -332,6 +331,7 @@ AUI.add(
 				var rootLabel = instance._createNodeLink(
 					{
 						label: LString.escapeHTML(rootConfig.label),
+						navigation: true,
 						plid: rootConfig.defaultParentLayoutId
 					},
 					rootConfig.linkTemplate
