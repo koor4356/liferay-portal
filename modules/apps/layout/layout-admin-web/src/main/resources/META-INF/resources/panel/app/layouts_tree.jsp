@@ -34,7 +34,7 @@ if (group == null) {
 }
 %>
 
-<c:if test="<%= stagingGroup.isStaged() %>">
+<c:if test="<%= stagingGroup.isStaged() && (themeDisplay.getScopeGroupId() == stagingGroup.getGroupId()) %>">
 
 	<%
 	long layoutSetBranchId = ParamUtil.getLong(request, "layoutSetBranchId");
