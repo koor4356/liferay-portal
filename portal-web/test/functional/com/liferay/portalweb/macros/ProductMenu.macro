@@ -72,8 +72,6 @@
 	<command name="gotoLocalizedSitesAdministration" summary="Navigate to Product Menu > Sites > ${category} > ${portlet}">
 		<execute macro="ProductMenuHelper#gotoSites" />
 
-		<execute function="Click" locator1="ProductMenu#BACK_ARROW" />
-
 		<execute macro="ProductMenuHelper#expandCategory">
 			<var name="category" value="${category}" />
 		</execute>
