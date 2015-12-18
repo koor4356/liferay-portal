@@ -718,6 +718,19 @@
 	</command>
 
 	<command name="viewNoDeletePagesAssociatedWithSiteTemplateCP">
+		<execute macro="ProductMenuHelper#expandCategory">
+			<var name="category" value="Pages" />
+		</execute>
+
+		<if>
+			<condition function="IsElementPresent" locator1="ProductMenu#PAGE_PLUS_ICON_COLLAPSED" />
+			<then>
+				<execute function="Click" locator1="ProductMenu#PAGE_PLUS_ICON_COLLAPSED" />
+
+				<execute function="AssertElementPresent" locator1="ProductMenu#PAGE_PLUS_ICON_EXPANDED" />
+			</then>
+		</if>
+
 		<var name="key_page" value="${page}" />
 
 		<execute function="Click" locator1="ProductMenu#EDIT_PAGE" />
