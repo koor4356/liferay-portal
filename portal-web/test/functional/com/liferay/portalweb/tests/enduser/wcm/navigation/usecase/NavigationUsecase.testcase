@@ -82,7 +82,7 @@
 		<execute function="AssertSelectedLabel" locator1="Select#INCLUDED_PAGES" value1="Auto" />
 		<execute function="AssertSelectedLabel" locator1="Select#NESTED_CHILDREN" value1="Yes" />
 		<execute function="AssertClick" locator1="Button#SAVE" value1="Save" />
-		<execute function="AssertTextEquals" locator1="Message#SUCCESS" value1="You have successfully updated the setup." />
+		<execute function="AssertTextEquals#assertPartialText" locator1="Message#SUCCESS" value1="You have successfully updated the setup." />
 		<execute function="SelectFrame" value1="relative=top" />
 
 		<execute macro="Page#gotoPG">
@@ -195,7 +195,7 @@
 
 		<execute function="Select" locator1="Select#DISPLAY_TEMPLATE" value1="Relative with Breadcrumb" />
 		<execute function="AssertClick" locator1="Button#SAVE" value1="Save" />
-		<execute function="AssertTextEquals" locator1="Message#SUCCESS" value1="You have successfully updated the setup." />
+		<execute function="AssertTextEquals#assertPartialText" locator1="Message#SUCCESS" value1="You have successfully updated the setup." />
 		<execute function="SelectFrame" value1="relative=top" />
 
 		<execute macro="Page#gotoPG">
