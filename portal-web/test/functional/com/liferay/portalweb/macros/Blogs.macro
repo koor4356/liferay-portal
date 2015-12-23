@@ -483,7 +483,7 @@
 		</execute>
 
 		<execute function="AssertClick" locator1="PGBlogs#UNSUBSCRIBE_LINK" value1="Unsubscribe" />
-		<execute function="AssertTextEquals" locator1="PGBlogs#SUCCESS_MESSAGE" value1="Your request completed successfully." />
+		<execute function="AssertTextEquals#assertPartialText" locator1="Message#SUCCESS" value1="Your request completed successfully." />
 	</command>
 
 	<command name="unsubscribePG">
