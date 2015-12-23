@@ -160,7 +160,7 @@
 </tr>
 <tr>
 	<td>SUCCESS</td>
-	<td>//div[contains(@class,'alert-success') and contains(@class,'alert-success-content')]</td>
+	<td>//div[contains(@class,'alert') and contains(@class,'alert-success')]</td>
 	<td></td>
 </tr>
 <tr>
