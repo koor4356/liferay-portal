@@ -102,7 +102,9 @@ AUI.add(
 										navbar.placeAfter(alertsContainer);
 									}
 									else {
-										rootNode.one('.portlet-body').prepend(alertsContainer);
+										var prependTarget = rootNode.one('.portlet-body') || rootNode;
+
+										prependTarget.prepend(alertsContainer);
 									}
 								}
 							}
