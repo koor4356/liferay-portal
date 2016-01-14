@@ -33,6 +33,8 @@
 	</command>
 
 	<command name="emptyCP">
+		<execute function="Click" locator1="Icon#HEADER_VERTICAL_ELLIPSIS" />
+
 		<if>
 			<condition function="IsElementPresent" locator1="RecycleBin#EMPTY_RECYCLE_BIN" />
 			<then>
