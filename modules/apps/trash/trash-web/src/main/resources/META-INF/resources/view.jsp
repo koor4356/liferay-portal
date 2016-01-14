@@ -265,17 +265,6 @@ if (Validator.isNotNull(keywords)) {
 			</c:choose>
 		</liferay-ui:search-container-row>
 
-		<c:if test="<%= Validator.isNull(keywords) %>">
-			<portlet:actionURL name="emptyTrash" var="emptyTrashURL">
-				<portlet:param name="groupId" value="<%= String.valueOf(themeDisplay.getScopeGroupId()) %>" />
-			</portlet:actionURL>
-
-			<liferay-trash:empty
-				portletURL="<%= emptyTrashURL %>"
-				totalEntries="<%= searchContainer.getTotal() %>"
-			/>
-		</c:if>
-
 		<liferay-ui:breadcrumb
 			showCurrentGroup="<%= false %>"
 			showGuestGroup="<%= false %>"
