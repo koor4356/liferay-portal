@@ -35,9 +35,9 @@ page import="com.liferay.taglib.aui.AUIUtil" %>
 page import="javax.portlet.PortletResponse" %><%@
 page import="javax.portlet.PortletURL" %>
 
-<liferay-frontend:defineObjects overrideResourceBundle="<%= FrontEndEditorResourceBundleUtil.getResourceBundle(locale) %>" />
-
 <liferay-theme:defineObjects />
+
+<liferay-frontend:defineObjects overrideResourceBundle="<%= FrontEndEditorResourceBundleUtil.getResourceBundle(locale) %>" />
 
 <%
 PortletRequest portletRequest = (PortletRequest)request.getAttribute(JavaConstants.JAVAX_PORTLET_REQUEST);
