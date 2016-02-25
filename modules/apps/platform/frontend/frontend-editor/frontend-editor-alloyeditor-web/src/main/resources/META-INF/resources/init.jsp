@@ -45,6 +45,7 @@ page import="javax.portlet.PortletResponse" %><%@
 page import="javax.portlet.PortletURL" %>
 
 <liferay-frontend:defineObjects />
+
 <liferay-theme:defineObjects />
 
 <%
