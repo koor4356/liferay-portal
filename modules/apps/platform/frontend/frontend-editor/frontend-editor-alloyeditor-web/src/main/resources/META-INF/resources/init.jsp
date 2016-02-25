@@ -25,7 +25,6 @@ taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
 page import="com.liferay.portal.kernel.editor.configuration.EditorOptions" %><%@
 page import="com.liferay.portal.kernel.json.JSONObject" %><%@
 page import="com.liferay.portal.kernel.language.LanguageUtil" %><%@
-page import="com.liferay.portal.kernel.portlet.PortletURLUtil" %><%@
 page import="com.liferay.portal.kernel.servlet.PortalWebResourceConstants" %><%@
 page import="com.liferay.portal.kernel.servlet.PortalWebResourcesUtil" %><%@
 page import="com.liferay.portal.kernel.util.GetterUtil" %><%@
@@ -42,8 +41,7 @@ page import="com.liferay.util.Encryptor" %>
 page import="java.util.Map" %>
 
 <%@ page import="javax.portlet.PortletRequest" %><%@
-page import="javax.portlet.PortletResponse" %><%@
-page import="javax.portlet.PortletURL" %>
+page import="javax.portlet.PortletResponse" %>
 
 <liferay-theme:defineObjects />
 

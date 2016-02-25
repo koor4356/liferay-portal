@@ -25,13 +25,11 @@ taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
 page import="com.liferay.portal.kernel.util.GetterUtil" %><%@
 page import="com.liferay.portal.kernel.util.HtmlUtil" %><%@
 page import="com.liferay.portal.kernel.util.JavaConstants" %><%@
-page import="com.liferay.portal.kernel.util.PortalUtil" %><%@
 page import="com.liferay.portal.kernel.util.Validator" %><%@
 page import="com.liferay.taglib.aui.AUIUtil" %>
 
 <%@ page import="javax.portlet.PortletRequest" %><%@
-page import="javax.portlet.PortletResponse" %><%@
-page import="javax.portlet.PortletURL" %>
+page import="javax.portlet.PortletResponse" %>
 
 <liferay-theme:defineObjects />
 
