@@ -907,7 +907,9 @@
 	<command name="viewPageTemplateTypeNotPresent">
 		<var name="key_pageName" value="${pageTemplateName}" />
 
-		<execute function="AssertElementNotPresent" locator1="SitePagesEditPage#PAGE_TYPE_SELECT" />
+		<execute function="Click" locator1="SitePagesEditPage#PAGE_TYPE_SELECT" />
+
+		<execute function="AssertTextNotPresent" locator1="SitePagesEditPage#PAGE_TYPE_SELECT" value1="${pageTemplateName}" />
 	</command>
 
 	<command name="viewPageTemplateTypePresent">
