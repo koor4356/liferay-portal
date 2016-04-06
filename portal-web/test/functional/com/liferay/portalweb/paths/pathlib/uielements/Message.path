@@ -209,6 +209,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>SUCCESS_ALERT_HIDDEN</td>
+	<td>//div[contains(@class,'alert-dismissable') and contains(@class,'liferayalert-hidden')]/div</td>
+	<td></td>
+</tr>
+<tr>
 	<td>SUCCESS_CONTENT</td>
 	<td>//div[@class='portlet-body']/div[contains(.,'${key_assetType}')]</td>
 	<td></td>
