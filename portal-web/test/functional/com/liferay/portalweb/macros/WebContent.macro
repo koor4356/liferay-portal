@@ -437,7 +437,9 @@
 		</execute>
 
 		<execute function="Click" locator1="AlloyEditor#CONTENT_FIELD" />
+
 		<execute function="Click" locator1="AlloyEditor#CONTENT_ADD_BUTTON" />
+
 		<execute function="Click" locator1="AlloyEditor#CONTENT_ADD_MENUBAR_IMAGE" />
 
 		<execute function="SelectFrame" locator1="IFrame#METADATA_SETS_IFRAME" />

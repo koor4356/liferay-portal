@@ -303,6 +303,7 @@
 			<equals arg1="${contentDateRange}" arg2="All" />
 			<then>
 				<execute function="Click" locator1="StagingPublishToLive#CONTENT_CHOOSE_CONTENT" />
+
 				<execute function="Click" locator1="StagingPublishToLive#CHOOSE_CONTENT_DATE_RANGE_CHANGE" />
 
 				<execute function="Check" locator1="Radio#RANGE_ALL" />
@@ -315,6 +316,7 @@
 			<equals arg1="${contentDateRange}" arg2="Date Range" />
 			<then>
 				<execute function="Click" locator1="StagingPublishToLive#CONTENT_CHOOSE_CONTENT" />
+
 				<execute function="Click" locator1="StagingPublishToLive#CHOOSE_CONTENT_DATE_RANGE_CHANGE" />
 
 				<var name="key_contentDateRange" value="${contentDateRange}" />
@@ -377,6 +379,7 @@
 				<execute function="AssertClick" locator1="StagingPublishtolivenow#CONTENT_CHOOSE_CONTENT_CONTENT_CHANGE_LINK" value1="Change" />
 
 				<execute function="Uncheck" locator1="StagingPublishtolivenow#CONTENT_CHOOSE_CONTENT_SUBCONTENT_CHECKBOX" />
+
 				<execute function="AssertClick" locator1="Button#OK" value1="OK" />
 			</then>
 		</if>
