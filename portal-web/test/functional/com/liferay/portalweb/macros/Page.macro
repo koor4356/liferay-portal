@@ -437,7 +437,7 @@
 
 		<var name="key_childPageName" value="${childPageName}" />
 
-		<execute function="AssertVisible" locator1="Home#PAGE_CHILD_PAGE" />
+		<!-- <execute function="AssertVisible" locator1="Home#PAGE_CHILD_PAGE" /> -->
 
 		<execute function="Click" locator1="Home#PAGE_CHILD_PAGE" />
 	</command>
