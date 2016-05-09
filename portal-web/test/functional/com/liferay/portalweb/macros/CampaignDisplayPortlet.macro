@@ -43,6 +43,8 @@
 		<var name="key_rowEntry" value="${contentTitle}" />
 
 		<execute function="ClickNoError" locator1="ContentRow#ENTRY_CONTENT_ENTRY_NAME_LINK" />
+
+		<execute function="SelectFrame" value1="relative=top" />
 	</command>
 
 	<command name="savePG">
