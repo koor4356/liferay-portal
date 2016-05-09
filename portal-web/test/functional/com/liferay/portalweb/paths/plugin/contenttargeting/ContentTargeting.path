@@ -119,6 +119,11 @@
 </tr>
 <!--REPORT_TABLE-->
 <tr>
+	<td>REPORT_TABLE_CONTENT</td>
+		<td>//*[@data-qa-id='row'][contains(.,'${key_reportTitle}')]/td[normalize-space(.//text())='${key_contentReports}']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>REPORT_TABLE_TITLE</td>
 	<td>//*[@data-qa-id='row'][contains(.,'${key_reportTitle}')]/td[1]</td>
 	<td></td>
