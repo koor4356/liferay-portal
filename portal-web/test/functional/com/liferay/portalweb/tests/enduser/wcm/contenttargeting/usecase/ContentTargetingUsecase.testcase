@@ -316,12 +316,31 @@
 			<var name="userSegmentSelect" value="User Segment Name" />
 		</execute>
 
+		<execute macro="PortletEntry#save" />
+
+		<execute macro="ProductMenu#gotoSite">
+			<var name="site" value="Site Name" />
+		</execute>
+
+		<execute macro="ProductMenu#gotoSitesConfiguration">
+			<var name="portlet" value="Audience Targeting" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#gotoAddReport">
+			<var name="campaignName" value="Campaign Name" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#addReportName">
+			<var name="reportDescription" value="Content Report Description" />
+			<var name="reportName" value="Content Report Name" />
+		</execute>
+
 		<execute macro="ContentTargetingCampaign#addTrackingActionPageCP">
 			<var name="pageAlias" value="Page Alias" />
 			<var name="pageFriendlyURL" value="/test-page-name" />
 		</execute>
 
-		<execute macro="ContentTargetingCampaign#saveCP" />
+		<execute macro="PortletEntry#save" />
 
 		<execute macro="Navigator#gotoSitePage">
 			<var name="pageName" value="Test Page Name" />
@@ -352,8 +371,8 @@
 
 		<execute macro="CampaignDisplayPortlet#viewPG">
 			<var name="entryContentText" value="Web Content Content" />
-			<var name="previewCampaignList" value="Cammpaign Name,default" />
-			<var name="viewUserSegmentSelected" value="Campaign Name" />
+			<var name="previewCampaignList" value="Campaign Name,default" />
+			<var name="viewCampaignSelected" value="Campaign Name" />
 		</execute>
 	</command>
 
@@ -482,14 +501,7 @@
 			<var name="userSegmentSelect" value="User Segment Name" />
 		</execute>
 
-		<execute macro="ContentTargetingCampaign#addTrackingActionContentCP">
-			<var name="contentAlias" value="Content Alias" />
-			<var name="contentTitle" value="DM Document Title" />
-			<var name="linkId" value="Content id" />
-			<var name="menulistContent" value="Document" />
-		</execute>
-
-		<execute macro="ContentTargetingCampaign#saveCP" />
+		<execute macro="PortletEntry#save" />
 
 		<execute macro="ProductMenu#gotoSite">
 			<var name="site" value="Site Name" />
@@ -499,9 +511,40 @@
 			<var name="portlet" value="Audience Targeting" />
 		</execute>
 
+		<execute macro="ContentTargetingCampaign#gotoAddReport">
+			<var name="campaignName" value="Campaign Name" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#addReportName">
+			<var name="reportDescription" value="Content Report Description" />
+			<var name="reportName" value="Content Report Name" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#addTrackingActionContentCP">
+			<var name="contentMetricName" value="Content Metric Name" />
+			<var name="contentTitle" value="DM Document Title" />
+			<var name="linkId" value="Content id" />
+			<var name="menulistContent" value="Document" />
+		</execute>
+
+		<execute macro="PortletEntry#save" />
+
+		<execute macro="ProductMenu#gotoSite">
+			<var name="site" value="Site Name" />
+		</execute>
+
+		<execute macro="ProductMenu#gotoSitesConfiguration">
+			<var name="portlet" value="Audience Targeting" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#gotoEditReport">
+			<var name="campaignName" value="Campaign Name" />
+			<var name="reportName" value="Content Report Name" />
+		</execute>
+
 		<execute macro="ContentTargetingCampaign#viewTrackingActionsCP">
 			<var name="campaignName" value="Campaign Name" />
-			<var name="contentAlias" value="Content Alias" />
+			<var name="contentMetricName" value="Content Metric Name" />
 			<var name="contentTitle" value="DM Document Title" />
 			<var name="viewTrackingActionsList" value="Content" />
 		</execute>
@@ -565,10 +608,8 @@
 		</execute>
 
 		<execute macro="ContentTargetingCampaign#viewContentReportCP">
-			<var name="contentEvent" value="View" />
-			<var name="contentEventCount" value="4" />
-			<var name="contentTitle" value="DM Document Title" />
-			<var name="contentType" value="Document" />
+			<var name="reportsContentTableList" value="DM Document Title,Document,View,4" />
+			<var name="reportTitle" value="DM Document Title" />
 		</execute>
 	</command>
 
@@ -750,12 +791,31 @@
 			<var name="userSegmentSelect" value="User Segment Name" />
 		</execute>
 
+		<execute macro="PortletEntry#save" />
+
+		<execute macro="ProductMenu#gotoSite">
+			<var name="site" value="Site Name" />
+		</execute>
+
+		<execute macro="ProductMenu#gotoSitesConfiguration">
+			<var name="portlet" value="Audience Targeting" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#gotoAddReport">
+			<var name="campaignName" value="Campaign Name" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#addReportName">
+			<var name="reportDescription" value="Content Report Description" />
+			<var name="reportName" value="Content Report Name" />
+		</execute>
+
 		<execute macro="ContentTargetingCampaign#addTrackingActionPageCP">
 			<var name="pageAlias" value="Page Alias" />
 			<var name="pageFriendlyURL" value="/test-page-name" />
 		</execute>
 
-		<execute macro="ContentTargetingCampaign#saveCP" />
+		<execute macro="PortletEntry#save" />
 
 		<execute macro="Navigator#gotoSitePage">
 			<var name="pageName" value="Test Page Name" />
@@ -856,12 +916,31 @@
 			<var name="userSegmentSelect" value="User Segment Name" />
 		</execute>
 
+		<execute macro="PortletEntry#save" />
+
+		<execute macro="ProductMenu#gotoSite">
+			<var name="site" value="Site Name" />
+		</execute>
+
+		<execute macro="ProductMenu#gotoSitesConfiguration">
+			<var name="portlet" value="Audience Targeting" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#gotoAddReport">
+			<var name="campaignName" value="Campaign Name" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#addReportName">
+			<var name="reportDescription" value="Content Report Description" />
+			<var name="reportName" value="Content Report Name" />
+		</execute>
+
 		<execute macro="ContentTargetingCampaign#addTrackingActionPageCP">
 			<var name="pageAlias" value="Page Alias" />
 			<var name="pageFriendlyURL" value="/test-page-name" />
 		</execute>
 
-		<execute macro="ContentTargetingCampaign#saveCP" />
+		<execute macro="PortletEntry#save" />
 
 		<execute macro="Navigator#gotoSitePage">
 			<var name="pageName" value="Test Page Name" />
@@ -916,12 +995,31 @@
 			<var name="campaignStartTime" value="12:00 AM" />
 		</execute>
 
+		<execute macro="PortletEntry#save" />
+
+		<execute macro="ProductMenu#gotoSite">
+			<var name="site" value="Site Name" />
+		</execute>
+
+		<execute macro="ProductMenu#gotoSitesConfiguration">
+			<var name="portlet" value="Audience Targeting" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#gotoAddReport">
+			<var name="campaignName" value="Campaign Name Started" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#addReportName">
+			<var name="reportDescription" value="Content Report Description" />
+			<var name="reportName" value="Content Report Name" />
+		</execute>
+
 		<execute macro="ContentTargetingCampaign#addTrackingActionPageCP">
 			<var name="pageAlias" value="Page Alias" />
 			<var name="pageFriendlyURL" value="/test-page-name" />
 		</execute>
 
-		<execute macro="ContentTargetingCampaign#saveCP" />
+		<execute macro="PortletEntry#save" />
 
 		<execute macro="ProductMenu#gotoSite">
 			<var name="site" value="Site Name" />
@@ -941,12 +1039,31 @@
 			<var name="campaignStartTime" value="12:00 AM" />
 		</execute>
 
+		<execute macro="PortletEntry#save" />
+
+		<execute macro="ProductMenu#gotoSite">
+			<var name="site" value="Site Name" />
+		</execute>
+
+		<execute macro="ProductMenu#gotoSitesConfiguration">
+			<var name="portlet" value="Audience Targeting" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#gotoAddReport">
+			<var name="campaignName" value="Campaign Name Finished" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#addReportName">
+			<var name="reportDescription" value="Content Report Description" />
+			<var name="reportName" value="Content Report Name" />
+		</execute>
+
 		<execute macro="ContentTargetingCampaign#addTrackingActionPageCP">
 			<var name="pageAlias" value="Page Alias" />
 			<var name="pageFriendlyURL" value="/test-page-name" />
 		</execute>
 
-		<execute macro="ContentTargetingCampaign#saveCP" />
+		<execute macro="PortletEntry#save" />
 
 		<execute macro="ProductMenu#gotoSite">
 			<var name="site" value="Site Name" />
@@ -1032,14 +1149,7 @@
 			<var name="userSegmentSelect" value="User Segment Name" />
 		</execute>
 
-		<execute macro="ContentTargetingCampaign#addTrackingActionContentCP">
-			<var name="contentAlias" value="Content Alias" />
-			<var name="contentTitle" value="DM Document Title" />
-			<var name="linkId" value="Content id" />
-			<var name="menulistContent" value="Document" />
-		</execute>
-
-		<execute macro="ContentTargetingCampaign#saveCP" />
+		<execute macro="PortletEntry#save" />
 
 		<execute macro="ProductMenu#gotoSite">
 			<var name="site" value="Site Name" />
@@ -1049,9 +1159,40 @@
 			<var name="portlet" value="Audience Targeting" />
 		</execute>
 
+		<execute macro="ContentTargetingCampaign#gotoAddReport">
+			<var name="campaignName" value="Campaign Name" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#addReportName">
+			<var name="reportDescription" value="Content Report Description" />
+			<var name="reportName" value="Content Report Name" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#addTrackingActionContentCP">
+			<var name="contentMetricName" value="Content Metric Name" />
+			<var name="contentTitle" value="DM Document Title" />
+			<var name="linkId" value="Content id" />
+			<var name="menulistContent" value="Document" />
+		</execute>
+
+		<execute macro="PortletEntry#save" />
+
+		<execute macro="ProductMenu#gotoSite">
+			<var name="site" value="Site Name" />
+		</execute>
+
+		<execute macro="ProductMenu#gotoSitesConfiguration">
+			<var name="portlet" value="Audience Targeting" />
+		</execute>
+
+		<execute macro="ContentTargetingCampaign#gotoEditReport">
+			<var name="campaignName" value="Campaign Name" />
+			<var name="reportName" value="Content Report Name" />
+		</execute>
+
 		<execute macro="ContentTargetingCampaign#viewTrackingActionsCP">
 			<var name="campaignName" value="Campaign Name" />
-			<var name="contentAlias" value="Content Alias" />
+			<var name="contentMetricName" value="Content Metric Name" />
 			<var name="contentTitle" value="DM Document Title" />
 			<var name="viewTrackingActionsList" value="Content" />
 		</execute>
@@ -1068,7 +1209,7 @@
 			<var name="campaignName" value="Campaign Name" />
 			<var name="contentTitle" value="DM Document Title" />
 			<var name="notEnoughInfoTrackingAction" value="true" />
-			<var name="viewReportType" value="Tracking Actions" />
+			<var name="viewReportType" value="Content Report Name" />
 		</execute>
 
 		<execute macro="Navigator#gotoSitePage">
@@ -1109,14 +1250,12 @@
 		<execute macro="ContentTargetingCampaign#updateReport">
 			<var name="campaignName" value="Campaign Name" />
 			<var name="contentTitle" value="DM Document Title" />
-			<var name="viewReportType" value="Tracking Actions" />
+			<var name="viewReportType" value="Content Report Name" />
 		</execute>
 
 		<execute macro="ContentTargetingCampaign#viewMetricReport">
-			<var name="metricCount" value="2" />
-			<var name="metricEvent" value="View" />
-			<var name="metricName" value="Content Alias" />
-			<var name="userSegmentName" value="User Segment Name" />
+			<var name="metricName" value="Content Metric Name" />
+			<var name="metricReportsTableList" value="Content Metric Name,View,4" />
 		</execute>
 	</command>
 
