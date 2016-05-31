@@ -3493,7 +3493,7 @@
 		<execute macro="UserSegmentContentDisplayPortlet#configureDisplayContent">
 			<var name="belongs" value="true" />
 			<var name="contentTitle" value="DM Document Title 1" />
-			<var name="contentType" value="Document" />
+			<var name="contentType" value="Basic Document" />
 			<var name="rowNumber" value="1" />
 			<var name="toAll" value="true" />
 			<var name="userSegmentName" value="User Segment Name" />
