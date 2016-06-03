@@ -239,6 +239,14 @@
 		<execute macro="Button#clickSave" />
 	</command>
 
+	<command name="viewCP">
+		<for list="${siteTemplateNameList}" param="siteTemplateName" >
+			<var name="key_siteTemplateName" value="${siteTemplateName}" />
+
+			<execute function="AssertTextEquals#assertPartialText" locator1="SiteTemplates#SITE_TEMPLATE_TABLE_NAME" value1="${siteTemplateName}" />
+		</for>
+	</command>
+
 	<command name="viewDefaultCP">
 		<for list="${siteTemplateNameList}" param="siteTemplateName" >
 			<var name="key_siteTemplateName" value="${siteTemplateName}" />
