@@ -35,13 +35,7 @@
 
 		<execute macro="Button#clickSave" />
 
-		<execute macro="SiteAdmin#viewPortletTitle">
-			<var name="portletTitle" value="Site Template Settings" />
-		</execute>
-
-		<var name="key_siteTemplateName" value="${siteTemplateName}" />
-
-		<execute function="AssertTextEquals" locator1="TextInput#NAME" value1="${siteTemplateName}" />
+		<execute macro="Alert#viewSuccessMessage" />
 	</command>
 
 	<command name="addSitePageViaSiteTemplateCP">
