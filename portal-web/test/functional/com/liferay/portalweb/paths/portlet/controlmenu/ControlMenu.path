@@ -30,7 +30,7 @@
 </tr>
 <tr>
 	<td>INFO</td>
-	<td>//*[@data-qa-id='controlMenu']//*[@data-qa-id='info']</td>
+	<td>//*[@data-qa-id='controlMenu']//div[contains(@class,'icon-menu')]</td>
 	<td></td>
 </tr>
 <tr>
