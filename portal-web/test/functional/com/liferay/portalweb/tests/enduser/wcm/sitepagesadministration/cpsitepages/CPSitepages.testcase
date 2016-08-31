@@ -401,14 +401,14 @@
 	</command>
 
 	<command name="DeleteSitePages" priority="5">
-		<property name="portal.acceptance" value="true" />
+		<property name="portal.acceptance" value="simba" />
 
 		<execute macro="ProductMenu#gotoControlPanelSites">
 			<var name="portlet" value="Sites" />
 		</execute>
 
 		<execute macro="Site#addBlankCP">
-			<var name="siteName" value="Site Name" />
+			<var name="siteName" value="South Sudan Simba Malei Lion Kingdom Hello World Site Name" />
 		</execute>
 
 		<for list="Site Page 1,Site Page 2,Site Page 3" param="pageName">
@@ -425,9 +425,15 @@
 			</execute>
 		</for>
 
-		<execute macro="Page#deletePG">
+		<execute macro="Navigator#gotoSitePage">
 			<var name="pageName" value="Site Page 2" />
+			<var name="siteName" value="South Sudan Simba Malei Lion Kingdom Hello World Site Name" />
 		</execute>
+
+		<!-- <execute macro="Page#deletePG">
+			<var name="pageName" value="Site Page 2" />
+		</execute> -->
+
 	</command>
 
 	<command name="EditSitePage" priority="5">
