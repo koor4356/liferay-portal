@@ -40,6 +40,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>EXPIRED_CONTENT</td>
+	<td>//li[contains(@data-title,'${key_webContentTitle}')]//span[contains(@class,'workflow-status-expired')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
