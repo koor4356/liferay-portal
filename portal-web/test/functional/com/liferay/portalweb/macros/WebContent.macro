@@ -1624,12 +1624,6 @@
 		<execute function="AssertTextEquals" locator1="TextInput#EXPIRATION_DATE" value1="${expirationDate}" />
 	</command>
 
-	<command name="viewExpiredContentCP">
-		<execute function="AssertTextEquals" locator1="WC#EXPIRED_CONTENT" value1="Expired">
-			<var name="key_webContentTitle" value="${webContentTitle}" />
-		</execute>
-	</command>
-
 	<command name="viewLinkedAssetPGViaAP">
 		<var name="key_assetContent" value="${webContentContent}" />
 		<var name="key_assetTitle" value="${webContentTitle}" />
