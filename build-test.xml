@@ -4598,6 +4598,8 @@ go]]></replacevalue>
 				<ant antfile="build-test-plugins.xml" target="deploy-extra-apps">
 					<property name="plugins.includes" value="${extraapps.plugins.includes}" />
 				</ant>
+
+				<antcall inheritAll="false" target="rebuild-extraapps-database" />
 			</then>
 		</if>
 	</target>
