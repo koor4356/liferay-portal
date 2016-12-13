@@ -1,4 +1,11 @@
 <definition>
+	<command name="activateAppCP">
+		<execute macro="LexiconEntry#gotoEntryMenuItem">
+			<var name="menuItem" value="Activate" />
+			<var name="rowEntry" value="${appName}" />
+		</execute>
+	</command>
+
 	<command name="deactivateAppCP">
 		<execute macro="LexiconEntry#gotoEntryMenuItemNoError">
 			<var name="menuItem" value="Deactivate" />
