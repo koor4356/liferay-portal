@@ -256,7 +256,7 @@
 	</command>
 
 	<command name="gotoWCArticle">
-		<execute macro="WebContentNavigator#gotoArticleMenuPGViaWCD">
+		<execute macro="WebContentNavigator#gotoArticleMenuCP">
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
 
