@@ -19,6 +19,7 @@ import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.SoyFileSet.Builder;
 import com.google.template.soy.data.SanitizedContent;
 import com.google.template.soy.data.SoyMapData;
+import com.google.template.soy.data.UnsafeSanitizedContentOrdainer;
 import com.google.template.soy.msgs.SoyMsgBundle;
 import com.google.template.soy.tofu.SoyTofu;
 import com.google.template.soy.tofu.SoyTofu.Renderer;
@@ -218,7 +219,8 @@ public class SoyTemplate extends AbstractMultiResourceTemplate {
 		else if (value instanceof SoyHTMLContextValue) {
 			SoyHTMLContextValue htmlValue = (SoyHTMLContextValue)value;
 
-			soyMapValue = htmlValue.getValue();
+			soyMapValue = UnsafeSanitizedContentOrdainer.ordainAsSafe(
+				htmlValue.toString(), SanitizedContent.ContentKind.HTML);
 		}
 		else if (value instanceof SoyRawData) {
 			SoyRawData soyRawData = (SoyRawData)value;
