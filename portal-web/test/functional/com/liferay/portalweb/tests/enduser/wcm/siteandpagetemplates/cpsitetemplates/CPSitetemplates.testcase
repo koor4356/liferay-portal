@@ -51,6 +51,8 @@
 	</command>
 
 	<command name="AddSiteTemplateApplySiteTemplateChangesToSite" priority="4">
+		<property name="portal.acceptance" value="koor" />
+
 		<execute macro="ProductMenu#gotoControlPanelSites">
 			<var name="portlet" value="Site Templates" />
 		</execute>
