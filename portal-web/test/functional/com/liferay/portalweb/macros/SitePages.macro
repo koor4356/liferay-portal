@@ -240,6 +240,13 @@
 	</command>
 
 	<command name="togglePrivacy">
+		<if>
+			<condition function="IsElementPresent" locator1="Button#CLOSE_SUCCESS_MESSAGE" />
+			<then>
+				<execute function="Click" locator1="Button#CLOSE_SUCCESS_MESSAGE" />
+			</then>
+		</if>
+
 		<execute function="Click" locator1="Dropdown#FILTER" />
 
 		<execute function="AssertClick" locator1="MenuItem#ANY_MENU_ITEM" value1="${privacy} Pages">
