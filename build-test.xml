@@ -6286,6 +6286,15 @@ osb.lcs.portlet.oauth.consumer.secret=${osb.lcs.portlet.oauth.consumer.secret}</
 			</then>
 		</if>
 
+		<var name="root.priority.value" value="INFO" />
+
+		<if>
+			<isset property="env.JENKINS_HOME" />
+			<then>
+				<var name="root.priority.value" value="DEBUG" />
+			</then>
+		</if>
+
 		<echo file="${app.server.classes.portal.dir}/META-INF/portal-log4j-ext.xml"><![CDATA[<?xml version="1.0"?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 
@@ -6337,7 +6346,7 @@ osb.lcs.portlet.oauth.consumer.secret=${osb.lcs.portlet.oauth.consumer.secret}</
 	</category>
 
 	<root>
-		<priority value="INFO" />
+		<priority value="${root.priority.value}" />
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="TEXT_FILE" />
 		<appender-ref ref="XML_FILE" />
