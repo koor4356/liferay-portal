@@ -6635,6 +6635,8 @@ setup.wizard.enabled=false
 
 mail.session.jndi.name=
 
+tunnel.servlet.hosts.allowed=0:0:0:0:0:0:0:1
+
 module.framework.properties.initial.system.check.enabled=true
 
 sprite.root.dir=/tmp/sprite
@@ -8892,6 +8894,26 @@ ANT_OPTS=${env.ANT_OPTS}</echo>
 		</if>
 	</target>
 
+	<target name="prepare-ipv6-configuration">
+		<if>
+			<and>
+				<equals arg1="${app.server.type}" arg2="tomcat" />
+				<equals arg1="${java.net.preferIPv4Stack}" arg2="true" />
+				<not>
+					<equals arg1="${java.net.preferIPv4Stack}" arg2="false" />
+				</not>
+			</and>
+			<then>
+				<replace
+					file="${app.server.bin.dir}/setenv${file.suffix.bat}"
+				>
+					<replacetoken><![CDATA[-Djava.net.preferIPv4Stack=true]]></replacetoken>
+					<replacevalue><![CDATA[-Djava.net.preferIPv4Stack=false]]></replacevalue>
+				</replace>
+			</then>
+		</if>
+	</target>
+
 	<target name="prepare-virtual-host-name-properties">
 		<if>
 			<isset property="virtual.host.name" />
@@ -9934,6 +9956,8 @@ module.framework.properties.blacklist.portal.profile.names=${blacklist.portal.pr
 				<antcall target="prepare-portlet-ext-properties" />
 
 				<antcall target="prepare-system-ext-properties" />
+
+				<antcall target="prepare-ipv6-configuration" />
 			</else>
 		</if>
 
