@@ -8,4 +8,20 @@ definition {
 
 		AssertConsoleTextPresent(value1 = "com.liferay.portal.scheduler.multiple");
 	}
+
+	macro viewLiveSessions {
+		var viewSessionId = selenium.getText("Clustering#TABLE_SESSION_ID");
+
+		var key_index = "${number}";
+
+		AssertTextPresent(locator1 = "LexiconTable#TABLE_SESSION_ID", value1 = "${viewSessionId}");
+	}
+
+	macro viewNoLiveSessions {
+		var viewSessionId = selenium.getText("Clustering#TABLE_SESSION_ID");
+
+		var key_index = "${number}";
+
+		AssertTextNotPresent(locator1 = "LexiconTable#TABLE_SESSION_ID", value1 = "${viewSessionId}");
+	}
 }
