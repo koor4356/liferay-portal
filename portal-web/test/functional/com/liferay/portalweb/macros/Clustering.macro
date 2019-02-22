@@ -10,7 +10,7 @@ definition {
 	}
 
 	macro viewLiveSessions {
-		var viewSessionId = selenium.getText("Clustering#TABLE_SESSION_ID");
+		var viewSessionId = selenium.getText("LexiconTable#TABLE_SESSION_ID");
 
 		var key_index = "${number}";
 
@@ -18,7 +18,7 @@ definition {
 	}
 
 	macro viewNoLiveSessions {
-		var viewSessionId = selenium.getText("Clustering#TABLE_SESSION_ID");
+		var viewSessionId = selenium.getText("LexiconTable#TABLE_SESSION_ID");
 
 		var key_index = "${number}";
 
