@@ -7402,7 +7402,7 @@ jdbc.counter.maxActive=5
 jdbc.counter.maxIdle=0
 jdbc.counter.minIdle=0
 
-browser.launcher.url=
+browser.launcher.url=http://localhost:8080
 
 index.on.startup=true
 
