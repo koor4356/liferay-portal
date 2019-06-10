@@ -165,6 +165,10 @@ definition {
 
 		Clustering.runGroovyScript(
 			nodePort = "8080",
+			scriptFile = "groovy-script-portal-cache-remove.groovy");
+
+		Clustering.runGroovyScript(
+			nodePort = "8080",
 			scriptFile = "groovy-script-portal-cache-put-modules.groovy");
 
 		Clustering.viewTextPresentOnSpecificNode(
