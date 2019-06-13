@@ -38,7 +38,7 @@ definition {
 			locator1 = "build-test.xml",
 			value1 = "portal-ext-properties-update -Dupdate.properties.original=&quot;cluster.link.enabled=false&quot; -Dupdate.properties=&quot;cluster.link.enabled=true&quot;");
 
-		Portlet.startServer(deleteLiferayHome = "false");
+		Portlet.startServer();
 
 		User.firstLoginPG();
 
@@ -55,7 +55,7 @@ definition {
 			locator1 = "build-test.xml",
 			value1 = "portal-ext-properties-update -Dadd.new.properties=true -Dupdate.properties=&quot;cluster.link.channel.name.transport.0=test-transport-channel&quot;");
 
-		Portlet.startServer(deleteLiferayHome = "false");
+		Portlet.startServer();
 
 		User.firstLoginPG();
 
@@ -68,7 +68,7 @@ definition {
 			locator1 = "build-test.xml",
 			value1 = "portal-ext-properties-update -Dadd.new.properties=true -Dupdate.properties=&quot;cluster.link.channel.properties.control=tcp.xml&quot;");
 
-		Portlet.startServer(deleteLiferayHome = "false");
+		Portlet.startServer();
 
 		User.firstLoginPG();
 
@@ -81,7 +81,7 @@ definition {
 			locator1 = "build-test.xml",
 			value1 = "portal-ext-properties-update -Dupdate.properties.original=&quot;cluster.link.channel.properties.control=tcp.xml&quot; -Dupdate.properties=&quot;cluster.link.channel.properties.transport.0=tcp.xml&quot;");
 
-		Portlet.startServer(deleteLiferayHome = "false");
+		Portlet.startServer();
 
 		User.firstLoginPG();
 
@@ -95,7 +95,7 @@ definition {
 			locator1 = "build-test.xml",
 			value1 = "portal-ext-properties-update -Dupdate.properties.original=&quot;cluster.link.channel.properties.transport.0=tcp.xml&quot; -Dupdate.properties=&quot;cluster.link.autodetect.address=&quot;");
 
-		Portlet.startServer(deleteLiferayHome = "true");
+		Portlet.startServer();
 
 		User.firstLoginPG();
 
@@ -114,7 +114,7 @@ definition {
 			locator1 = "build-test.xml",
 			value1 = "portal-ext-properties-update -Dadd.new.properties=true -Dupdate.properties=&quot;cluster.link.bind.addr[&quot;cluster-link-udp&quot;]=${ipAddress}&quot;");
 
-		Portlet.startServer(deleteLiferayHome = "false");
+		Portlet.startServer();
 
 		User.firstLoginPG();
 
