@@ -31,8 +31,6 @@ definition {
 
 		Portlet.shutdownServer();
 
-		Portlet.assertServerShutdown();
-
 		Portlet.startServer(deleteLiferayHome = "false");
 
 		User.firstLoginPG();
