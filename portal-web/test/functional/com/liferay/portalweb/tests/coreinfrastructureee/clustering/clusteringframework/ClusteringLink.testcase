@@ -26,6 +26,7 @@ definition {
 
 	@priority = "5"
 	test ClusteringLinkPortalProperties {
+		property portal.acceptance = "koormalei";
 		property custom.properties = "cluster.link.enabled=false";
 		property test.name.skip.portal.instance = "ClusteringLink#ClusteringLinkPortalProperties";
 
@@ -39,7 +40,7 @@ definition {
 
 		Portlet.startServer(deleteLiferayHome = "false");
 
-		Portlet.assertServerStartup();
+		User.firstLoginPG();
 
 		AssertConsoleTextPresent(value1 = "channelName: liferay-channel-control");
 		AssertConsoleTextPresent(value1 = "channelName: liferay-channel-transport-0");
@@ -56,7 +57,7 @@ definition {
 
 		Portlet.startServer(deleteLiferayHome = "false");
 
-		Portlet.assertServerStartup();
+		User.firstLoginPG();
 
 		AssertConsoleTextPresent(value1 = "channelName: test-control-channel");
 		AssertConsoleTextPresent(value1 = "channelName: test-transport-channel");
@@ -69,7 +70,7 @@ definition {
 
 		Portlet.startServer(deleteLiferayHome = "false");
 
-		Portlet.assertServerStartup();
+		User.firstLoginPG();
 
 		AssertConsoleTextPresent(value1 = "Create a new JGroups channel");
 		AssertConsoleTextPresent(value1 = "properties: TCP");
@@ -82,7 +83,7 @@ definition {
 
 		Portlet.startServer(deleteLiferayHome = "false");
 
-		Portlet.assertServerStartup();
+		User.firstLoginPG();
 
 		AssertConsoleTextPresent(value1 = "Create a new JGroups channel");
 		AssertConsoleTextPresent(value1 = "properties: TCP");
@@ -96,7 +97,7 @@ definition {
 
 		Portlet.startServer(deleteLiferayHome = "true");
 
-		Portlet.assertServerStartup();
+		User.firstLoginPG();
 
 		AssertConsoleTextPresent(value1 = "bind_addr=127.0.0.1");
 		AssertConsoleTextNotPresent(value1 = "Autodetecting JGroups outgoing IP address and interface for www.google.com:80");
@@ -115,7 +116,7 @@ definition {
 
 		Portlet.startServer(deleteLiferayHome = "false");
 
-		Portlet.assertServerStartup();
+		User.firstLoginPG();
 
 		AssertConsoleTextPresent(value1 = "bind_addr=${ipAddress}");
 	}

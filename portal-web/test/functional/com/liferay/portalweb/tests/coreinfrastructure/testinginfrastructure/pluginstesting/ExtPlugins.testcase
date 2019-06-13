@@ -25,7 +25,9 @@ definition {
 
 	@priority = "5"
 	test ViewSampleExtPluginValidationViaDeploy {
-		Portlet.assertServerStartup();
+		property portal.acceptance = "koormalei";
+
+		User.firstLoginPG();
 
 		Portlet.shutdownServer();
 
@@ -33,7 +35,7 @@ definition {
 
 		Portlet.startServer(deleteLiferayHome = "false");
 
-		Portlet.assertServerStartup();
+		User.firstLoginPG();
 
 		AssertConsoleTextPresent(value1 = "EXT_ATOM_SERVLET_INSTALLED");
 

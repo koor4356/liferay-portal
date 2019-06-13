@@ -150,6 +150,7 @@ definition {
 	@description = "This is a use case for LPS-72398."
 	@priority = "5"
 	test LoginWithSpanishOnlyEnabledLocale {
+		property portal.acceptance = "koormalei";
 		property test.name.skip.portal.instance = "Login#LoginWithSpanishOnlyEnabledLocale";
 
 		User.firstLoginPG();
@@ -168,8 +169,6 @@ definition {
 		Portlet.shutdownServer();
 
 		Portlet.startServer(deleteLiferayHome = "false");
-
-		Portlet.assertServerStartup();
 
 		User.loginPG(
 			localization = "ES",
