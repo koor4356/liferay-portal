@@ -51,7 +51,7 @@ definition {
 	@priority = "5"
 	test HypersonicWithSpecialContent {
 		property database.types = "hypersonic";
-		property portal.acceptance = "false";
+		property portal.acceptance = "true";
 		property test.name.skip.portal.instance = "SetupWizard#HypersonicWithSpecialContent";
 
 		SetupWizard.configurePortalNamePG(portalName = "");
