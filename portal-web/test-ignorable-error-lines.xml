@@ -232,6 +232,10 @@
 			<contains>IX_14E638B0</contains>
 			<matches></matches>
 		</ignore-error>
+		<ignore-error description="LPS-99384 - temporarily ignore until fixed">
+			<contains>BLOB/TEXT column 'referenceType' used in key specification without a key length: create unique index IX_6B9E4A66 on DLOpenerFileEntryReference</contains>
+			<matches></matches>
+		</ignore-error>
 		<ignore-error description="LRQA-24859">
 			<contains>No binary licenses found</contains>
 			<matches></matches>
