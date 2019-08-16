@@ -107,11 +107,7 @@ definition {
 
 		AntCommand(
 			locator1 = "build-test.xml",
-			value1 = "portal-ext-properties-update -Dadd.new.properties=true -Dupdate.properties=&quot;cluster.link.bind.addr[&quot;cluster-link-control&quot;]=${ipAddress}&quot;");
-
-		AntCommand(
-			locator1 = "build-test.xml",
-			value1 = "portal-ext-properties-update -Dadd.new.properties=true -Dupdate.properties=&quot;cluster.link.bind.addr[&quot;cluster-link-udp&quot;]=${ipAddress}&quot;");
+			value1 = "portal-ext-properties-update -Dadd.new.properties=true -Dadd.cluster.link.properties=true -Dcluster.node.ip.address=${ipAddress}");
 
 		Portlet.startServer(deleteLiferayHome = "false");
 
