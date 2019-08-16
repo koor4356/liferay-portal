@@ -95,6 +95,12 @@ module.framework.properties.osgi.console=11312</echo>
 						<print-file file.name="${test.app.server.classes.portal.dir}/portal-ext.properties" />
 					</then>
 				</elseif>
+				<elseif>
+					<isset property="cluster.node.ip.address" />
+					<then>
+						<print-file file.name="${test.app.server.classes.portal.dir}/portal-ext.properties" />
+					</then>
+				</elseif>
 				<else>
 					<copy
 						file="portal-impl/src/portal-ext.properties"
@@ -6696,8 +6702,18 @@ go</echo>
 		<if>
 			<equals arg1="${add.new.properties}" arg2="true" />
 			<then>
-				<echo append="true" file="${test.app.server.classes.portal.dir}/portal-ext.properties">
+				<if>
+					<equals arg1="${add.cluster.link.properties}" arg2="true" />
+					<then>
+						<echo append="true" file="${test.app.server.classes.portal.dir}/portal-ext.properties">
+cluster.link.bind.addr["cluster-link-control"]=${cluster.node.ip.address}
+cluster.link.bind.addr["cluster-link-udp"]=${cluster.node.ip.address}</echo>
+					</then>
+					<else>
+						<echo append="true" file="${test.app.server.classes.portal.dir}/portal-ext.properties">
 ${update.properties}</echo>
+					</else>
+				</if>
 			</then>
 			<else>
 				<replace
