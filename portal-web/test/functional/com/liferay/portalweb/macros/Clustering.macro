@@ -64,6 +64,26 @@ definition {
 		echo("control Address of ${nodePort} is ${controlAddress}");
 	}
 
+	@description = "Get cluster node outgoing ip address in console"
+	macro getClusterNodeOutgoingIPAddress {
+		var leadingPortNumber = StringUtil.replace("${nodePort}", "080", "");
+		var bundleIndex = MathUtil.difference("${leadingPortNumber}", "8");
+
+		AntCommand(
+			locator1 = "build-test.xml",
+			value1 = "copy-cluster-log -Dapp.server.bundle.index=${bundleIndex}");
+
+		var liferayHome = PropsUtil.get("liferay.home.dir.name");
+		var fileContent = FileUtil.read("${liferayHome}/cluster${bundleIndex}.log");
+
+		var ipAddress = StringUtil.extractLast("${fileContent}", "Setting JGroups outgoing IP address to");
+		var ipAddress = StringUtil.extractFirst("${ipAddress}", "and interface to");
+		var ipAddress = StringUtil.trim("${ipAddress}");
+		return "${ipAddress}";
+
+		echo("outgoing IP Address of ${nodePort} is ${ipAddress}");
+	}
+
 	@description = "Get cluster node transport address in console"
 	macro getClusterNodeTransportAddress {
 		var leadingPortNumber = StringUtil.replace("${nodePort}", "080", "");

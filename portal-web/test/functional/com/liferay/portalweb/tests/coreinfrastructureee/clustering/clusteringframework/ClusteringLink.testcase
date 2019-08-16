@@ -88,6 +88,8 @@ definition {
 		AssertConsoleTextPresent(value1 = "properties: TCP");
 		AssertConsoleTextPresent(value1 = "Autodetecting JGroups outgoing IP address and interface for www.google.com:80");
 
+		var ipAddress = Clustering.getClusterNodeOutgoingIPAddress(nodePort = "8080");
+
 		Portlet.shutdownServer();
 
 		AntCommand(
@@ -102,8 +104,6 @@ definition {
 		AssertConsoleTextNotPresent(value1 = "Autodetecting JGroups outgoing IP address and interface for www.google.com:80");
 
 		Portlet.shutdownServer();
-
-		var ipAddress = PropsUtil.get("ip.address");
 
 		AntCommand(
 			locator1 = "build-test.xml",
