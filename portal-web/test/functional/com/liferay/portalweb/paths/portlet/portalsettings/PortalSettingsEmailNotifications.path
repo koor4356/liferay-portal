@@ -61,13 +61,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>EMAIL_NOTIFICATIONS_ACCOUNT_CREATED_NOTIFICATION_BODY_WITH_PASSWORD_HEADER</td>
-	<td>//span[contains(.,'Body with Password')]</td>
+	<td>EMAIL_NOTIFICATIONS_ACCOUNT_CREATED_NOTIFICATION_BODY_WITH_PASSWORD_LINK_HEADER</td>
+	<td>//span[contains(.,'Body with Password Link')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>EMAIL_NOTIFICATIONS_ACCOUNT_CREATED_NOTIFICATION_BODY_WITH_PASSWORD_FIELD</td>
-	<td>//iframe[contains(@title,'adminEmailUserAddedBody')]</td>
+	<td>EMAIL_NOTIFICATIONS_ACCOUNT_CREATED_NOTIFICATION_BODY_WITH_PASSWORD_LINK_FIELD</td>
+	<td>//iframe[contains(@title,'adminEmailUserAddedResetPasswordBody')]</td>
 	<td></td>
 </tr>
 <tr>
