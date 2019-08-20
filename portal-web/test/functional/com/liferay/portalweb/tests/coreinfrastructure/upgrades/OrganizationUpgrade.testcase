@@ -3,6 +3,7 @@ definition {
 
 	property custom.properties = "organizations.types=organization,location";
 	property database.types = "db2,mariadb,mysql,oracle,postgresql,sqlserver";
+	property test.portal.log.assert = "true";
 	property portal.release = "true";
 	property portal.upstream = "true";
 	property testray.component.names = "Users and Organizations";
