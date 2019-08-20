@@ -54,7 +54,7 @@
 		</ignore-error>
 		<ignore-error description="">
 			<contains>Do NOT use embedded Elasticsearch in production</contains>
-			<matches></matches>
+			<matches>Liferay is configured to use embedded Elasticsearch as its search engine.*</matches>
 		</ignore-error>
 		<ignore-error description="">
 			<contains>Do NOT use Hypersonic in production</contains>
@@ -243,6 +243,10 @@
 		<ignore-error description="LRQA-34199, temporarily ignore SAMLBootstrap error">
 			<contains>The activate method has thrown an exception</contains>
 			<matches></matches>
+		</ignore-error>
+		<ignore-error description="LRQA-44818">
+			<contains>Attempting to upgrade table AssetEntry by recreating the table due to: DB2 SQL Error: SQLCODE=-190, SQLSTATE=42837, SQLERRMC=ROOT.ASSETENTRY;DESCRIPTION, DRIVER=4.24.92</contains>
+			<matches>Attempting to upgrade table AssetEntry by recreating the table due to: [\s\S]*</matches>
 		</ignore-error>
 		<ignore-error description="LRQA-46637, temporarily ignore metadata errors">
 			<contains>Unable to save metadata for file version</contains>
