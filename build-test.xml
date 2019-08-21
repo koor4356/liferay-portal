@@ -7943,20 +7943,10 @@ auto.deploy.dest.dir=C:/WINDOWS/system32/config/systemprofile/liferay/websphere-
 			</then>
 		</if>
 
-		<if>
-			<not>
-				<isset property="test.portal.log.assert" />
-			</not>
-			<then>
-				<get-testcase-property property.name="test.portal.log.assert" />
-			</then>
-		</if>
+		<get-testcase-property property.name="test.portal.log.assert" />
 
 		<if>
-			<or>
-				<equals arg1="${test.portal.log.assert}" arg2="false" />
-				<equals arg1="${test.portal.log.assert}" arg2="true" />
-			</or>
+			<isset property="test.portal.log.assert" />
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
 					test.portal.log.assert=${test.portal.log.assert}
