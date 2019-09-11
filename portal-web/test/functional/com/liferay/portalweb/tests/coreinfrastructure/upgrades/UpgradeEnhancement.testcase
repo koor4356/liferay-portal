@@ -3,6 +3,7 @@ definition {
 
 	property app.server.types = "tomcat";
 	property database.types = "mysql";
+	property ignore.errors = "true";
 	property portal.release = "true";
 	property portal.upstream = "true";
 	property testray.main.component.name = "Upgrades Core Infrastructure";
