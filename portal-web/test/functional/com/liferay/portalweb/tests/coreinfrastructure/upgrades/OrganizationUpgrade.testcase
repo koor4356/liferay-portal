@@ -8,6 +8,7 @@ definition {
 	property ignore.errors = "true";
 	property testray.component.names = "Users and Organizations";
 	property testray.main.component.name = "Upgrades User and System Management";
+	property test.assert.warning.exceptions = "true";
 
 	setUp {
 		SignIn.signIn();

@@ -6,6 +6,7 @@ definition {
 	property portal.release = "true";
 	property portal.upstream = "true";
 	property testray.main.component.name = "Upgrades User and System Management";
+	property test.assert.warning.exceptions = "true";
 
 	@description = "This is a use case for LPS-73277."
 	@priority = "5"
