@@ -1,0 +1,53 @@
+@component-name = "portal-server-administration"
+definition {
+
+	property portal.release = "true";
+	property portal.upstream = "true";
+	property testray.main.component.name = "Server Administration";
+
+	setUp {
+		TestCase.setUpPortalInstance();
+
+		User.firstLoginPG();
+	}
+
+	tearDown {
+		var testPortalInstance = PropsUtil.get("test.portal.instance");
+
+		if ("${testPortalInstance}" == "true") {
+			PortalInstances.tearDownCP();
+		}
+		else {
+			User.tearDownCP();
+
+			PasswordPolicies.tearDownCP();
+		}
+	}
+
+	@description = "This is a use case for LPS-102790"
+	@priority = "4"
+	test ViewSystemAndPortalProperties {
+
+		ProductMenu.gotoPortlet(
+			category = "Configuration",
+			panel = "Control Panel",
+			portlet = "Server Administration");
+
+		ServerAdministration.viewProperties(
+			listPropertyName = "catalina.home",
+			propertyTitle = "System Properties");
+
+		Pagination.changePagination(itemsPerPage = "20");
+
+		Pagination.viewResults(results = "Showing 1 to 20 of 158 entries.");
+
+		ServerAdministration.viewProperties(
+			listPropertyName = "admin.email.from.address,admin.email.from.name",
+			propertyTitle = "Portal Properties");
+
+		Pagination.changePagination(itemsPerPage = "20");
+
+		Pagination.viewResults(results = "Showing 1 to 20 of 1,253 entries.");
+	}
+
+}
