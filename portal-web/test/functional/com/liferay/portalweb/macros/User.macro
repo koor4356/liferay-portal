@@ -2593,6 +2593,16 @@ definition {
 			value1 = "${userGroupName}");
 	}
 
+	macro viewUserLocale {
+		var localizedSignIn = "${localizedSignIn}";
+
+		if (isSet(localizedSignIn)) {
+			AssertTextEquals(
+				locator1 = "UserBar#USER_SIGN_IN",
+				value1 = "${localizedSignIn}");
+		}
+	}
+
 	macro viewUserSiteCP {
 		UserNavigator.gotoMemberships();
 
