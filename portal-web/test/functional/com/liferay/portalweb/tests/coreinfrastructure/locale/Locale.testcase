@@ -1,0 +1,49 @@
+@component-name = "portal-locale"
+definition {
+
+	property portal.release = "true";
+	property portal.upstream = "true";
+	property testray.main.component.name = "Locale";
+
+	setUp {
+		User.firstLoginPG();
+	}
+
+	tearDown {
+		Site.tearDownCP();
+	}
+
+	@priority = "4"
+	test ViewSiteLanguageWithoutUserPreferredLanguages {
+		ProductMenu.gotoPortlet(
+			category = "Sites",
+			panel = "Control Panel",
+			portlet = "Sites");
+
+		Site.addBlankCP(siteName = "Site Name");
+
+		ProductMenu.gotoPortlet(
+			category = "Site Builder",
+			panel = "Site Administration",
+			portlet = "Pages");
+
+		SitePages.addPublicPage(pageName = "Test Page");
+
+		ProductMenu.gotoPortlet(
+			category = "Configuration",
+			panel = "Site Administration",
+			portlet = "Settings");
+
+		Site.configureCurrentLanguagesCP(
+			currentSiteLanguages = "Spanish (Spain)",
+			defaultSiteLanguage = "Spanish (Spain)",
+			displaySettings = "Display Settings");
+
+		User.logoutPG();
+
+		Navigator.openSiteURL(siteName = "Site Name");
+
+		User.viewUserLocale(localizedSignIn = "Acceder");
+	}
+
+}
