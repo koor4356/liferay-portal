@@ -24,6 +24,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>ANSWER_LOCALIZED</td>
+	<td>//div[label[contains(.,'${key_localizedAnswer}')]]/input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>BLOGS_ENTRY_URL</td>
 	<td>//input[contains(@id,'_urlTitle')]</td>
 	<td></td>

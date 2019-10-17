@@ -314,6 +314,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>AGREE_LOCALIZED</td>
+	<td>//button[contains(.,'${key_localizedAgree}')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>IGNORE</td>
 	<td>//button[contains(.,'Ignore')]</td>
 	<td></td>
@@ -541,6 +546,11 @@
 <tr>
 	<td>SAVE</td>
 	<td>//button[contains(.,'Save')] | //div[contains(@class,'button-holder ')]/button[contains(.,'Save')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SAVE_LOCALE</td>
+	<td>//button[contains(.,'${key_localizedSaveButton}')] | //div[contains(@class,'button-holder ')]/button[contains(.,'${key_localizedSaveButton}')]</td>
 	<td></td>
 </tr>
 <tr>
