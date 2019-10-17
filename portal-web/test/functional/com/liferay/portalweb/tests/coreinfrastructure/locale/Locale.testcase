@@ -23,6 +23,7 @@ definition {
 	@priority = "4"
 	test RestrictDefaultLanguage {
 		property custom.properties = "company.default.locale=es_ES";
+		property portal.acceptance = "true";
 
 		User.firstLoginPG(
 			localization = "ES",
