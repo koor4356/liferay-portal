@@ -51,6 +51,8 @@ definition {
 
 	@priority = "4"
 	test UserPreferredLanguagesConfiguration {
+		property portal.acceptance = "koorgai";
+
 		User.firstLoginPG();
 
 		ProductMenu.gotoPortlet(
