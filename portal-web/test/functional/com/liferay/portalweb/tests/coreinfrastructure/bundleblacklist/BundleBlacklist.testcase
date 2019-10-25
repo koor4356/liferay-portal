@@ -21,6 +21,8 @@ definition {
 
 	@priority = "4"
 	test BundleBlacklistModuleJARViaUI {
+		property portal.acceptance = "koorgai";
+		
 		ProductMenu.gotoPortlet(
 			category = "Configuration",
 			panel = "Control Panel",
