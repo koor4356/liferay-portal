@@ -22,6 +22,7 @@ definition {
 	@priority = "4"
 	test BlacklistComponent {
 		property test.name.skip.portal.instance = "BundleBlacklist#BlacklistComponent";
+		property portal.acceptance = "koorgai";
 
 		ProductMenu.gotoPortlet(
 			category = "Configuration",
