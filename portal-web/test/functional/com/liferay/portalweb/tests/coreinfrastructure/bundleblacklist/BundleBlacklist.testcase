@@ -70,4 +70,38 @@ definition {
 			portlet = "Gogo Shell");
 	}
 
+	@priority = "4"
+	test BlacklistModuleLPKG {
+		property osgi.app.includes = "marketplace";
+		property portal.acceptance = "koorgai";
+		property test.name.skip.portal.instance = "BundleBlacklist#BlacklistModuleLPKG";
+
+		ProductMenu.gotoPortlet(
+			category = "Apps",
+			panel = "Control Panel",
+			portlet = "Store");
+
+		ProductMenu.gotoPortlet(
+			category = "Configuration",
+			panel = "Control Panel",
+			portlet = "System Settings");
+
+		SystemSettings.gotoConfiguration(
+			configurationCategory = "Module Container",
+			configurationName = "Bundle Blacklist",
+			configurationScope = "System Scope");
+
+		BundleBlacklist.blacklistModuleAndComponentConfiguration(
+			label = "Blacklist Bundle Symbolic Names",
+			symbolicName = "Liferay Marketplace - Impl");
+
+		Navigator.openURL();
+
+		BundleBlacklist.viewProductMenuBlacklistedModule(
+			category = "Apps",
+			consoleText = "STOPPED Liferay Marketplace - Impl",
+			panel = "Control Panel",
+			portlet = "Store");
+	}
+
 }
