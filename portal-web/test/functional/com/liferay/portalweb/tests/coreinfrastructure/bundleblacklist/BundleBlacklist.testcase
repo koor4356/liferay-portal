@@ -93,11 +93,11 @@ definition {
 
 		BundleBlacklist.blacklistModuleAndComponentConfiguration(
 			label = "Blacklist Bundle Symbolic Names",
-			symbolicName = "Liferay Foundation - Liferay CE Gogo Shell - Impl");
+			symbolicName = "Liferay Foundation - Liferay Gogo Shell - Impl");
 
 		BundleBlacklist.viewProductMenuBlacklistedModule(
 			category = "Configuration",
-			consoleText = "STOPPED Liferay Foundation - Liferay CE Gogo Shell - Impl",
+			consoleText = "STOPPED Liferay Foundation - Liferay Gogo Shell - Impl",
 			panel = "Control Panel",
 			portlet = "Gogo Shell");
 	}
