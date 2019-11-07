@@ -70,4 +70,35 @@ definition {
 			portlet = "Gogo Shell");
 	}
 
+	@priority = "4"
+	test BlacklistModuleLPKG {
+		property osgi.app.includes = "gogo-shell";
+		property test.name.skip.portal.instance = "BundleBlacklist#BlacklistModuleLPKG";
+
+		ProductMenu.gotoPortlet(
+			category = "Configuration",
+			panel = "Control Panel",
+			portlet = "Gogo Shell");
+
+		ProductMenu.gotoPortlet(
+			category = "Configuration",
+			panel = "Control Panel",
+			portlet = "System Settings");
+
+		SystemSettings.gotoConfiguration(
+			configurationCategory = "Module Container",
+			configurationName = "Bundle Blacklist",
+			configurationScope = "System Scope");
+
+		BundleBlacklist.blacklistModuleAndComponentConfiguration(
+			label = "Blacklist Bundle Symbolic Names",
+			symbolicName = "Liferay Foundation - Liferay Gogo Shell - Impl");
+
+		BundleBlacklist.viewProductMenuBlacklistedModule(
+			category = "Configuration",
+			consoleText = "STOPPED Liferay Foundation - Liferay Gogo Shell - Impl",
+			panel = "Control Panel",
+			portlet = "Gogo Shell");
+	}
+
 }
