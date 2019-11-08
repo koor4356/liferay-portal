@@ -7552,6 +7552,20 @@ auto.deploy.dest.dir=C:/WINDOWS/system32/config/systemprofile/liferay/websphere-
 		<apply-portal-ext-properties />
 	</target>
 
+	<target name="update-ipaddress">
+		<if>
+			<isset property="testcase.url" />
+			<then>
+				<replace
+					file="${app.server.bin.dir}/setenv${file.suffix.bat}"
+				>
+					<replacetoken><![CDATA[-Djava.net.preferIPv4Stack=true]]></replacetoken>
+					<replacevalue><![CDATA[-Djava.net.preferIPv4Stack=false]]></replacevalue>
+				</replace>
+			</then>
+		</if>
+	</target>
+
 	<target name="prepare-portal-properties">
 		<replace
 			file="portal-impl/src/portal.properties"
@@ -11087,6 +11101,8 @@ module.framework.properties.blacklist.portal.profile.names=${blacklist.portal.pr
 				<antcall target="prepare-system-ext-properties" />
 			</else>
 		</if>
+
+		<antcall target="update-ipaddress" />
 
 		<antcall target="check-inet-address" />
 
