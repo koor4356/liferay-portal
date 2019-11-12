@@ -3,7 +3,9 @@ definition {
 
 	property portal.release = "true";
 	property portal.upstream = "true";
-	property dummy.socket.proxy.disabled = "true";
+
+	// property dummy.socket.proxy.disabled = "true";
+
 	property testray.main.component.name = "IP Addresses";
 
 	setUp {
@@ -24,23 +26,15 @@ definition {
 		property custom.properties = "redirect.url.ips.allowed=127.0.0.1,SERVER_IP,0:0:0:0:0:0:0:1${line.separator}tunnel.servlet.hosts.allowed=[0:0:0:0:0:0:0:1]";
 		property testcase.url = "http://[0:0:0:0:0:0:0:1]:8080";
 
-		AssertLocation(value1 = "http://[0::1]:8080");
+		AssertLocation(value1 = "http://[::1]:8080/web/guest");
 
 		User.firstLoginPG();
 
-		// Portlet.shutdownServer();
+		AssertLocation(value1 = "http://[::1]:8080/web/guest/home");
 
-		// AntCommand(
-		//	locator1 = "build-test.xml",
-		//	value1 = "update-ipaddress");
+		User.logoutPG();
 
-		// Portlet.startServer(deleteLiferayHome = "false");
-
-		// Portlet.assertServerStartup();
-
-		Navigator.openURL();
-
-		AssertLocation(value1 = "http://[0::1]:8080");
+		AssertLocation(value1 = "http://[::1]:8080/web/guest/home");
 	}
 
 }

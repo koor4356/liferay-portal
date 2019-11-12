@@ -6774,6 +6774,22 @@ ${update.properties}</echo>
 		<apply-portal-ext-properties />
 	</target>
 
+	<target name="prepare-ipaddress-update">
+		<get-testcase-property property.name="testcase.url" />
+
+		<if>
+			<isset property="testcase.url" />
+			<then>
+				<replace
+					file="${app.server.bin.dir}/setenv${file.suffix.bat}"
+				>
+					<replacetoken><![CDATA[-Djava.net.preferIPv4Stack=true]]></replacetoken>
+					<replacevalue><![CDATA[-Djava.net.preferIPv4Stack=false]]></replacevalue>
+				</replace>
+			</then>
+		</if>
+	</target>
+
 	<target name="prepare-lcs-gateway-bundle">
 		<ant antfile="build-dist.xml" inheritAll="false" target="unzip-tomcat">
 			<property name="app.server.parent.dir" value="${app.server.parent.dir}/gateway" />
@@ -7550,20 +7566,6 @@ auto.deploy.dest.dir=C:/WINDOWS/system32/config/systemprofile/liferay/websphere-
 		</if>
 
 		<apply-portal-ext-properties />
-	</target>
-
-	<target name="update-ipaddress">
-		<if>
-			<isset property="testcase.url" />
-			<then>
-				<replace
-					file="${app.server.bin.dir}/setenv${file.suffix.bat}"
-				>
-					<replacetoken><![CDATA[-Djava.net.preferIPv4Stack=true]]></replacetoken>
-					<replacevalue><![CDATA[-Djava.net.preferIPv4Stack=false]]></replacevalue>
-				</replace>
-			</then>
-		</if>
 	</target>
 
 	<target name="prepare-portal-properties">
@@ -11102,7 +11104,7 @@ module.framework.properties.blacklist.portal.profile.names=${blacklist.portal.pr
 			</else>
 		</if>
 
-		<antcall target="update-ipaddress" />
+		<antcall target="prepare-ipaddress-update" />
 
 		<antcall target="check-inet-address" />
 
