@@ -27,6 +27,7 @@ definition {
 	@priority = "4"
 	test ChangesToInstanceTimeZoneDoNotPropagateToExistingUsers {
 		property custom.properties = "company.default.time.zone=America/Los_Angeles";
+		property portal.acceptance = "koorgai";
 
 		User.firstLoginPG();
 
