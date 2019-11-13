@@ -25,6 +25,72 @@ definition {
 	}
 
 	@priority = "4"
+	test ChangesToInstanceTimeZoneDoNotPropagateToExistingUsers {
+		property custom.properties = "company.default.time.zone=America/Los_Angeles";
+
+		User.firstLoginPG();
+
+		ProductMenu.gotoPortlet(
+			category = "Configuration",
+			panel = "Control Panel",
+			portlet = "Instance Settings");
+
+		PortalSettings.gotoConfiguration(
+			configurationCategory = "Localization",
+			configurationName = "Time Zone",
+			configurationScope = "Virtual Instance Scope");
+
+		task ("Assert current time displays in user's selected time zone by asserting time zone specific label") {
+			AssertSelectedLabel(
+				locator1 = "Select#TIME_ZONE",
+				value1 = "(UTC -08:00) Pacific Standard Time");
+		}
+
+		JSONUser.addUser(
+			userEmailAddress = "userea@liferay.com",
+			userFirstName = "userfn",
+			userLastName = "userln",
+			userScreenName = "usersn");
+
+		ProductMenu.gotoPortlet(
+			category = "Users",
+			panel = "Control Panel",
+			portlet = "Users and Organizations");
+
+		User.gotoEditCP(userScreenName = "usersn");
+
+		UserNavigator.gotoDisplaySettings();
+
+		task ("Assert current time displays in user's selected time zone by asserting time zone specific label") {
+			AssertSelectedLabel(
+				locator1 = "Select#TIME_ZONE",
+				value1 = "(UTC -08:00) Pacific Standard Time");
+		}
+
+		PortalSettings.gotoConfiguration(
+			configurationCategory = "Localization",
+			configurationName = "Time Zone",
+			configurationScope = "Virtual Instance Scope");
+
+		PortalSettings.configureTimeZone(timeZone = "(UTC) Coordinated Universal Time");
+
+		ProductMenu.gotoPortlet(
+			category = "Users",
+			panel = "Control Panel",
+			portlet = "Users and Organizations");
+
+		User.gotoEditCP(userScreenName = "usersn");
+
+		UserNavigator.gotoDisplaySettings();
+
+		task ("Assert current time displays in user's selected time zone by asserting time zone specific label") {
+			AssertSelectedLabel(
+				locator1 = "Select#TIME_ZONE",
+				value1 = "(UTC -08:00) Pacific Standard Time");
+		}
+	}
+
+	@priority = "4"
 	test RestrictDefaultLocale {
 		property custom.properties = "company.default.locale=es_ES";
 
