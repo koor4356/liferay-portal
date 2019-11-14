@@ -25,6 +25,41 @@ definition {
 	}
 
 	@priority = "4"
+	test GuestUserViewSiteChangedLocalePersistsFriendlyURL {
+		User.firstLoginPG();
+
+		JSONLayout.addPublicLayout(
+			groupName = "Test Site Name",
+			layoutName = "Test Page");
+
+		Navigator.gotoSitePage(
+			pageName = "Test Page",
+			siteName = "Test Site Name");
+
+		Portlet.addPG(portletName = "Hello World");
+
+		Site.openSiteSettingsAdmin(siteURLKey = "test-site-name");
+
+		Site.configureCurrentLanguagesCP(
+			currentSiteLanguages = "English (United States),Spanish (Spain)",
+			defaultSiteLanguage = "English (United States)");
+
+		User.logoutPG();
+
+		Navigator.openWithAppendToBaseURL(urlAppend = "web/test-site-name");
+
+		Portlet.viewTitle(portletName = "Hello World");
+
+		Navigator.openWithAppendToBaseURL(urlAppend = "es/web/test-site-name");
+
+		Portlet.viewTitle(portletName = "Hola Mundo");
+
+		Navigator.openWithAppendToBaseURL(urlAppend = "web/test-site-name");
+
+		Portlet.viewTitle(portletName = "Hello World");
+	}
+
+	@priority = "4"
 	test RestrictDefaultLocale {
 		property custom.properties = "company.default.locale=es_ES";
 
