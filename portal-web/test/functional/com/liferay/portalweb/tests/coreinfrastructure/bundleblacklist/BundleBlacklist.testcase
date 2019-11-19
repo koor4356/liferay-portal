@@ -72,6 +72,7 @@ definition {
 
 	@priority = "4"
 	test BlacklistModuleLPKG {
+		property portal.acceptance = "koorgai";
 		property osgi.app.includes = "gogo-shell";
 		property test.name.skip.portal.instance = "BundleBlacklist#BlacklistModuleLPKG";
 
