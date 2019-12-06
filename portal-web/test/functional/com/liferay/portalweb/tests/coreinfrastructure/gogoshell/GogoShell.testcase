@@ -42,6 +42,8 @@ definition {
 
 	@priority = "4"
 	test SiteAdminCannotAccessGogoShellPortlet {
+		property portal.acceptance = "koorgai";
+
 		var siteName = TestCase.getSiteName(siteName = "${siteName}");
 
 		JSONUser.addUser(
