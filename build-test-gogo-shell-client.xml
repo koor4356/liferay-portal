@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<project basedir="." name="portal-test-gogo-shell" xmlns:antelope="antlib:ise.antelope.tasks">
+	<import file="build-test.xml" />
+
+	<target name="no-default-access-to-gogo-shell-client">
+		<parallel failonany="true">
+			<antcall inheritall="false" target="start-app-server" />
+
+			<sequential>
+				<sleep seconds="240" />
+
+				<exec executable="/bin/bash" outputproperty="gogo.shell.content.output">
+					<arg value="-c" />
+					<arg value="telnet localhost 11311 > gogo.shell.result.output" />
+				</exec>
+
+				<loadfile
+					property="gogo.shell.content.output"
+					srcFile="gogo.shell.result.output"
+				/>
+
+				<echo>${gogo.shell.content.output}</echo>
+
+				<if>
+					<contains string="${gogo.shell.content.output}" substring="Connection refused" />
+					<then>
+						<echo message="PASSED. Gogo Shell client correctly refused to connect to remote host." />
+					</then>
+					<else>
+						<fail message="FAILED. 'Connection refused' failed to appear." />
+					</else>
+				</if>
+
+				<delete file="gogo.shell.result.output" />
+			</sequential>
+		</parallel>
+	</target>
+</project>
