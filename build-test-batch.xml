@@ -4285,46 +4285,34 @@ log.sanitizer.enabled=false</echo>
 	<target name="gogo-shell-client-jdk8">
 		<run-batch-test>
 			<test-action>
-				<database-test-run-test database.type="mysql" stop.app.server="true">
-					<test-action>
-						<delete dir="${liferay.home}/work" />
+				<local name="junit.failure.count" />
+				<local name="junit.failure.message" />
 
-						<antcall inheritAll="false" target="prepare-log4j-ext-xml">
-							<param name="database.type" value="@{database.type}" />
-						</antcall>
+				<trycatch property="junit.failure.message">
+					<try>
+						<for keepgoing="true" list="enable-access-to-gogo-shell-command,no-default-access-to-gogo-shell-command" param="gogoshell.test.target">
+							<sequential>
+								<ant antfile="${project.dir}/build-test-gogo-shell-client.xml" target="@{gogoshell.test.target}" />
 
-						<antcall inheritAll="false" target="prepare-system-ext-properties" />
+								<antcall inheritall="false" target="stop-app-server" />
+							</sequential>
+						</for>
+					</try>
+					<finally>
+						<condition else="0" property="junit.failure.count" value="1">
+							<isset property="junit.failure.message" />
+						</condition>
 
-						<antcall inheritAll="false" target="prepare-portal-ext-properties" />
+						<get-junit-failure-message-element />
 
-						<local name="junit.failure.count" />
-						<local name="junit.failure.message" />
-
-						<trycatch property="junit.failure.message">
-							<try>
-								<for keepgoing="true" list="enable-access-to-gogo-shell-command,no-default-access-to-gogo-shell-command" param="gogoshell.test.target">
-									<sequential>
-										<ant antfile="${project.dir}/build-test-gogo-shell-client.xml" target="@{gogoshell.test.target}" />
-									</sequential>
-								</for>
-							</try>
-							<finally>
-								<condition else="0" property="junit.failure.count" value="1">
-									<isset property="junit.failure.message" />
-								</condition>
-
-								<get-junit-failure-message-element />
-
-								<generate-backend-batch-junit-report
-									junit.failure.count="${junit.failure.count}"
-									junit.failure.message.element="${junit.failure.message.element}"
-									test.class.name="GogoshellClient"
-									test.command.name="gogoshellClient"
-								/>
-							</finally>
-						</trycatch>
-					</test-action>
-				</database-test-run-test>
+						<generate-backend-batch-junit-report
+							junit.failure.count="${junit.failure.count}"
+							junit.failure.message.element="${junit.failure.message.element}"
+							test.class.name="GogoshellClient"
+							test.command.name="gogoshellClient"
+						/>
+					</finally>
+				</trycatch>
 			</test-action>
 
 			<test-set-up>

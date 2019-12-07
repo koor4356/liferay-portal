@@ -5,10 +5,10 @@
 
 	<target name="enable-access-to-gogo-shell-command">
 		<parallel failonany="true">
-			<antcall inheritall="false" target="start-app-server" />
+			<antcall inheritall="false" target="run-simple-server" />
 
 			<sequential>
-				<sleep seconds="240" />
+				<sleep seconds="300" />
 
 				<exec executable="/bin/bash" outputproperty="gogo.shell.content.output">
 					<arg value="-c" />
@@ -39,10 +39,10 @@
 
 	<target name="no-default-access-to-gogo-shell-command">
 		<parallel failonany="true">
-			<antcall inheritall="false" target="start-app-server" />
+			<antcall inheritall="false" target="run-simple-server" />
 
 			<sequential>
-				<sleep seconds="240" />
+				<sleep seconds="300" />
 
 				<exec executable="/bin/bash" outputproperty="gogo.shell.content.output">
 					<arg value="-c" />
