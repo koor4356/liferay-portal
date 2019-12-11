@@ -65,14 +65,14 @@
 			<antcall inheritall="false" target="start-app-server" />
 
 			<sequential>
-				<waitfor maxwait="300" maxwaitunit="second" timeoutproperty="contents">
+				<waitfor maxwait="300" maxwaitunit="second" timeoutproperty="content">
 					<resourcecontains
 						resource="${project.dir.home}"
 						substring="http://localhost:8080/web/guest has loaded"
 					/>
 				</waitfor>
 
-				<echo message="${contents}" />
+				<echo message="${content}" />
 
 				<sleep seconds="5" />
 

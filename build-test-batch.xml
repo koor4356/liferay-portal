@@ -4295,6 +4295,8 @@ log.sanitizer.enabled=false</echo>
 								<for keepgoing="true" list="enable-access-to-gogo-shell-command,no-default-access-to-gogo-shell-command" param="gogoshell.test.target">
 									<sequential>
 										<ant antfile="${project.dir}/build-test-gogo-shell-client.xml" target="@{gogoshell.test.target}" />
+
+										<antcall inheritall="false" target="stop-app-server" />
 									</sequential>
 								</for>
 							</try>
