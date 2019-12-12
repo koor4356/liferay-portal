@@ -44,6 +44,7 @@ definition {
 
 	@priority = "4"
 	test OmniAdminCanAccessGogoShellCommandViaPortlet {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "GogoShell#OmniAdminCanAccessGogoShellCommandViaPortlet";
 
 		JSONUser.addUser(
