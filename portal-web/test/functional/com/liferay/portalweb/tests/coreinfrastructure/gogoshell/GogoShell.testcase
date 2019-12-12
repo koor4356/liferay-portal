@@ -46,6 +46,7 @@ definition {
 
 	@priority = "4"
 	test GogoShellPortletOnlyOnMainInstance {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "GogoShell#GogoShellPortletOnlyOnMainInstance";
 
 		ProductMenu.gotoPortlet(
