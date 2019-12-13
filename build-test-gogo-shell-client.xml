@@ -29,20 +29,20 @@
 
 				<sleep seconds="5" />
 
-				<exec executable="/bin/bash" outputproperty="gogo.shell.content.output">
-					<arg value="-c" />
-					<arg value="telnet localhost 11312 > gogo.shell.result.output" />
+				<exec executable="/bin/bash">
+					<redirector errorproperty="redirector.err" inputstring="telnet -4 localhost 11312" outputproperty="redirector.out">
+						<inputfilterchain>
+							<replacestring from="before" to="after" />
+						</inputfilterchain>
+						<outputmapper to="redirector.out" type="merge" />
+						<errormapper to="redirector.err" type="merge" />
+					</redirector>
 				</exec>
 
-				<loadfile
-					property="gogo.shell.content.output"
-					srcFile="gogo.shell.result.output"
-				/>
-
-				<echo>${gogo.shell.content.output}</echo>
+				<echo message="${redirector.out}" />
 
 				<if>
-					<contains string="${gogo.shell.content.output}" substring="Connected to localhost." />
+					<contains string="${redirector.out}" substring="Connected to localhost." />
 					<then>
 						<echo message="PASSED. 'Connected to localhost.' is present." />
 					</then>
@@ -51,7 +51,8 @@
 					</else>
 				</if>
 
-				<delete file="gogo.shell.result.output" />
+				<delete file="redirector.err" />
+				<delete file="redirector.out" />
 			</sequential>
 		</parallel>
 	</target>
@@ -76,20 +77,22 @@
 
 				<sleep seconds="5" />
 
-				<exec executable="/bin/bash" outputproperty="gogo.shell.content.output">
-					<arg value="-c" />
-					<arg value="telnet localhost 11311 > gogo.shell.result.output" />
+				<exec executable="/bin/bash">
+					<redirector errorproperty="redirector.err" inputstring="telnet localhost 11311" outputproperty="redirector.out">
+						<inputfilterchain>
+							<replacestring from="before" to="after" />
+						</inputfilterchain>
+						<outputmapper to="redirector.out" type="merge" />
+						<errormapper to="redirector.err" type="merge" />
+					</redirector>
 				</exec>
 
-				<loadfile
-					property="gogo.shell.content.output"
-					srcFile="gogo.shell.result.output"
-				/>
+				<echo message="${redirector.out}" />
 
-				<echo>${gogo.shell.content.output}</echo>
+				<echo message="${redirector.err}" />
 
 				<if>
-					<contains string="${gogo.shell.content.output}" substring="telnet: connect to address 127.0.0.1: Connection refused" />
+					<contains string="${redirector.err}" substring="telnet: connect to address 127.0.0.1: Connection refused" />
 					<then>
 						<echo message="PASSED. 'telnet: connect to address 127.0.0.1: Connection refused' is present." />
 					</then>
@@ -98,7 +101,8 @@
 					</else>
 				</if>
 
-				<delete file="gogo.shell.result.output" />
+				<delete file="redirector.err" />
+				<delete file="redirector.out" />
 			</sequential>
 		</parallel>
 	</target>
