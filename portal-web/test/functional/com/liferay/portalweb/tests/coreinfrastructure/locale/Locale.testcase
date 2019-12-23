@@ -209,6 +209,7 @@ definition {
 
 	@priority = "4"
 	test VerifyFriendlyURLRedirectToEnableDefualtLocale {
+		property portal.acceptance = "koorgai";
 		property custom.properties = "locales.enabled=en_US,zh_CN,fr_FR${line.separator}locale.use.default.if.not.available=true";
 		property custom.system.properties = "user.country=US${line.separator}user.language=en";
 
