@@ -4101,8 +4101,8 @@ log.sanitizer.enabled=false</echo>
 								<generate-backend-batch-junit-report
 									junit.failure.count="${junit.failure.count}"
 									junit.failure.message.element="${junit.failure.message.element}"
-									test.class.name="GogoshellClient"
-									test.command.name="gogoshellClient"
+									test.class.name="GogoShellClient"
+									test.command.name="gogoShellClient"
 								/>
 							</finally>
 						</trycatch>
