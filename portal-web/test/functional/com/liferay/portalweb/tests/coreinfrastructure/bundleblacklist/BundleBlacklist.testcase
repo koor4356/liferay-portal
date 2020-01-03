@@ -157,6 +157,7 @@ definition {
 	@priority = "5"
 	test RemoveModuleFromBlacklist {
 		property test.name.skip.portal.instance = "BundleBlacklist#RemoveModuleFromBlacklist";
+		property portal.acceptance = "koorgai";
 
 		ProductMenu.gotoPortlet(
 			category = "Configuration",
