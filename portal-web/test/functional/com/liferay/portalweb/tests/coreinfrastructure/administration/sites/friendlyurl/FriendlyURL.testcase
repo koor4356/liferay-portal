@@ -26,6 +26,8 @@ definition {
 
 	@priority = "4"
 	test EditFriendlyURL {
+		property portal.acceptance = "koorgai";
+
 		JSONLayout.addPublicLayout(
 			friendlyURL = "/home",
 			groupName = "Test Site Name",
