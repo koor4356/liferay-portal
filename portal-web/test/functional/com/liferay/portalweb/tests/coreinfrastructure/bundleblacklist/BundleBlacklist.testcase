@@ -40,7 +40,7 @@ definition {
 		AssertConsoleTextPresent(value1 = "Disabling com.liferay.portal.security.ldap.internal.authenticator.LDAPAuth from bundle com.liferay.portal.security.ldap.impl");
 	}
 
-	@priority = "4"
+	@priority = "5"
 	test BlacklistModuleJar {
 		property test.name.skip.portal.instance = "BundleBlacklist#BlacklistModuleJar";
 
@@ -70,7 +70,7 @@ definition {
 			portlet = "Gogo Shell");
 	}
 
-	@priority = "4"
+	@priority = "5"
 	test BlacklistModuleLPKG {
 		property osgi.app.includes = "gogo-shell";
 		property test.name.skip.portal.instance = "BundleBlacklist#BlacklistModuleLPKG";

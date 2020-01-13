@@ -20,7 +20,7 @@ definition {
 		SearchAdministration.executeSearchActions(actionsDescription = "Reindex all search indexes.");
 	}
 
-	@priority = "5"
+	@priority = "4"
 	test ViewPortalSmokeArchive625 {
 		property data.archive.type = "data-archive-portal";
 		property database.types = "mariadb,mysql,postgresql";
@@ -33,7 +33,7 @@ definition {
 		Upgrade.searchForAssetsAfterUpgrade();
 	}
 
-	@priority = "5"
+	@priority = "4"
 	test ViewPortalSmokeArchive704 {
 		property data.archive.type = "data-archive-portal";
 		property database.types = "mariadb,mysql,postgresql";
@@ -46,7 +46,7 @@ definition {
 		Upgrade.searchForAssetsAfterUpgrade();
 	}
 
-	@priority = "5"
+	@priority = "4"
 	test ViewPortalSmokeArchive713 {
 		property data.archive.type = "data-archive-portal";
 		property database.types = "mariadb,mysql,postgresql";
@@ -59,7 +59,7 @@ definition {
 		Upgrade.searchForAssetsAfterUpgrade();
 	}
 
-	@priority = "5"
+	@priority = "4"
 	test ViewPortalSmokeArchive720 {
 		property data.archive.type = "data-archive-portal";
 		property database.types = "mariadb,mysql,postgresql";
@@ -123,7 +123,7 @@ definition {
 		Upgrade.searchForAssetsAfterUpgrade();
 	}
 
-	@priority = "5"
+	@priority = "4"
 	test ViewPortalSmokeArchive621015 {
 		property data.archive.type = "data-archive-portal";
 		property database.types = "db2,mariadb,mysql,oracle,postgresql,sqlserver";

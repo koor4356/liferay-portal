@@ -8,7 +8,7 @@ definition {
 	property testray.component.names = "Training";
 	property testray.main.component.name = "Setup Wizard";
 
-	@priority = "4"
+	@priority = "3"
 	test HSQLtoHSQLLportal1SampleDataDisabled {
 		property custom.properties = "setup.wizard.add.sample.data=true";
 		property database.types = "hypersonic";
@@ -80,7 +80,7 @@ definition {
 		Smoke.runSmoke();
 	}
 
-	@priority = "4"
+	@priority = "3"
 	test HSQLtoMariaDBSampleDataEnabled {
 		property databases.size = "1";
 		property database.types = "mariadb";
@@ -156,7 +156,7 @@ definition {
 		Smoke.runSmoke();
 	}
 
-	@priority = "4"
+	@priority = "3"
 	test HSQLtoPostgreSQLSampleDataEnabled {
 		property databases.size = "1";
 		property database.types = "postgresql";

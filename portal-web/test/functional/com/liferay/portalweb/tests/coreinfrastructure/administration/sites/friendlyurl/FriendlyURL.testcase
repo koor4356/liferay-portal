@@ -46,7 +46,7 @@ definition {
 	}
 
 	@description = "This is a use case for LRQA-52002. FriendlyURLS should support Unicode characters."
-	@priority = "4"
+	@priority = "5"
 	test ViewFriendlyURLWithUnicodeChars {
 		JSONLayout.addPublicLayout(
 			friendlyURL = "/⚽⚽⚽",

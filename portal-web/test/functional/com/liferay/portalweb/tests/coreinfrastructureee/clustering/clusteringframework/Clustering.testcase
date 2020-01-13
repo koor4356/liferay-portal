@@ -28,7 +28,7 @@ definition {
 		}
 	}
 
-	@priority = "5"
+	@priority = "4"
 	test AddAndDeleteBlogEntriesOnSeparateNodes {
 		property test.name.skip.portal.instance = "Clustering#AddAndDeleteBlogEntriesOnSeparateNodes";
 

@@ -32,7 +32,7 @@ definition {
 		Smoke.runSmoke();
 	}
 
-	@priority = "4"
+	@priority = "3"
 	test HSQLtoDB2SampleDataEnabled {
 		property databases.size = "1";
 		property database.types = "db2";
@@ -81,7 +81,7 @@ definition {
 		Smoke.runSmoke();
 	}
 
-	@priority = "4"
+	@priority = "3"
 	test HSQLtoOracleSampleDataEnabled {
 		property databases.size = "1";
 		property database.types = "oracle";
@@ -130,7 +130,7 @@ definition {
 		Smoke.runSmoke();
 	}
 
-	@priority = "4"
+	@priority = "3"
 	test HSQLtoSybaseSampleDataEnabled {
 		property databases.size = "1";
 		property database.types = "sybase";
