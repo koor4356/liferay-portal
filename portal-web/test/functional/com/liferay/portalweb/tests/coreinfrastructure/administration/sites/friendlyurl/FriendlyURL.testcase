@@ -88,6 +88,7 @@ definition {
 
 	@priority = "4"
 	test ViewFriendlyURLWithSharedLocalesButDifferentLanguages {
+		property portal.acceptance = "koorgai";
 		property custom.properties = "locale.prepend.friendly.url.style=2${line.separator}locales.enabled=en_US,fr_FR,fr_CA";
 		property test.name.skip.portal.instance = "FriendlyURL#ViewFriendlyURLWithSharedLocalesButDifferentLanguages";
 
