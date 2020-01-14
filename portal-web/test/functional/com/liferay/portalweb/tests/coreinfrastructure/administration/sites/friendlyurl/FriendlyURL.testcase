@@ -21,6 +21,8 @@ definition {
 		}
 		else {
 			JSONGroup.deleteGroupByName(groupName = "Test Site Name");
+
+			Site.tearDownCP();
 		}
 	}
 
