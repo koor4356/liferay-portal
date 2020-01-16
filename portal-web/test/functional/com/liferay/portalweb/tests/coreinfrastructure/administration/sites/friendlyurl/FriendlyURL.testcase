@@ -65,6 +65,7 @@ definition {
 
 	@priority = "4"
 	test VerifyFriendlyURLsOnlyDisplayLocaleOnce {
+		property portal.acceptance = "koorgai";
 
 		JSONLayout.addPublicLayout(
 			groupName = "Test Site Name",
