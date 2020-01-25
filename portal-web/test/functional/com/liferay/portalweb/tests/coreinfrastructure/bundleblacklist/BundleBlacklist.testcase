@@ -19,6 +19,31 @@ definition {
 		}
 	}
 
+	@priority = "5"
+	test AddModuleToBlacklistViaOSGIConfigFileAtRuntime {
+		property portal.acceptance = "false";
+		property test.name.skip.portal.instance = "BundleBlacklist#AddModuleToBlacklistViaOSGIConfigFileAtRuntime";
+
+		ProductMenu.gotoPortlet(
+			category = "Configuration",
+			panel = "Control Panel",
+			portlet = "Gogo Shell");
+
+		AntCommand(
+			locator1 = "build-test.xml",
+			value1 = "prepare-blacklist-module-update -Dadd.new.properties=true -Dupdate.properties=&quot;blacklistBundleSymbolicNames=com.liferay.gogo.shell.web&quot;");
+
+		Navigator.openURL();
+
+		Refresh();
+
+		BundleBlacklist.viewProductMenuBlacklistedModule(
+			category = "Configuration",
+			consoleText = "STOPPED com.liferay.gogo.shell.web",
+			panel = "Control Panel",
+			portlet = "Gogo Shell");
+	}
+
 	@priority = "4"
 	test BlacklistComponent {
 		property test.name.skip.portal.instance = "BundleBlacklist#BlacklistComponent";
