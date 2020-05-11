@@ -30,6 +30,7 @@ definition {
 
 	@priority = "4"
 	test AddAndDeleteBlogEntriesOnSeparateNodes {
+		property portal.upstream = "quarantine";
 		property test.name.skip.portal.instance = "Clustering#AddAndDeleteBlogEntriesOnSeparateNodes";
 
 		Clustering.viewClusterStatusInConsole();
@@ -158,6 +159,7 @@ definition {
 
 	@priority = "5"
 	test ShutdownAndStartupNodes {
+		property portal.upstream = "quarantine";
 		property test.name.skip.portal.instance = "Clustering#ShutdownAndStartupNodes";
 
 		Clustering.viewClusterStatusInConsole();
