@@ -4,6 +4,7 @@ definition {
 	property app.server.bundles.size = "1";
 	property cluster.enabled = "true";
 	property custom.properties = "database.partition.enabled=true${line.separator}database.partition.instance.id=testPartition${line.separator}cluster.link.enabled=true";
+	property portal.acceptance = "koor";
 	property portal.release = "true";
 	property portal.upstream = "true";
 	property remote.elasticsearch.enabled = "true";
