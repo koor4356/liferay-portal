@@ -134,6 +134,7 @@ definition {
 
 	@priority = "4"
 	test BlacklistModuleWar {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#BlacklistModuleWar";
 
 		Page.viewCurrentTheme(
