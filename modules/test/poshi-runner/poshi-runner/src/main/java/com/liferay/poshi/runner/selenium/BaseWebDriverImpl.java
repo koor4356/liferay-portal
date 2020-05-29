@@ -1812,6 +1812,11 @@ public abstract class BaseWebDriverImpl implements LiferaySelenium, WebDriver {
 	}
 
 	@Override
+	public void javaScriptDoubleClick(String locator) {
+		executeJavaScriptEvent(locator, "MouseEvent", "dblclick");
+	}
+
+	@Override
 	public void javaScriptDragAndDropToObject(
 			String sourceLocator, String targetLocator)
 		throws Exception {
