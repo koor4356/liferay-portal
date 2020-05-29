@@ -2698,6 +2698,7 @@ log.sanitizer.enabled=false</echo>
 		<attribute default="" name="test.build.fix.pack.zip.url" />
 		<attribute default="" name="test.fix.pack.base.url" />
 		<attribute default="" name="test.license.xml.url" />
+		<attribute default="true" name="test.legacy.database.dump" />
 		<attribute default="" name="test.portal.bundle.dependencies.zip.url" />
 		<attribute default="" name="test.portal.bundle.osgi.zip.url" />
 		<attribute default="" name="test.portal.bundle.tools.zip.url" />
@@ -2878,6 +2879,19 @@ log.sanitizer.enabled=false</echo>
 					</if>
 
 					<if>
+						<equals arg1="@{test.legacy.database.dump}" arg2="true" />
+						<then>
+							<ant dir="${project.dir}/portaldump.sql" target="export-database">
+								<property name="database.type" value="@{database.type}" />
+								<property name="database.version" value="@{database.version}" />
+								<property name="test.class" value="${test.class}" />
+							</ant>
+						</then>
+					</if>
+
+					<echo>${project.dir}/portaldump.sql</echo>
+
+					<if>
 						<isset property="env.CI_TEST_SUITE" />
 						<then>
 							<prepare-suite-search-engine suite.name="${env.CI_TEST_SUITE}" />
@@ -2887,6 +2901,8 @@ log.sanitizer.enabled=false</echo>
 					<antcall inheritAll="false" target="record-test-class-file-names">
 						<param name="test.class.groups.size" value="${test.batch.size}" />
 					</antcall>
+
+					<prepare-database-upgrade-configuration />
 				</test-set-up>
 
 				<test-tear-down>
@@ -4939,7 +4955,7 @@ log.sanitizer.enabled=false</echo>
 		<run-functional-test app.server.type="tomcat" database.type="mysql" database.version="5.7" />
 	</target>
 
-	<target name="modules-integration-bundle-db2111-jdk8">
+	<!-- <target name="modules-integration-bundle-db2111-jdk8">
 		<set-tomcat-version-number liferay.portal.bundle="${test.portal.bundle.version}" />
 
 		<run-modules-integration-test
@@ -5045,7 +5061,7 @@ log.sanitizer.enabled=false</echo>
 			test.portal.bundle.zip.url="${test.portal.bundle.zip.url}"
 			test.sql.zip.url="${test.sql.zip.url}"
 		/>
-	</target>
+	</target> -->
 
 	<target name="modules-integration-bundle-mysql57-jdk8">
 		<set-tomcat-version-number liferay.portal.bundle="${test.portal.bundle.version}" />
@@ -5066,7 +5082,7 @@ log.sanitizer.enabled=false</echo>
 		/>
 	</target>
 
-	<target name="modules-integration-bundle-mysql57-jdk11_open">
+	<!-- <target name="modules-integration-bundle-mysql57-jdk11_open">
 		<set-tomcat-version-number liferay.portal.bundle="${test.portal.bundle.version}" />
 
 		<run-modules-integration-test
@@ -5286,9 +5302,9 @@ log.sanitizer.enabled=false</echo>
 			test.portal.bundle.zip.url="${test.portal.bundle.zip.url}"
 			test.sql.zip.url="${test.sql.zip.url}"
 		/>
-	</target>
+	</target> -->
 
-	<target name="modules-integration-db2111-jdk8">
+	<!-- <target name="modules-integration-db2111-jdk8">
 		<run-modules-integration-test database.type="db2" />
 	</target>
 
@@ -5314,13 +5330,13 @@ log.sanitizer.enabled=false</echo>
 
 	<target name="modules-integration-mysql56-jdk8">
 		<run-modules-integration-test database.type="mysql" />
-	</target>
+	</target> -->
 
 	<target name="modules-integration-mysql57-jdk8">
 		<run-modules-integration-test database.type="mysql" database.version="5.7" />
 	</target>
 
-	<target name="modules-integration-mysql57-jdk8_stable">
+	<!-- <target name="modules-integration-mysql57-jdk8_stable">
 		<run-modules-integration-test database.type="mysql" database.version="5.7" />
 	</target>
 
@@ -5397,7 +5413,7 @@ log.sanitizer.enabled=false</echo>
 
 	<target name="modules-integration-sybase160-jdk11_open">
 		<run-modules-integration-test database.type="sybase" />
-	</target>
+	</target> -->
 
 	<target name="modules-semantic-versioning-jdk8">
 		<propertycopy from="app.server.${app.server.type}.version" name="app.server.version" />
