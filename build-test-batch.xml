@@ -2878,6 +2878,21 @@ log.sanitizer.enabled=false</echo>
 					</if>
 
 					<if>
+						<equals arg1="test.legacy.database.dump" arg2="true" />
+						<then>
+							<ant dir="${project.dir}/portaldump.sql" target="export-database">
+								<property name="database.type" value="@{database.type}" />
+								<property name="database.version" value="@{database.version}" />
+								<property name="test.class" value="${test.class}" />
+							</ant>
+						</then>
+					</if>
+
+					<echo>${project.dir}/portaldump.sql</echo>
+
+					<prepare-database-upgrade-configuration />
+
+					<if>
 						<isset property="env.CI_TEST_SUITE" />
 						<then>
 							<prepare-suite-search-engine suite.name="${env.CI_TEST_SUITE}" />
