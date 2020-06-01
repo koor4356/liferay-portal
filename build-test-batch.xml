@@ -2767,6 +2767,21 @@ log.sanitizer.enabled=false</echo>
 										</then>
 									</if>
 
+									<if>
+										<equals arg1="test.legacy.database.dump" arg2="true" />
+										<then>
+											<ant dir="${project.dir}/portaldump.sql" target="export-database">
+												<property name="database.type" value="@{database.type}" />
+												<property name="database.version" value="@{database.version}" />
+												<property name="test.class" value="${test.class}" />
+											</ant>
+										</then>
+									</if>
+
+									<echo>${project.dir}/portaldump.sql</echo>
+
+									<prepare-database-upgrade-configuration />
+
 									<ant dir="portal-kernel" inheritAll="false" target="test-class">
 										<property name="test.class" value="PortalLogAssertorTest" />
 									</ant>
@@ -2876,21 +2891,6 @@ log.sanitizer.enabled=false</echo>
 							<prepare-test-build />
 						</else>
 					</if>
-
-					<if>
-						<equals arg1="test.legacy.database.dump" arg2="true" />
-						<then>
-							<ant dir="${project.dir}/portaldump.sql" target="export-database">
-								<property name="database.type" value="@{database.type}" />
-								<property name="database.version" value="@{database.version}" />
-								<property name="test.class" value="${test.class}" />
-							</ant>
-						</then>
-					</if>
-
-					<echo>${project.dir}/portaldump.sql</echo>
-
-					<prepare-database-upgrade-configuration />
 
 					<if>
 						<isset property="env.CI_TEST_SUITE" />
