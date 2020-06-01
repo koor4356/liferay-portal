@@ -48,7 +48,7 @@ definition {
 
 	@priority = "5"
 	test BlacklistModuleBundleSymbolicName {
-		property portal.acceptance = "true";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#BlacklistModuleJar";
 
 		ProductMenu.gotoPortlet(

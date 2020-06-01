@@ -1480,9 +1480,10 @@ app.server.type=@{app.server.type}]]></echo>
 		<attribute default="true" name="setup.proxy" />
 		<attribute default="true" name="setup.testable.jboss" />
 		<attribute default="true" name="setup.testable.tomcat" />
+		<attribute default="true" name="skip.get.testcase.database.properties" />
 		<attribute default="" name="test.build.fix.pack.zip.url" />
 		<attribute default="" name="test.fix.pack.base.url" />
-		<attribute default="" name="test.legacy.database.dump" />
+		<attribute default="true" name="test.legacy.database.dump" />
 		<attribute default="" name="test.license.xml.url" />
 		<attribute default="" name="test.plugin.zip.url" />
 		<attribute default="" name="test.plugins.war.zip.url" />
@@ -1547,10 +1548,10 @@ app.server.type=@{app.server.type}]]></echo>
 										<if>
 											<equals arg1="@{test.legacy.database.dump}" arg2="true" />
 											<then>
-												<get-testcase-property property.name="data.archive.type" />
 
-												<ant dir="${portal.legacy.dir}" target="export-database">
-													<property name="data.archive.type" value="${data.archive.type}" />
+												<!-- <get-testcase-property property.name="data.archive.type" /> -->
+
+												<ant dir="${project.dir}/portaldump.sql" target="export-database">
 													<property name="database.type" value="@{database.type}" />
 													<property name="database.version" value="@{database.version}" />
 													<property name="test.class" value="${test.class}" />
