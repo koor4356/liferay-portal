@@ -78,13 +78,15 @@ definition {
 	test AddWebContentArticleCopyPasteContent {
 		property app.server.types = "jboss,tcserver,tomcat,weblogic,websphere,wildfly";
 		property database.types = "db2,hypersonic,mariadb,mysql,oracle,postgresql,sqlserver,sybase";
-		property environment.acceptance = "true";
+		property environment.acceptance = "koorgai";
 
 		Open(locator1 = "http://www.standards-schmandards.com/exhibits/wysiwyg/sampledoc.htm");
 
-		SelectFieldText(locator1 = "//body");
+		//SelectFieldText(locator1 = "//body");
 
-		RobotType.robotTypeShortcut(locator1 = "Ctrl + c");
+		RobotType.robotTypeShortcut(locator1 = "Command + A");
+
+		RobotType.robotTypeShortcut(locator1 = "Command + C");
 
 		Navigator.openURL();
 
@@ -101,7 +103,7 @@ definition {
 			key_editor = "content",
 			locator1 = "AlloyEditor#EDITOR");
 
-		RobotType.robotTypeShortcut(locator1 = "Ctrl + v");
+		RobotType.robotTypeShortcut(locator1 = "Command + V");
 
 		Pause(locator1 = "5000");
 

@@ -434,7 +434,7 @@ definition {
 		property custom.properties = "search.container.page.default.delta=2";
 		property database.types = "db2,hypersonic,mariadb,mysql,oracle,postgresql,sqlserver,sybase";
 		property portal.acceptance = "true";
-		property environment.acceptance = "true";
+		property environment.acceptance = "koorgai";
 
 		ProductMenu.gotoPortlet(
 			category = "Site Builder",
@@ -443,7 +443,14 @@ definition {
 
 		SitePages.addPublicPage(pageName = "Search Page");
 
-		Navigator.gotoPage(pageName = "Search Page");
+		var browserType = PropsUtil.get("browser.type");
+
+		if ("${browserType}" == "safari") {
+			Navigator.openSpecificURL(url = "http://localhost:8080/web/guest/search-page");
+		}
+		else {
+			Navigator.gotoPage(pageName = "Search Page");
+		}
 
 		Portlet.addPG(portletName = "Search Results");
 

@@ -28,7 +28,7 @@ definition {
 	test ViewBlogsPortletAsGuestPG {
 		property app.server.types = "jboss,tcserver,tomcat,weblogic,websphere,wildfly";
 		property database.types = "db2,hypersonic,mariadb,mysql,oracle,postgresql,sqlserver,sybase";
-		property environment.acceptance = "true";
+		property environment.acceptance = "koorgai";
 		property portal.acceptance = "true";
 
 		ProductMenu.gotoPortlet(
@@ -38,17 +38,34 @@ definition {
 
 		SitePages.addPublicPage(pageName = "Blogs Page");
 
-		Navigator.gotoPage(pageName = "Blogs Page");
+		var browserType = PropsUtil.get("browser.type");
+
+		if ("${browserType}" == "safari") {
+			Navigator.openSpecificURL(url = "http://localhost:8080/web/guest/blogs-page");
+		}
+		else {
+			Navigator.gotoPage(pageName = "Blogs Page");
+		}
 
 		Portlet.addPG(portletName = "Blogs");
 
-		Navigator.gotoPage(pageName = "Blogs Page");
+		if ("${browserType}" == "safari") {
+			Navigator.openSpecificURL(url = "http://localhost:8080/web/guest/blogs-page");
+		}
+		else {
+			Navigator.gotoPage(pageName = "Blogs Page");
+		}
 
 		Blogs.viewControlsPG();
 
 		User.logoutPG();
 
-		Navigator.gotoPage(pageName = "Blogs Page");
+		if ("${browserType}" == "safari") {
+			Navigator.openSpecificURL(url = "http://localhost:8080/web/guest/blogs-page");
+		}
+		else {
+			Navigator.gotoPage(pageName = "Blogs Page");
+		}
 
 		var browserType = PropsUtil.get("browser.type");
 		var key_portletName = "Blogs";

@@ -61,7 +61,7 @@ definition {
 	test AddMBThread {
 		property app.server.types = "jboss,tcserver,tomcat,weblogic,websphere,wildfly";
 		property database.types = "db2,hypersonic,mariadb,mysql,oracle,postgresql,sqlserver,sybase";
-		property environment.acceptance = "true";
+		property environment.acceptance = "koorgai";
 		property portal.acceptance = "true";
 
 		MessageBoardsAdmin.openMessageBoardsAdmin(siteURLKey = "guest");
