@@ -14,6 +14,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>EDITOR_CONTAINER</td>
+	<td>//div[contains(@class,'alloy-editor-wrapper')]/div</td>
+	<td></td>
+</tr>
+<tr>
 	<td>CONTENT_FIELD_BOLD</td>
 	<td>//div[contains(@class,'alloy-editor-placeholder') and contains(@data-placeholder,'Write your content here...')]/p/strong[contains(.,'${key_boldContent}')]</td>
 	<td></td>
