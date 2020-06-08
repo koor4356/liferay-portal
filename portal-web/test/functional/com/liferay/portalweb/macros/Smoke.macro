@@ -13,6 +13,10 @@ definition {
 
 			Site.addBlankCP(siteName = "Site Name");
 
+			// Workaround for LPS-115091
+
+			Navigator.openURL();
+
 			GlobalMenu.gotoPortlet(
 				category = "Sites",
 				panel = "Control Panel",
