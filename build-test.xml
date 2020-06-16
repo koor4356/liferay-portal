@@ -10732,7 +10732,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 						<get-database-property property.name="database.username" />
 
 						<property location="create.sh" name="create.sh.file.path" />
-						<property location="create.sql" name="create.sql.file.path" />
+						<property location="create-upgraded.sql" name="create.sql.file.path" />
 
 						<if>
 							<equals arg1="${database.type}" arg2="db2" />
@@ -10763,7 +10763,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 										<![CDATA[
 											#!/bin/bash
 
-											mysql --host=${database.host} --password=${database.password} --user=${database.username} < /tmp/create.sql
+											mysql --host=${database.host} --password=${database.password} --user=${database.username} < /tmp/create-upgraded.sql
 										]]>
 									</echo>
 								</then>
@@ -10823,7 +10823,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 						<execute>
 							<![CDATA[
 								docker cp ${create.sh.file.path} ${database.host}:/tmp/create.sh
-								docker cp ${create.sql.file.path} ${database.host}:/tmp/create.sql
+								docker cp ${create.sql.file.path} ${database.host}:/tmp/create-upgraded.sql
 
 								docker exec ${database.host} /bin/bash /tmp/create.sh
 							]]>
@@ -10942,7 +10942,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 									<propertycopy from="${database.type}.executable" name="database.executable" override="true" />
 
 									<retry retrycount="3" retrydelay="60000">
-										<exec executable="${database.executable}" failonerror="true" input="create.sql">
+										<exec executable="${database.executable}" failonerror="true" input="create-upgraded.sql">
 											<arg line="${arg.line}" />
 										</exec>
 									</retry>
