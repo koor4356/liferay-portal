@@ -5658,11 +5658,11 @@ war.path=${app.server.portal.dir}/</echo>
 					<then>
 						<var name="database.index" value="1" />
 
-						<echo file="create.sql">drop database if exists lportal;
+						<echo file="create-mysql.sql">drop database if exists lportal;
 create database lportal character set utf8;</echo>
 
 						<antelope:repeat count="${databases.size}">
-							<echo append="true" file="create.sql">
+							<echo append="true" file="create-mysql.sql">
 
 drop database if exists lportal${database.index};
 create database lportal${database.index} character set utf8;</echo>
@@ -5684,11 +5684,11 @@ create database lportal${database.index} character set utf8;</echo>
 							<equals arg1="${database.type}" arg2="postgresql" />
 						</and>
 						<then>
-							<echo file="create.sql">
+							<echo file="create-mysql.sql">
 drop database lportal;
 create database lportal encoding = 'UNICODE';</echo>
 
-							<echo append="true" file="create.sql">
+							<echo append="true" file="create-mysql.sql">
 
 drop database lportal${databases.size};
 create database lportal${databases.size} encoding = 'UNICODE';</echo>
@@ -5698,7 +5698,7 @@ create database lportal${databases.size} encoding = 'UNICODE';</echo>
 						<if>
 							<or>
 								<not>
-									<isset property="sql.dir" />
+									<isset property="project.dir" />
 								</not>
 								<not>
 									<isset property="sql.file" />
@@ -5714,7 +5714,7 @@ create database lportal${databases.size} encoding = 'UNICODE';</echo>
 									</then>
 								</if>
 
-								<property name="sql.dir" value="sql\create${database.create.suffix}\" />
+								<property name="project.dir" value="/create-mysql.sql" />
 
 								<if>
 									<equals arg1="${database.type}" arg2="mariadb" />
@@ -5735,8 +5735,8 @@ create database lportal${databases.size} encoding = 'UNICODE';</echo>
 						</if>
 
 						<copy
-							file="${sql.dir}${sql.file}"
-							tofile="create.sql"
+							file="${project.dir}/${sql.file}"
+							tofile="create-mysql.sql"
 						/>
 					</else>
 				</if>
@@ -5750,13 +5750,13 @@ create database lportal${databases.size} encoding = 'UNICODE';</echo>
 						<get-database-property property.name="database.username" />
 
 						<replace
-							file="create.sql"
+							file="create-mysql.sql"
 						>
 							<replacetoken>drop database lportal;</replacetoken>
 							<replacevalue></replacevalue>
 						</replace>
 						<replace
-							file="create.sql"
+							file="create-mysql.sql"
 						>
 							<replacetoken>connect to lportal;</replacetoken>
 							<replacevalue>update db cfg for lportal using logprimary 2;
@@ -5764,7 +5764,7 @@ update db cfg for lportal using logsecond 254;
 connect to lportal;</replacevalue>
 						</replace>
 						<replace
-							file="create.sql"
+							file="create-mysql.sql"
 						>
 							<replacetoken>create database lportal pagesize 8192;</replacetoken>
 							<replacevalue>create database lportal pagesize 32768 temporary tablespace managed by automatic storage;</replacevalue>
@@ -5773,7 +5773,7 @@ connect to lportal;</replacevalue>
 						<if>
 							<isset property="databases.size" />
 							<then>
-								<echo append="true" file="create.sql">
+								<echo append="true" file="create-mysql.sql">
 
 disconnect lportal;
 create database lportal${databases.size} pagesize 32768 temporary tablespace managed by automatic storage;
@@ -5786,7 +5786,7 @@ update db cfg for lportal${databases.size} using logsecond 254;</echo>
 						<equals arg1="${database.type}" arg2="oracle" />
 						<then>
 							<replace
-								file="create.sql"
+								file="create-mysql.sql"
 							>
 								<replacetoken>grant connect,resource to &amp;1;</replacetoken>
 								<replacevalue>grant connect,resource to &amp;1;
@@ -5797,20 +5797,20 @@ update db cfg for lportal${databases.size} using logsecond 254;</echo>
 								<isset property="databases.size" />
 								<then>
 									<replace
-										file="create.sql"
+										file="create-mysql.sql"
 									>
 										<replacetoken>grant connect,resource to &amp;1;
 	grant unlimited tablespace to &amp;1;</replacetoken>
 										<replacevalue>grant all privileges to &amp;1;</replacevalue>
 									</replace>
 									<replace
-										file="create.sql"
+										file="create-mysql.sql"
 									>
 										<replacetoken>quit</replacetoken>
 										<replacevalue></replacevalue>
 									</replace>
 
-									<echo append="true" file="create.sql">
+									<echo append="true" file="create-mysql.sql">
 	drop user lportal1 cascade;
 	create user lportal1 identified by lportal1;
 	grant connect,resource to lportal1;
@@ -5824,7 +5824,7 @@ update db cfg for lportal${databases.size} using logsecond 254;</echo>
 						<equals arg1="${database.type}" arg2="sqlserver" />
 						<then>
 							<replace
-								file="create.sql"
+								file="create-mysql.sql"
 							>
 								<replacefilter>
 									<replacetoken>create database lportal;
@@ -5847,7 +5847,7 @@ go]]></replacevalue>
 						<equals arg1="${database.type}" arg2="sybase" />
 						<then>
 							<replace
-								file="create.sql"
+								file="create-mysql.sql"
 							>
 								<replacefilter>
 									<replacetoken>use master
@@ -5866,7 +5866,7 @@ go]]></replacevalue>
 							<if>
 								<isset property="databases.size" />
 								<then>
-									<echo append="true" file="create.sql">
+									<echo append="true" file="create-mysql.sql">
 
 use master
 go
@@ -5908,7 +5908,7 @@ go</echo>
 					</not>
 					<then>
 						<replaceregexp
-							file="create.sql"
+							file="create-mysql.sql"
 							flags="g"
 							match="lportal"
 							replace="${database.schema}"
@@ -10742,7 +10742,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 						<get-database-property property.name="database.username" />
 
 						<property location="create.sh" name="create.sh.file.path" />
-						<property location="create.sql" name="create.sql.file.path" />
+						<property location="create-mysql.sql" name="project.dir" />
 
 						<if>
 							<equals arg1="${database.type}" arg2="db2" />
@@ -10759,7 +10759,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 
 										db2 drop db lportal${databases.size}
 
-										db2 -f/tmp/create.sql -st
+										db2 -f/tmp/create-mysql.sql -st
 									]]>
 								</echo>
 							</then>
@@ -10773,7 +10773,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 										<![CDATA[
 											#!/bin/bash
 
-											mysql --host=${database.host} --password=${database.password} --user=${database.username} < /tmp/create.sql
+											mysql --host=${database.host} --password=${database.password} --user=${database.username} < /tmp/create-mysql.sql
 										]]>
 									</echo>
 								</then>
@@ -10785,7 +10785,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 										<![CDATA[
 											#!/bin/bash
 
-											sqlplus ${oracle.admin.user}/${oracle.admin.password} @/tmp/create.sql ${database.username} ${database.password}
+											sqlplus ${oracle.admin.user}/${oracle.admin.password} @/tmp/create-mysql.sql ${database.username} ${database.password}
 										]]>
 									</echo>
 								</then>
@@ -10799,7 +10799,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 
 											export PGPASSWORD=${database.password}
 
-											psql --file=/tmp/create.sql --username=${database.username}
+											psql --file=/tmp/create-mysql.sql --username=${database.username}
 										]]>
 									</echo>
 								</then>
@@ -10811,7 +10811,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 										<![CDATA[
 											#!/bin/bash
 
-											/opt/mssql-tools/bin/sqlcmd -P ${database.password} -U ${database.username} -i /tmp/create.sql
+											/opt/mssql-tools/bin/sqlcmd -P ${database.password} -U ${database.username} -i /tmp/create-mysql.sql
 										]]>
 									</echo>
 								</then>
@@ -10823,7 +10823,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 										<![CDATA[
 											#!/bin/bash
 
-											isql -i /tmp/create.sql -P ${database.password} -S ${database.schema} -U ${database.username}
+											isql -i /tmp/create-mysql.sql -P ${database.password} -S ${database.schema} -U ${database.username}
 										]]>
 									</echo>
 								</then>
@@ -10832,8 +10832,8 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 
 						<execute>
 							<![CDATA[
-								docker cp ${create.sh.file.path} ${database.host}:/tmp/create.sh
-								docker cp ${create.sql.file.path} ${database.host}:/tmp/create.sql
+								docker cp ${project.dir} ${database.host}:/tmp/create.sh
+								docker cp ${project.dir} ${database.host}:/tmp/create-mysql.sql
 
 								docker exec ${database.host} /bin/bash /tmp/create.sh
 							]]>
@@ -10868,7 +10868,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 										</if>
 
 										<exec executable="${db2.executable}">
-											<arg line="/c /w db2 -fcreate.sql -td;" />
+											<arg line="/c /w db2 -fcreate-mysql.sql -td;" />
 										</exec>
 									</then>
 									<else>
@@ -10885,7 +10885,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 										</exec>
 
 										<exec executable="${db2.executable}" failonerror="true">
-											<arg value="-fcreate.sql" />
+											<arg value="-fcreate-mysql.sql" />
 											<arg value="-t" />
 										</exec>
 									</else>
@@ -10952,7 +10952,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 									<propertycopy from="${database.type}.executable" name="database.executable" override="true" />
 
 									<retry retrycount="3" retrydelay="60000">
-										<exec executable="${database.executable}" failonerror="true" input="create.sql">
+										<exec executable="${database.executable}" failonerror="true" input="create-mysql.sql">
 											<arg line="${arg.line}" />
 										</exec>
 									</retry>
@@ -10969,7 +10969,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 										<then>
 											<exec executable="${oracle.sqlplus.executable}" failonerror="true">
 												<arg value="${oracle.admin.user}/${oracle.admin.password} as sysdba" />
-												<arg value="@create.sql" />
+												<arg value="@create-mysql.sql" />
 												<arg value="${database.username}" />
 												<arg value="${database.password}" />
 											</exec>
@@ -10978,7 +10978,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 											<retry retrycount="10" retrydelay="60000">
 												<exec executable="${oracle.sqlplus.executable}" failonerror="true">
 													<arg value="${oracle.admin.user}/${oracle.admin.password}" />
-													<arg value="@create.sql" />
+													<arg value="@create-mysql.sql" />
 													<arg value="${database.username}" />
 													<arg value="${database.password}" />
 												</exec>
@@ -10995,7 +10995,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 									<retry retrycount="3" retrydelay="60000">
 										<exec executable="${postgresql.executable}" failonerror="true">
 											<arg value="-f" />
-											<arg value="create.sql" />
+											<arg value="create-mysql.sql" />
 											<arg value="-U" />
 											<arg value="${database.username}" />
 										</exec>
@@ -11014,7 +11014,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 										<arg value="-P" />
 										<arg value="${database.password}" />
 										<arg value="-i" />
-										<arg value="create.sql" />
+										<arg value="create-mysql.sql" />
 									</exec>
 								</then>
 							</elseif>
@@ -11028,7 +11028,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 									<retry retrycount="3" retrydelay="60000">
 										<exec executable="${sybase.executable}" failonerror="true">
 											<arg value="-i" />
-											<arg value="create.sql" />
+											<arg value="create-mysql.sql" />
 											<arg value="-P" />
 											<arg value="${database.password}" />
 											<arg value="-S" />
@@ -11045,7 +11045,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 			</then>
 		</if>
 
-		<delete file="create.sql" />
+		<delete file="create-mysql.sql" />
 	</target>
 
 	<target name="rebuild-legacy-database">
@@ -11108,8 +11108,8 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 						<then>
 							<antcall target="rebuild-database">
 								<param name="database.type" value="${database.type}" />
-								<param name="sql.dir" value="sql/create-bare/" />
-								<param name="sql.file" value="create-bare-mysql.sql" />
+								<param name="project.dir" value="/create-mysql.sql" />
+								<param name="sql.file" value="create-mysql.sql" />
 							</antcall>
 
 							<echo file="${import.database.sh.file.path}">
@@ -11129,8 +11129,8 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 						<then>
 							<antcall target="rebuild-database">
 								<param name="database.type" value="${database.type}" />
-								<param name="sql.dir" value="sql/create-bare/" />
-								<param name="sql.file" value="create-bare-mysql.sql" />
+								<param name="project.dir" value="/create-mysql.sql" />
+								<param name="sql.file" value="create-mysql.sql" />
 							</antcall>
 
 							<echo file="${import.database.sh.file.path}">
@@ -11306,8 +11306,8 @@ go</echo>
 						<then>
 							<antcall target="rebuild-database">
 								<param name="database.type" value="${database.type}" />
-								<param name="sql.dir" value="sql/create-bare/" />
-								<param name="sql.file" value="create-bare-mysql.sql" />
+								<param name="project.dir" value="/create-mysql.sql" />
+								<param name="sql.file" value="create-mysql.sql" />
 							</antcall>
 
 							<var name="arg.line" value="" />
