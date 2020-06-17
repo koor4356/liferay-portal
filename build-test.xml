@@ -10732,7 +10732,7 @@ cluster.link.bind.addr["cluster-link-udp"]=127.0.0.1</echo>
 						<get-database-property property.name="database.username" />
 
 						<property location="create.sh" name="create.sh.file.path" />
-						<property location="create.sql" name="create-upgraded-data.sql" />
+						<property location="create-upgraded-data.sql" name="create.sql.file.path" />
 
 						<if>
 							<equals arg1="${database.type}" arg2="db2" />
