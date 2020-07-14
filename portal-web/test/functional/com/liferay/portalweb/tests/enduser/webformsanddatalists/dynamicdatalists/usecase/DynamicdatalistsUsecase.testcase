@@ -1815,9 +1815,12 @@ definition {
 
 		PortalSettings.configureCurrentLanguagesCP(defaultPortalLanguage = "Spanish (Spain)");
 
+		var siteName = TestCase.getSiteName(siteName = "${siteName}");
+
 		ProductMenu.gotoPortlet(
 			category = "Content &amp; Data",
-			portlet = "Dynamic Data Lists");
+			portlet = "Dynamic Data Lists",
+			site = "${siteName}");
 
 		DDLDataDefinition.addCP(ddlDataDefinitionName = "Data Definition");
 
@@ -1836,7 +1839,8 @@ definition {
 
 		ProductMenu.gotoPortlet(
 			category = "Content &amp; Data",
-			portlet = "Dynamic Data Lists");
+			portlet = "Dynamic Data Lists",
+			site = "${siteName}");
 
 		DDLList.addCP(ddlListName = "List Name");
 
@@ -1848,7 +1852,8 @@ definition {
 
 		ProductMenu.gotoPortlet(
 			category = "Content &amp; Data",
-			portlet = "Dynamic Data Lists");
+			portlet = "Dynamic Data Lists",
+			site = "${siteName}");
 
 		DDLRecord.addCP(
 			ddlDataDefinitionName = "Data Definition",
@@ -1864,7 +1869,8 @@ definition {
 
 		ProductMenu.gotoPortlet(
 			category = "Content &amp; Data",
-			portlet = "Dynamic Data Lists");
+			portlet = "Dynamic Data Lists",
+			site = "${siteName}");
 
 		DDLRecord.editCP(
 			ddlListName = "List Name",
@@ -1884,7 +1890,8 @@ definition {
 
 		ProductMenu.gotoPortlet(
 			category = "Content &amp; Data",
-			portlet = "Dynamic Data Lists");
+			portlet = "Dynamic Data Lists",
+			site = "${siteName}");
 
 		DDLRecord.editCP(
 			ddlListName = "List Name",
@@ -1910,7 +1917,8 @@ definition {
 
 		ProductMenu.gotoPortlet(
 			category = "Site Builder",
-			portlet = "Pages");
+			portlet = "Pages",
+			site = "${siteName}");
 
 		SitePages.addPublicPage(pageName = "Dynamic Data Lists Display Page");
 

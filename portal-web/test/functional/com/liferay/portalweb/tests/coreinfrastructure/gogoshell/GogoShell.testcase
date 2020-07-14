@@ -167,7 +167,8 @@ definition {
 
 		ProductMenu.gotoPortlet(
 			category = "People",
-			portlet = "Memberships");
+			portlet = "Memberships",
+			site = "${siteName}");
 
 		Site.assignSiteRoleCP(
 			resourceName = "userfn userln",
