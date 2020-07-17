@@ -1,0 +1,41 @@
+@component-name = "portal-file-install"
+definition {
+
+	property portal.release = "true";
+	property portal.upstream = "true";
+	property testray.main.component.name = "File Install";
+
+	setUp {
+		TestCase.setUpPortalInstance();
+	}
+
+	tearDown {
+		var testPortalInstance = PropsUtil.get("test.portal.instance");
+
+		if ("${testPortalInstance}" == "true") {
+			PortalInstances.tearDownCP();
+		}
+	}
+
+	@priority = "4"
+	test UninstallWarOffline {
+		property portal.acceptance = "koorgai";
+
+		FileInstall.deployJarAndWarOnServer(
+			bundleIndex = "0",
+			liferayDependencyJars = "test-theme.war");
+
+		AssertConsoleTextPresent(value1 = "STARTED test-theme");
+
+		AssertConsoleTextPresent(value1 = "theme for test-theme is available for use");
+
+		Portlet.shutdownServer();
+
+		FileInstall.deleteJarOrWarOffline(portalWarFile = "test-theme.war");
+
+		Portlet.startServer(deleteLiferayHome = "false");
+
+		AssertConsoleTextNotPresent(value1 = "attempt to install the test-theme");
+	}
+
+}

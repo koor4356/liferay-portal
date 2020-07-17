@@ -6436,6 +6436,28 @@ go</echo>
 		<delete dir="/tmp/sprite" />
 	</target>
 
+	<target name="delete-liferay-war">
+		<if>
+			<not>
+				<equals arg1="${delete.liferay.home}" arg2="false" />
+			</not>
+			<then>
+				<if>
+					<not>
+						<isset property="test.app.server.liferay.home" />
+					</not>
+					<then>
+						<set-app-server-properties />
+					</then>
+				</if>
+			</then>
+		</if>
+
+		<delete file="${test.app.server.liferay.home}/osgi/war/${portal.war.file}" />
+
+		<echo> ${test.app.server.liferay.home}/osgi/war/${portal.war.file} </echo>
+	</target>
+
 	<target name="deploy-dependency-jars">
 		<get-testcase-property property.name="liferay.training.dependency.jars" />
 
