@@ -1,0 +1,46 @@
+@component-name = "portal-file-install"
+definition {
+
+	property portal.release = "true";
+	property portal.upstream = "true";
+	property testray.main.component.name = "File Install";
+
+	setUp {
+		TestCase.setUpPortalInstance();
+
+		User.firstLoginPG();
+	}
+
+	tearDown {
+		var testPortalInstance = PropsUtil.get("test.portal.instance");
+
+		if ("${testPortalInstance}" == "true") {
+			PortalInstances.tearDownCP();
+		}
+	}
+
+	@priority = "4"
+	test UninstallWarOffline {
+		property portal.acceptance = "koorgai";
+
+		FileInstall.deployJarAndWarOnServer(
+			bundleIndex = "0",
+			liferayDependencyJars = "test-theme.war");
+
+		Navigator.openURL();
+
+		Page.changeSinglePageTheme(
+			pageName = "Home",
+			tabName = "Look and Feel",
+			themeName = "test-theme-7-3");
+
+		Portlet.shutdownServer();
+
+		FileInstall.deleteWarOffline(liferayDependencyWars = "test-theme.war");
+
+		Portlet.startServer(deleteLiferayHome = "false");
+
+		AssertConsoleTextNotPresent(value1 = "attempt to install the test-theme");
+	}
+
+}
