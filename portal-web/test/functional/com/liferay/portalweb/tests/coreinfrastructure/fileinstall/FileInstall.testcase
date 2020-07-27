@@ -21,6 +21,7 @@ definition {
 
 	@priority = "4"
 	test UninstallJarOffline {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "FileInstall#UninstallJarOffline";
 
 		FileInstall.deployFileOnServer(
@@ -62,6 +63,7 @@ definition {
 
 	@priority = "4"
 	test UninstallWarOffline {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "FileInstall#UninstallWarOffline";
 
 		FileInstall.deployFileOnServer(
