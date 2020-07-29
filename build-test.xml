@@ -7254,6 +7254,24 @@ go</echo>
 		</if>
 	</target>
 
+	<target name="display-license-log-content">
+		<path id="license.log.content">
+			<fileset
+				dir="${liferay.home}/logs/"
+			>
+				<include name="lcs.*.log" />
+
+				<exclude name="liferay.*.log" />
+			</fileset>
+		</path>
+
+		<property name="content.output" refid="license.log.content" />
+
+		<echo message="${content.output}" />
+
+		<print-file file.name="${content.output}" />
+	</target>
+
 	<target name="execute-mysql">
 		<loadfile
 			property="mysql.statement"
