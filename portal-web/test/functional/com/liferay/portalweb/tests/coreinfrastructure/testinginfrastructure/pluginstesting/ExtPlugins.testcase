@@ -3,6 +3,7 @@ definition {
 
 	property custom.properties = "web.server.display.node=true";
 	property ext.plugins.includes = "sample-ext";
+	property portal.acceptance = "koorgai";
 	property portal.release = "true";
 	property portal.upstream = "true";
 	property test.assert.warning.exceptions = "true";
