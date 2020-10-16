@@ -8,7 +8,7 @@ definition {
 
 	@priority = "4"
 	test BasicConfigurationVisualLook {
-		property database.types = "hypersonic";
+		property database.types = "mysql";
 		property test.name.skip.portal.instance = "SetupWizard#BasicConfigurationVisualLook";
 
 		SetupWizard.viewDefaultPortalNamePG();
