@@ -115,6 +115,7 @@ definition {
 	@priority = "3"
 	test InstallOSGiConfigWithHiddenFile {
 		property create.osgi.hidden.file = "true";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "FileInstall#InstallOSGiConfigWithHiddenFile";
 
 		AssertConsoleTextNotPresent(value1 = "java.lang.RuntimeException: java.lang.reflect.InvocationTargetException");
