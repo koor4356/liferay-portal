@@ -112,6 +112,14 @@ definition {
 		GogoShell.viewNoOutput(outputContent = "Active");
 	}
 
+	@priority = "3"
+	test InstallOSGiConfigWithHiddenFile {
+		property create.osgi.hidden.file = "true";
+		property test.name.skip.portal.instance = "FileInstall#InstallOSGiConfigWithHiddenFile";
+
+		AssertConsoleTextNotPresent(value1 = "java.lang.RuntimeException: java.lang.reflect.InvocationTargetException");
+	}
+
 	@priority = "4"
 	test UninstallJarOffline {
 		property test.name.skip.portal.instance = "FileInstall#UninstallJarOffline";
