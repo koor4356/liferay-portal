@@ -8,6 +8,20 @@ definition {
 	property testray.main.component.name = "Setup Wizard";
 
 	@priority = "4"
+	test BasicConfigurationVisualLook {
+		property portal.acceptance = "koorgai";
+		property test.name.skip.portal.instance = "SetupWizard#BasicConfigurationVisualLook";
+
+		SetupWizard.viewDefaultPortalNamePG();
+
+		WaitForElementPresent(locator1 = "SetupWizard#BASIC_CONFIGURATION");
+
+		SikuliAssertElementPresent(locator1 = "SetupWizard#SETUP_WIZARD_BASIC_CONFIGURATION_PNG");
+
+		takeScreenshot();
+	}
+
+	@priority = "4"
 	test MySQLtoMySQLEditedAdministratorUser {
 		property test.name.skip.portal.instance = "SetupWizardMySQL#MySQLtoMySQLEditAdministratorUser";
 
