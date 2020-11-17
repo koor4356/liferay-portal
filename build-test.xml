@@ -4817,6 +4817,21 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 		</sequential>
 	</macrodef>
 
+	<macrodef name="start-rename-app-server">
+		<attribute default="0" name="app.server.bundle.index" />
+		<attribute default="true" name="delete.liferay.home" />
+		<attribute default="" name="testable.portal.started.marker.file" />
+
+		<sequential>
+			<start-app-server-cmd
+				app.server.bundle.index="@{app.server.bundle.index}"
+				delete.liferay.home="@{delete.liferay.home}"
+				test.docker.environment="${test.docker.environment}"
+				testable.portal.started.marker.file="@{testable.portal.started.marker.file}"
+			/>
+		</sequential>
+	</macrodef>
+
 	<macrodef name="start-test-smtp-server">
 		<sequential>
 			<mirrors-get
@@ -13507,6 +13522,40 @@ url=${short.hostname}:8080</echo>
 		/>
 
 		<start-lcs-app-server />
+	</target>
+
+	<target name="start-rename-app-server">
+		<if>
+			<not>
+				<contains string="@${app.server.tomcat.version}" substring="{app.server.tomcat.version}" />
+			</not>
+			<then>
+				<param name="app.server.tomcat.dir" value="${app.server.parent.dir}/tomcat" />
+				<param name="app.server.tomcat.bin.dir" value="${app.server.parent.dir}/tomcat/bin" />
+				<param name="app.server.tomcat.classes.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/classes" />
+				<param name="app.server.tomcat.lib.global.dir" value="${app.server.parent.dir}/tomcat/lib/ext" />
+				<param name="app.server.tomcat.lib.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/lib" />
+			</then>
+		</if>
+
+		<if>
+			<not>
+				<isset property="app.server.bundle.index" />
+			</not>
+			<then>
+				<var name="app.server.bundle.index" value="0" />
+			</then>
+		</if>
+
+		<start-rename-app-server
+			app.server.tomcat.dir="${app.server.parent.dir}/tomcat"
+			app.server.tomcat.bin.dir="${app.server.parent.dir}/tomcat/bin"
+			app.server.tomcat.classes.portal.dir="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/classes"
+			app.server.tomcat.lib.global.dir="${app.server.parent.dir}/tomcat/lib/ext"
+			app.server.tomcat.lib.portal.dir="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/lib"
+			app.server.bundle.index="${app.server.bundle.index}"
+			testable.portal.started.marker.file="${testable.portal.started.marker.file}"
+		/>
 	</target>
 
 	<target name="start-test-smtp-server">
