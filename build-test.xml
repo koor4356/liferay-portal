@@ -4835,10 +4835,10 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 				app.server.tomcat.classes.portal.dir=${app.server.tomcat.classes.portal.dir}
 				app.server.tomcat.lib.global.dir=${app.server.tomcat.lib.global.dir}
 				app.server.tomcat.lib.portal.dir=${app.server.tomcat.lib.portal.dir}
-				app.server.tomcat.version=9.0.37
 			</echo>
 
 			<start-app-server-cmd
+				app.server.bin.dir="${app.server.parent.dir}/tomcat/bin"
 				app.server.bundle.index="@{app.server.bundle.index}"
 				delete.liferay.home="@{delete.liferay.home}"
 				test.docker.environment="${test.docker.environment}"
