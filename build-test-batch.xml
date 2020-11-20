@@ -5990,7 +5990,7 @@ ${output.content}</echo>
 									</finally>
 								</trycatch>
 
-								<antcall inheritall="false" target="stop-app-server" />
+								<antcall inheritall="false" target="stop-rename-app-server" />
 							</sequential>
 						</test-action>
 					</database-test-run-test>

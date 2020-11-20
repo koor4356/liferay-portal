@@ -5329,6 +5329,31 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 		</sequential>
 	</macrodef>
 
+	<macrodef name="stop-rename-app-server">
+		<attribute default="0" name="app.server.bundle.index" />
+		<attribute default="0" name="app.server.explicit.stop.count" />
+
+		<sequential>
+			<if>
+				<istrue value="${test.docker.environment}" />
+				<then>
+					<stop-app-server-docker-cmd
+						app.server.bin.dir="${app.server.parent.dir}/tomcat/bin"
+						app.server.bundle.index="@{app.server.bundle.index}"
+						app.server.explicit.stop.count="@{app.server.explicit.stop.count}"
+					/>
+				</then>
+				<else>
+					<stop-app-server-cmd
+						app.server.bin.dir="${app.server.parent.dir}/tomcat/bin"
+						app.server.bundle.index="@{app.server.bundle.index}"
+						app.server.explicit.stop.count="@{app.server.explicit.stop.count}"
+					/>
+				</else>
+			</if>
+		</sequential>
+	</macrodef>
+
 	<macrodef name="uninstall-patches">
 		<attribute default="${app.server.parent.dir}/patching-tool" name="patching.tool.dir" />
 
@@ -13592,6 +13617,21 @@ url=${short.hostname}:8080</echo>
 		/>
 
 		<stop-lcs-app-server />
+	</target>
+
+	<target name="stop-rename-app-server">
+		<if>
+			<not>
+				<isset property="app.server.bundle.index" />
+			</not>
+			<then>
+				<var name="app.server.bundle.index" value="0" />
+			</then>
+		</if>
+
+		<stop-rename-app-server
+			app.server.bundle.index="${app.server.bundle.index}"
+		/>
 	</target>
 
 	<target name="test-package">
