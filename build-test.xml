@@ -4857,21 +4857,20 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 
 		<sequential>
 			<var name="app.server.tomcat.dir" value="${app.server.parent.dir}/tomcat" />
-			<var name="app.server.tomcat.bin.dir" value="${app.server.parent.dir}/tomcat/bin" />
+			<var name="app.server.temp.dir" value="${app.server.parent.dir}/tomcat/temp" />
+			<var name="app.server.tomcat.classes.global.dir" value="${app.server.parent.dir}/tomcat/lib" />
 			<var name="app.server.tomcat.classes.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/classes" />
+			<var name="app.server.tomcat.deploy.dir" value="${app.server.parent.dir}/tomcat/webapps" />
+			<var name="app.server.tomcat.lib.endorsed.dir" value="${app.server.parent.dir}/tomcat/lib/ext" />
 			<var name="app.server.tomcat.lib.global.dir" value="${app.server.parent.dir}/tomcat/lib/ext" />
 			<var name="app.server.tomcat.lib.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/lib" />
+			<var name="app.server.tomcat.lib.support.dir" value="${app.server.parent.dir}/tomcat/lib/ext" />
+			<var name="app.server.tomcat.log.dir" value="${app.server.parent.dir}/tomcat/logs" />
+			<var name="app.server.tomcat.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT" />
+			<var name="app.server.tomcat.temp.dir" value="${app.server.parent.dir}/tomcat/temp" />
+			<var name="app.server.tomcat.work.dir" value="${app.server.parent.dir}/tomcat/work" />
+			<var name="app.server.tomcat.bin.dir" value="${app.server.parent.dir}/tomcat/bin" />
 			<var name="app.server.tomcat.zip.name" value="apache-tomcat-${app.server.tomcat.version}.zip" />
-
-			<propertyregex
-				input="${app.server.tomcat.version}"
-				override="true"
-				property="app.server.tomcat.major.version"
-				regexp="(\d+)\..*"
-				replace="\1"
-			/>
-
-			<var name="app.server.tomcat.zip.url" value="http://archive.apache.org/dist/tomcat/tomcat-${app.server.tomcat.major.version}/v${app.server.tomcat.version}/bin/${app.server.tomcat.zip.name}" />
 
 			<echo append="true" file="app.server.${user.name}.properties">
 				app.server.tomcat.dir=${app.server.tomcat.dir}
