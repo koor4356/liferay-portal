@@ -4850,6 +4850,38 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 		</sequential>
 	</macrodef>
 
+	<macrodef name="start-rename-app-server">
+		<attribute default="0" name="app.server.bundle.index" />
+		<attribute default="true" name="delete.liferay.home" />
+		<attribute default="" name="testable.portal.started.marker.file" />
+
+		<sequential>
+			<var name="app.server.tomcat.dir" value="${app.server.parent.dir}/tomcat" />
+			<var name="app.server.tomcat.bin.dir" value="${app.server.parent.dir}/tomcat/bin" />
+			<var name="app.server.tomcat.classes.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/classes" />
+			<var name="app.server.tomcat.lib.global.dir" value="${app.server.parent.dir}/tomcat/lib/ext" />
+			<var name="app.server.tomcat.lib.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/lib" />
+
+			<echo append="true" file="app.server.${user.name}.properties">
+				app.server.tomcat.dir=${app.server.tomcat.dir}
+				app.server.tomcat.bin.dir=${app.server.tomcat.bin.dir}
+				app.server.tomcat.classes.portal.dir=${app.server.tomcat.classes.portal.dir}
+				app.server.tomcat.lib.global.dir=${app.server.tomcat.lib.global.dir}
+				app.server.tomcat.lib.portal.dir=${app.server.tomcat.lib.portal.dir}
+			</echo>
+
+			<start-app-server-cmd
+				app.server.bin.dir="${app.server.parent.dir}/tomcat/bin"
+				app.server.bundle.index="@{app.server.bundle.index}"
+				delete.liferay.home="@{delete.liferay.home}"
+				test.docker.environment="${test.docker.environment}"
+				testable.portal.started.marker.file="@{testable.portal.started.marker.file}"
+			/>
+
+			<echoproperties />
+		</sequential>
+	</macrodef>
+
 	<macrodef name="start-test-smtp-server">
 		<sequential>
 			<mirrors-get
@@ -5328,6 +5360,30 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 						</then>
 					</if>
 				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="stop-rename-app-server">
+		<attribute default="0" name="app.server.bundle.index" />
+		<attribute default="0" name="app.server.explicit.stop.count" />
+
+		<sequential>
+			<if>
+				<istrue value="${test.docker.environment}" />
+				<then>
+					<stop-app-server-docker-cmd
+						app.server.bundle.index="@{app.server.bundle.index}"
+						app.server.explicit.stop.count="@{app.server.explicit.stop.count}"
+					/>
+				</then>
+				<else>
+					<stop-app-server-cmd
+						app.server.bin.dir="${app.server.parent.dir}/tomcat/bin"
+						app.server.bundle.index="@{app.server.bundle.index}"
+						app.server.explicit.stop.count="@{app.server.explicit.stop.count}"
+					/>
+				</else>
 			</if>
 		</sequential>
 	</macrodef>
@@ -13542,6 +13598,22 @@ url=${short.hostname}:8080</echo>
 		<start-lcs-app-server />
 	</target>
 
+	<target name="start-rename-app-server">
+		<if>
+			<not>
+				<isset property="app.server.bundle.index" />
+			</not>
+			<then>
+				<var name="app.server.bundle.index" value="0" />
+			</then>
+		</if>
+
+		<start-rename-app-server
+			app.server.bundle.index="${app.server.bundle.index}"
+			testable.portal.started.marker.file="${testable.portal.started.marker.file}"
+		/>
+	</target>
+
 	<target name="start-test-smtp-server">
 		<start-test-smtp-server />
 	</target>
@@ -13579,6 +13651,21 @@ url=${short.hostname}:8080</echo>
 		/>
 
 		<stop-lcs-app-server />
+	</target>
+
+	<target name="stop-rename-app-server">
+		<if>
+			<not>
+				<isset property="app.server.bundle.index" />
+			</not>
+			<then>
+				<var name="app.server.bundle.index" value="0" />
+			</then>
+		</if>
+
+		<stop-rename-app-server
+			app.server.bundle.index="${app.server.bundle.index}"
+		/>
 	</target>
 
 	<target name="test-package">
