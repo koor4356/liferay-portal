@@ -4851,6 +4851,7 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 	</macrodef>
 
 	<macrodef name="start-rename-app-server">
+		<attribute default="${app.server.bin.dir}" name="app.server.bin.dir" />
 		<attribute default="0" name="app.server.bundle.index" />
 		<attribute default="true" name="delete.liferay.home" />
 		<attribute default="" name="testable.portal.started.marker.file" />
@@ -4898,6 +4899,7 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 			<echoproperties />
 
 			<start-app-server-cmd
+				app.server.bin.dir="${app.server.bin.dir}"
 				app.server.bundle.index="@{app.server.bundle.index}"
 				delete.liferay.home="@{delete.liferay.home}"
 				test.docker.environment="${test.docker.environment}"
