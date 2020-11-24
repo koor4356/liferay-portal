@@ -4875,6 +4875,13 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 			<var name="app.server.lib.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/lib" />
 			<var name="app.server.lib.support.dir" value="${app.server.parent.dir}/tomcat/lib/ext" />
 			<var name="app.server.log.dir" value="${app.server.parent.dir}/tomcat/logs" />
+			<var name="app.server.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT" />
+			<var name="app.server.bin.dir" value="${app.server.parent.dir}/tomcat/bin" />
+			<var name="app.server.classes.global.dir" value="${app.server.parent.dir}/tomcat/lib" />
+			<var name="app.server.classes.portal.dir" value="${app.server.parent.dir}/tomcat/webapps/ROOT/WEB-INF/classes" />
+			<var name="app.server.deploy.dir" value="${app.server.parent.dir}/tomcat/webapps" />
+			<var name="app.server.dir" value="${app.server.parent.dir}/tomcat" />
+			<var name="app.server.work.dir" value="${app.server.parent.dir}/tomcat/work" />
 			<var name="app.server.tomcat.zip.name" value="apache-tomcat-${app.server.tomcat.version}.zip" />
 
 			<echo append="true" file="app.server.${user.name}.properties">
@@ -4891,7 +4898,6 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 			<echoproperties />
 
 			<start-app-server-cmd
-				app.server.bin.dir="${app.server.tomcat.bin.dir}"
 				app.server.bundle.index="@{app.server.bundle.index}"
 				delete.liferay.home="@{delete.liferay.home}"
 				test.docker.environment="${test.docker.environment}"
