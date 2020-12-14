@@ -4,7 +4,7 @@ definition {
 	property app.server.bundles.size = "1";
 	property cluster.enabled = "true";
 	property portal.release = "true";
-	property portal.upstream = "quarantine";
+	property portal.upstream = "true";
 	property remote.elasticsearch.enabled = "true";
 	property test.assert.warning.exceptions = "true";
 	property testray.main.component.name = "Clustering";
@@ -32,8 +32,8 @@ definition {
 	test StartupJDBCPING {
 		property app.server.types = "tomcat";
 		property cluster.jdbc.ping = "true";
-		property database.types = "mysql";
-		property portal.acceptance = "true";
+		property database.types = "oracle";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "ClusteringConfigs#StartupJDBCPING";
 
 		Clustering.viewClusterStatusInConsole();
