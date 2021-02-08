@@ -19,6 +19,28 @@ definition {
 		}
 	}
 
+	@priority = "3"
+	test DeleteLiferayDXPlicense {
+		property commerce.enabled = "false";
+		property portal.release = "true";
+
+		ApplicationsMenuHelper.openApplicationsMenu();
+
+		var key_panel = "Applications";
+
+		AssertElementPresent(locator1 = "ApplicationsMenu#PANEL");
+
+		Portlet.shutdownServer();
+
+		AntCommand(
+			locator1 = "build-test.xml",
+			value1 = "delete-dxp-license");
+
+		Portlet.startServer(deleteLiferayHome = "false");
+
+		Alert.viewErrorMessage(errorMessage = "This instance is not registered.");
+	}
+
 	@priority = "5"
 	test ViewCommerceDisabled {
 		property commerce.enabled = "false";

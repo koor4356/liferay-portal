@@ -6812,6 +6812,12 @@ go</echo>
 		</if>
 	</target>
 
+	<target name="delete-dxp-license">
+		<delete file="${liferay.home}/osgi/modules/ci-license.xml" />
+
+		<delete dir="${liferay.home}/data/license" />
+	</target>
+
 	<target name="delete-liferay-home">
 		<if>
 			<not>
