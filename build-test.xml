@@ -6811,6 +6811,19 @@ go</echo>
 		</if>
 	</target>
 
+	<target name="delete-license-file">
+		<if>
+			<isset property="delete.license.xml" />
+			<then>
+				<delete file="${liferay.home}/osgi/modules/${delete.license.xml}" />
+
+				<echo>${liferay.home}/osgi/modules/${delete.license.xml} </echo>
+			</then>
+		</if>
+
+		<delete dir="${liferay.home}/data/license" />
+	</target>
+
 	<target name="delete-liferay-home">
 		<if>
 			<not>
