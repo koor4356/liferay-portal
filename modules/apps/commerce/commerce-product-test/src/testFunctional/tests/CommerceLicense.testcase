@@ -35,7 +35,7 @@ definition {
 
 		AntCommand(
 			locator1 = "build-test.xml",
-			value1 = "delete-license-file -D${delete.license.xml} -Dliferay.home=${liferayHome}");
+			value1 = "delete-license-file -Ddelete.license.xml=${delete.license.xml} -Dliferay.home=${liferayHome}");
 
 		Portlet.startServer(deleteLiferayHome = "false");
 
