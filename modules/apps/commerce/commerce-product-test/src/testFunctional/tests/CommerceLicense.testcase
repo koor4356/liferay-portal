@@ -22,7 +22,6 @@ definition {
 	@priority = "3"
 	test DeleteLiferayDXPlicense {
 		property commerce.enabled = "false";
-		property delete.license.xml = "license.xml";
 		property portal.release = "true";
 
 		ApplicationsMenuHelper.openApplicationsMenu();
@@ -33,9 +32,7 @@ definition {
 
 		Portlet.shutdownServer();
 
-		AntCommand(
-			locator1 = "build-test.xml",
-			value1 = "delete-license-file -Ddelete.license.xml=${delete.license.xml}");
+		License.deleteLicenseXml(deleteLicenseXml = "license.xml");
 
 		Portlet.startServer(deleteLiferayHome = "false");
 

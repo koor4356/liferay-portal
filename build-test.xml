@@ -6817,11 +6817,11 @@ go</echo>
 			<then>
 				<delete file="${liferay.home}/osgi/modules/${delete.license.xml}" />
 
+				<delete dir="${liferay.home}/data/license" />
+
 				<echo>${liferay.home}/osgi/modules/${delete.license.xml} </echo>
 			</then>
 		</if>
-
-		<delete dir="${liferay.home}/data/license" />
 	</target>
 
 	<target name="delete-liferay-home">
