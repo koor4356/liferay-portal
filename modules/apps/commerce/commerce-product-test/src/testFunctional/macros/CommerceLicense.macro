@@ -2,10 +2,12 @@ definition {
 
 	@summary = "Assert Commerce license is deployed after portal is started"
 	macro enableCommerceAfterPortalStarted {
+		var liferayHome = PropsUtil.get("liferay.home.dir.name");
+
 		if (isSet(commerceEnabled)) {
 			AntCommand(
 				locator1 = "build-test.xml",
-				value1 = "deploy-commerce-license-xml -Dliferay.home=${liferayHome}");
+				value1 = "deploy-commerce-license-xml-after-portal-starts -Dliferay.home=${liferayHome}");
 
 			Pause(locator1 = "10000");
 		}
