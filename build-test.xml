@@ -6970,8 +6970,6 @@ virtualHostname="localhost"
 	<target name="deploy-commerce-license-xml-after-portal-starts">
 		<if>
 			<matches pattern="https?://" string="${test.commerce.license.url}" />
-
-			<available file="${liferay.home}/deploy" type="dir" />
 			<then>
 				<mirrors-get
 					dest="${liferay.home}/deploy/portal-commerce-license.xml"
