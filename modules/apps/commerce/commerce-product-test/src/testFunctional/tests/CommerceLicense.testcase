@@ -102,6 +102,12 @@ definition {
 		property commerce.enabled = "false";
 
 		CommerceLicense.viewCommerceMissing();
+
+		CommerceLicense.enableCommerceAfterPortalStarted(commerceEnabled = "true");
+
+		Pause(locator1 = "60000");
+
+		CommerceLicense.executeSmoke();
 	}
 
 	@priority = "5"
