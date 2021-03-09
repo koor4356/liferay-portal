@@ -5505,10 +5505,21 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 		<sequential>
 			<delete failonerror="false" file="${liferay.home}/deploy/portal-commerce-license.xml" verbose="true" />
 
-			<copy
-				file="${project.dir}/portal-web/test/functional/com/liferay/portalweb/dependencies/license/@{commerce.license.file}"
-				todir="${liferay.home}/deploy"
-			/>
+			<if>
+				<equals arg1="@{commerce.license.file}" arg2="commerce-binary-license-developer.li" />
+				<then>
+					<copy
+						file="${project.dir}/portal-web/test/functional/com/liferay/portalweb/dependencies/license/@{commerce.license.file}"
+						todir="${liferay.home}/data/license"
+					/>
+				</then>
+				<else>
+					<copy
+						file="${project.dir}/portal-web/test/functional/com/liferay/portalweb/dependencies/license/@{commerce.license.file}"
+						todir="${liferay.home}/deploy"
+					/>
+				</else>
+			</if>
 
 			<if>
 				<equals arg1="@{commerce.license.file}" arg2="commerce-dxp-license-developer-combined.xml" />
