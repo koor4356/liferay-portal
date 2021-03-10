@@ -5505,21 +5505,10 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 		<sequential>
 			<delete failonerror="false" file="${liferay.home}/deploy/portal-commerce-license.xml" verbose="true" />
 
-			<if>
-				<equals arg1="@{commerce.license.file}" arg2="commerce-binary-license-developer.li" />
-				<then>
-					<copy
-						file="${project.dir}/portal-web/test/functional/com/liferay/portalweb/dependencies/license/@{commerce.license.file}"
-						todir="${liferay.home}/data/license"
-					/>
-				</then>
-				<else>
-					<copy
-						file="${project.dir}/portal-web/test/functional/com/liferay/portalweb/dependencies/license/@{commerce.license.file}"
-						todir="${liferay.home}/deploy"
-					/>
-				</else>
-			</if>
+			<copy
+				file="${project.dir}/portal-web/test/functional/com/liferay/portalweb/dependencies/license/@{commerce.license.file}"
+				todir="${liferay.home}/deploy"
+			/>
 
 			<if>
 				<equals arg1="@{commerce.license.file}" arg2="commerce-dxp-license-developer-combined.xml" />
@@ -5616,6 +5605,16 @@ org.apache.catalina.startup.ClassLoaderFactory.level=INFO]]>
 				token="${macaddress}"
 				value="${mac.address}"
 			/>
+
+			<if>
+				<equals arg1="@{commerce.license.file}" arg2="commerce-binary-license-developer.li" />
+				<then>
+					<move
+						file="${liferay.home}/deploy/commerce-binary-license-developer.li"
+						todir="${liferay.home}/data/license"
+					/>
+				</then>
+			</if>
 		</sequential>
 	</macrodef>
 

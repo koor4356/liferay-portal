@@ -107,14 +107,6 @@ definition {
 		property commerce.enabled = "true";
 		property commerce.license.file = "commerce-binary-license-developer.li";
 
-		CommerceLicense.viewCommerceMissing();
-
-		Portlet.shutdownServer();
-
-		Portlet.startServer(deleteLiferayHome = "false");
-
-		User.firstLoginPG();
-
 		AssertConsoleTextNotPresent(value1 = "Processing portal-commerce-license.xml");
 
 		CommerceLicense.executeSmoke();
