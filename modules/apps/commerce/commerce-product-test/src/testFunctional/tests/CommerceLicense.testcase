@@ -136,6 +136,18 @@ definition {
 	}
 
 	@priority = "4"
+	test LiferayDXPLicenseExpire {
+		property commerce.enabled = "true";
+		property commerce.license.file = "portal-dxp-license-custom-expiration-48-hours.xml";
+
+		Pause(locator1 = "10000");
+
+		Navigator.openURL();
+
+		Alert.viewErrorMessage(errorMessage = "This instance is not registered.");
+	}
+
+	@priority = "4"
 	test MatchHostName {
 		property commerce.enabled = "true";
 		property commerce.license.file = "commerce-license-developer-hostname.xml";
