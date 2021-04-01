@@ -154,6 +154,88 @@ definition {
 			searchAssetType = "Blogs Entry");
 	}
 
+	@priority = "4"
+	test ReplicatebyCopy {
+		property custom.properties = "ehcache.replicator.properties.test.cache=replicatePutsViaCopy=true";
+		property debugging.enabled = "com.liferay.portal.cache.ehcache.impl-log4j-ext.xml";
+		property portal.acceptance = "koorgai";
+		property test.name.skip.portal.instance = "Clustering#ReplicatebyCopy";
+
+		Clustering.viewClusterStatusInConsole();
+
+		Clustering.runGroovyScript(
+			nodePort = "8080",
+			scriptFile = "groovy-script-portal-cache-get.groovy");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "test.cache is empty",
+			nodePort = "8080");
+
+		Clustering.runGroovyScript(
+			nodePort = "9080",
+			scriptFile = "groovy-script-portal-cache-get.groovy");
+
+		AssertTextEquals(
+			locator1 = "ServerAdministrationScript#OUTPUT_FIELD",
+			value1 = "test.cache is empty");
+
+		Clustering.runGroovyScript(
+			nodePort = "8080",
+			scriptFile = "groovy-script-portal-cache-put.groovy");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Put test.key into test.cache",
+			nodePort = "8080");
+
+		Clustering.runGroovyScript(
+			nodePort = "8080",
+			scriptFile = "groovy-script-portal-cache-get.groovy");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "test.key=test.value",
+			nodePort = "8080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Put test.key into test.cache",
+			nodePort = "9080");
+
+		Clustering.runGroovyScript(
+			nodePort = "9080",
+			scriptFile = "groovy-script-portal-cache-get.groovy");
+
+		AssertTextEquals(
+			locator1 = "ServerAdministrationScript#OUTPUT_FIELD",
+			value1 = "test.key=test.value");
+
+		Clustering.runGroovyScript(
+			nodePort = "8080",
+			scriptFile = "groovy-script-portal-cache-remove.groovy");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Removed test.key from test.cache",
+			nodePort = "8080");
+
+		Clustering.runGroovyScript(
+			nodePort = "8080",
+			scriptFile = "groovy-script-portal-cache-get.groovy");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "test.cache is empty",
+			nodePort = "8080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Removed test.key from test.cache",
+			nodePort = "9080");
+
+		Clustering.runGroovyScript(
+			nodePort = "9080",
+			scriptFile = "groovy-script-portal-cache-get.groovy");
+
+		AssertTextEquals(
+			locator1 = "ServerAdministrationScript#OUTPUT_FIELD",
+			value1 = "test.cache is empty");
+	}
+
 	@priority = "5"
 	test ShutdownAndStartupNodes {
 		property portal.upstream = "quarantine";

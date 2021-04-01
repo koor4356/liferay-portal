@@ -6897,6 +6897,20 @@ go</echo>
 		</exec>
 	</target>
 
+	<target name="debugging-enabled">
+		<get-testcase-property property.name="debugging.enabled" />
+
+		<if>
+			<isset property="debugging.enabled" />
+			<then>
+				<copy
+					file="${project.dir}/portal-web/test/functional/com/liferay/portalweb/dependencies/${debugging.enabled}"
+					todir="${liferay.home}/osgi/log4j"
+				/>
+			</then>
+		</if>
+	</target>
+
 	<target name="delete-dependency-file">
 		<if>
 			<isset property="liferay.dependency.wars" />
@@ -12850,6 +12864,8 @@ module.framework.properties.blacklist.portal.profile.names=${blacklist.portal.pr
 		<antcall target="check-inet-address" />
 
 		<antcall target="create-hidden-osgi-file" />
+
+		<antcall target="debugging-enabled" />
 
 		<get-testcase-property property.name="database.jndi.enabled" />
 
