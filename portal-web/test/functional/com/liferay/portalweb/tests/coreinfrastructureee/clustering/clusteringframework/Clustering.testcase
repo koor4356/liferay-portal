@@ -181,7 +181,7 @@ definition {
 
 		Clustering.runGroovyScript(
 			nodePort = "8080",
-			scriptFile = "groovy-script-portal-cache-put.groovy");
+			scriptFile = "groovy-script-portal-cache-put-modules.groovy");
 
 		Clustering.viewTextPresentOnSpecificNode(
 			expectedText = "Put test.key into test.cache",
