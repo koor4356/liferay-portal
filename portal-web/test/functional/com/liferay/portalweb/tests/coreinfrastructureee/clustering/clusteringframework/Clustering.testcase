@@ -158,6 +158,7 @@ definition {
 	test ReplicatebyCopy {
 		property custom.properties = "ehcache.replicator.properties.test.cache=replicatePutsViaCopy=true";
 		property debugging.enabled = "com.liferay.portal.cache.ehcache.impl-log4j-ext.xml";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "Clustering#ReplicatebyCopy";
 
 		Clustering.viewClusterStatusInConsole();
