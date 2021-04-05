@@ -7823,6 +7823,20 @@ virtualHostname="localhost"
 		</if>
 	</target>
 
+	<target name="enable-debugging">
+		<get-testcase-property property.name="debugging.enabled" />
+
+		<if>
+			<isset property="debugging.enabled" />
+			<then>
+				<copy
+					file="${project.dir}/portal-web/test/functional/com/liferay/portalweb/dependencies/${debugging.enabled}"
+					todir="${liferay.home}/osgi/log4j"
+				/>
+			</then>
+		</if>
+	</target>
+
 	<target name="execute-mysql">
 		<loadfile
 			property="mysql.statement"
@@ -12894,6 +12908,8 @@ module.framework.properties.blacklist.portal.profile.names=${blacklist.portal.pr
 		<antcall target="check-inet-address" />
 
 		<antcall target="create-hidden-osgi-file" />
+
+		<antcall target="enable-debugging" />
 
 		<get-testcase-property property.name="database.jndi.enabled" />
 
