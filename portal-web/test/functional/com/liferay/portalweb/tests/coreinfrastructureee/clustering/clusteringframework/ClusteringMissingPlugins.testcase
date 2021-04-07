@@ -30,6 +30,7 @@ definition {
 	@priority = "4"
 	test CacheReplicationbyCopy {
 		property custom.properties = "ehcache.replicator.properties.test.cache=replicatePutsViaCopy=true";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "ClusteringMissingPlugins#CacheReplicationbyCopy";
 
 		Clustering.viewClusterStatusInConsole();
