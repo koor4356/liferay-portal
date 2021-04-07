@@ -157,6 +157,7 @@ definition {
 	@priority = "4"
 	test DoNotReplicatePut {
 		property custom.properties = "ehcache.replicator.properties.test.cache=replicatePuts=false";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "Clustering#DoNotReplicatePut";
 
 		Clustering.viewClusterStatusInConsole();
@@ -257,6 +258,7 @@ definition {
 	@priority = "4"
 	test ReplicateByCopy {
 		property custom.properties = "ehcache.replicator.properties.test.cache=replicatePutsViaCopy=true";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "Clustering#ReplicateByCopy";
 
 		Clustering.viewClusterStatusInConsole();
@@ -337,6 +339,7 @@ definition {
 	@priority = "4"
 	test ReplicateByRemove {
 		property custom.properties = "ehcache.replicator.properties.test.cache=replicatePutsViaCopy=false";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "Clustering#ReplicateByRemove";
 
 		Clustering.viewClusterStatusInConsole();
