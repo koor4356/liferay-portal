@@ -1,0 +1,234 @@
+@component-name = "portal-clustering"
+definition {
+
+	property app.server.bundles.size = "1";
+	property cluster.enabled = "true";
+	property portal.release = "true";
+	property portal.upstream = "true";
+	property remote.elasticsearch.enabled = "true";
+	property test.assert.warning.exceptions = "true";
+	property testray.main.component.name = "Clustering";
+
+	setUp {
+		TestCase.setUpPortalInstance();
+
+		User.firstLoginPG();
+	}
+
+	tearDown {
+		var testPortalInstance = PropsUtil.get("test.portal.instance");
+
+		if ("${testPortalInstance}" == "true") {
+			PortalInstances.tearDownCP();
+		}
+	}
+
+	@priority = "4"
+	test MemoryClusteredJobsOne {
+		property portal.acceptance = "koorgai";
+		property test.name.skip.portal.instance = "ClusteringScheduler#MemoryClusteredJobsOne";
+
+		Clustering.runGroovyScript(
+			nodePort = "8080",
+			scriptFile = "groovy-script-portal-scheduler-memory-clustered-1.groovy");
+
+		AssertTextEquals(
+			locator1 = "ServerAdministrationScript#OUTPUT_FIELD",
+			value1 = "Memory clustered job 1 is added");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory clustered job 1 is triggered at",
+			nodePort = "8080");
+
+		Clustering.runGroovyScript(
+			nodePort = "9080",
+			scriptFile = "groovy-script-portal-scheduler-memory-clustered-2.groovy");
+
+		AssertTextEquals(
+			locator1 = "ServerAdministrationScript#OUTPUT_FIELD",
+			value1 = "Memory clustered job 2 is added");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory clustered job 2 is triggered at",
+			nodePort = "8080");
+
+		Clustering.viewTextNotPresentOnSpecificNode(
+			expectedText = "Memory clustered job 1 is triggered at",
+			nodePort = "9080");
+
+		Clustering.viewTextNotPresentOnSpecificNode(
+			expectedText = "Memory clustered job 2 is triggered at",
+			nodePort = "9080");
+
+		Clustering.shutdownSpecificServer(nodePort = "8080");
+
+		Page.assertNodePortPG(nodePort = "9080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory clustered job 1 is triggered at",
+			nodePort = "9080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory clustered job 2 is triggered at",
+			nodePort = "9080");
+
+		Clustering.shutdownSpecificServer(nodePort = "9080");
+
+		Clustering.startSpecificServer(
+			deleteLiferayHome = "true",
+			keepCachedAppServerData = "true",
+			nodePort = "8080");
+
+		Page.assertNodePortPG(nodePort = "8080");
+
+		Clustering.viewTextNotPresentOnSpecificNode(
+			expectedText = "Memory clustered job 1 is triggered at",
+			nodePort = "8080");
+
+		Clustering.viewTextNotPresentOnSpecificNode(
+			expectedText = "Memory clustered job 2 is triggered at",
+			nodePort = "8080");
+	}
+
+	@priority = "4"
+	test MemoryJobs {
+		property portal.acceptance = "koorgai";
+		property test.name.skip.portal.instance = "ClusteringScheduler#MemoryJobs";
+
+		Clustering.runGroovyScript(
+			nodePort = "8080",
+			scriptFile = "groovy-script-portal-scheduler-memory-1.groovy");
+
+		AssertTextEquals(
+			locator1 = "ServerAdministrationScript#OUTPUT_FIELD",
+			value1 = "Memory job 1 is added");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory job 1 is triggered at",
+			nodePort = "8080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory job 1 is triggered at",
+			nodePort = "9080");
+
+		Clustering.runGroovyScript(
+			nodePort = "9080",
+			scriptFile = "groovy-script-portal-scheduler-memory-2.groovy");
+
+		AssertTextEquals(
+			locator1 = "ServerAdministrationScript#OUTPUT_FIELD",
+			value1 = "Memory job 2 is added");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory job 2 is triggered at",
+			nodePort = "8080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory job 2 is triggered at",
+			nodePort = "9080");
+
+		Clustering.shutdownSpecificServer(nodePort = "8080");
+
+		Page.assertNodePortPG(nodePort = "9080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory job 2 is triggered at",
+			nodePort = "9080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Memory job 2 is triggered at",
+			nodePort = "9080");
+
+		Clustering.shutdownSpecificServer(nodePort = "9080");
+
+		Clustering.startSpecificServer(
+			deleteLiferayHome = "true",
+			keepCachedAppServerData = "true",
+			nodePort = "8080");
+
+		Page.assertNodePortPG(nodePort = "8080");
+
+		Clustering.viewTextNotPresentOnSpecificNode(
+			expectedText = "Memory job 2 is triggered at",
+			nodePort = "8080");
+
+		Clustering.viewTextNotPresentOnSpecificNode(
+			expectedText = "Memory job 2 is triggered at",
+			nodePort = "8080");
+	}
+
+	@priority = "4"
+	test PersistentJobs {
+		property portal.acceptance = "koorgai";
+		property test.name.skip.portal.instance = "ClusteringScheduler#PersistentJobs";
+
+		Clustering.runGroovyScript(
+			nodePort = "8080",
+			scriptFile = "groovy-script-portal-scheduler-persistent-1.groovy");
+
+		AssertTextEquals(
+			locator1 = "ServerAdministrationScript#OUTPUT_FIELD",
+			value1 = "Persistent job 1 is added");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Persistent job 1 is triggered at",
+			nodePort = "8080");
+
+		Clustering.viewTextNotPresentOnSpecificNode(
+			expectedText = "Persistent job 1 is triggered at",
+			nodePort = "9080");
+
+		Clustering.runGroovyScript(
+			nodePort = "9080",
+			scriptFile = "groovy-script-portal-scheduler-persistent-2.groovy");
+
+		AssertTextEquals(
+			locator1 = "ServerAdministrationScript#OUTPUT_FIELD",
+			value1 = "Persistent job 2 is added");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Persistent job 2 is triggered at",
+			nodePort = "9080");
+
+		Clustering.viewTextNotPresentOnSpecificNode(
+			expectedText = "Persistent job 2 is triggered at",
+			nodePort = "8080");
+
+		Clustering.shutdownSpecificServer(nodePort = "8080");
+
+		Page.assertNodePortPG(nodePort = "9080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Persistent job 1 is triggered at",
+			nodePort = "9080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Persistent job 2 is triggered at",
+			nodePort = "9080");
+
+		Clustering.shutdownSpecificServer(nodePort = "9080");
+
+		Clustering.startSpecificServer(
+			deleteLiferayHome = "true",
+			keepCachedAppServerData = "true",
+			nodePort = "8080");
+
+		Page.assertNodePortPG(nodePort = "8080");
+
+		Clustering.startSpecificServer(
+			deleteLiferayHome = "true",
+			keepCachedAppServerData = "true",
+			nodePort = "9080");
+
+		Page.assertNodePortPG(nodePort = "9080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Persistent job 1 is triggered at",
+			nodePort = "8080");
+
+		Clustering.viewTextPresentOnSpecificNode(
+			expectedText = "Persistent job 2 is triggered at",
+			nodePort = "9080");
+	}
+
+}
