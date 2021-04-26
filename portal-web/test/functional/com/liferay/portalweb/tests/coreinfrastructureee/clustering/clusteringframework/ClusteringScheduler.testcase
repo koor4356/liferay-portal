@@ -25,6 +25,7 @@ definition {
 
 	@priority = "4"
 	test MemoryClusteredJobsOne {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "ClusteringScheduler#MemoryClusteredJobsOne";
 
 		Clustering.runGroovyScript(
@@ -46,6 +47,7 @@ definition {
 
 	@priority = "4"
 	test PersistentAndMemoryJobs {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "ClusteringScheduler#PersistentAndMemoryJobs";
 
 		Clustering.runGroovyScript(
