@@ -37,4 +37,22 @@ definition {
 		Pause(locator1 = "10000");
 	}
 
+	macro deployModuleOnServer {
+		var liferayHome = PropsUtil.get("liferay.home.dir.name");
+		var moduleName = PropsUtil.get("osgi.modules.includes");
+
+		if (("${bundleIndex}" == "0") || (!(isSet(bundleIndex)))) {
+			var deployDir = "${liferayHome}/deploy";
+		}
+		else {
+			var deployDir = "${liferayHome}-${bundleIndex}/deploy";
+		}
+
+		AntCommand(
+			locator1 = "build-test.xml",
+			value1 = "deploy-osgi-modules -Dosgi.modules.includes=${moduleName}");
+
+		Pause(locator1 = "10000");
+	}
+
 }
