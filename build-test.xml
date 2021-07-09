@@ -6889,13 +6889,11 @@ go</echo>
 	</target>
 
 	<target name="cluster-session-replication">
-		<get-testcase-property property.name="cluster.session.replicated" />
-
 		<replace
 			file="${app.server.tomcat.dir}/conf/server.xml"
 		>
-			<replacetoken><![CDATA[<Engine name="Catalina" defaultHost="localhost" jvmRoute="0">]]></replacetoken>
-			<replacevalue><![CDATA[<Engine name="Catalina" defaultHost="localhost" jvmRoute="0">
+			<replacetoken><![CDATA[<Engine name="Catalina" defaultHost="localhost">]]></replacetoken>
+			<replacevalue><![CDATA[<Engine name="Catalina" defaultHost="localhost">
 
     	<Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>]]></replacevalue>
 		</replace>
@@ -6972,10 +6970,10 @@ org.apache.catalina.ha.deploy.handlers = 5cluster.org.apache.juli.AsyncFileHandl
 				<copy
 					file="@{log.file}"
 					overwrite="true"
-					tofile="${liferay.home}/cluster-test${app.server.bundle.index}.log"
+					tofile="${liferay.home}/cluster${app.server.bundle.index}.log"
 				/>
 
-				<echo> ${liferay.home}/cluster-test${app.server.bundle.index}.log </echo>
+				<echo> ${liferay.home}/cluster${app.server.bundle.index}.log </echo>
 			</sequential>
 		</for>
 	</target>
