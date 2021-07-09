@@ -104,58 +104,58 @@ definition {
 				nodePort = "${serverPort}");
 		}
 
-		Clustering.deployModuleOnSpecificServer(
-			moduleName = "test-session-replication",
-			nodePort = "8080");
+		// Clustering.deployModuleOnSpecificServer(
+		// 	moduleName = "test-session-replication",
+		// 	nodePort = "8080");
 
-		Navigator.openNodePort(nodePort = "8080");
+		// Navigator.openNodePort(nodePort = "8080");
 
-		ProductMenu.gotoPortlet(
-			category = "Site Builder",
-			portlet = "Pages");
+		// ProductMenu.gotoPortlet(
+		// 	category = "Site Builder",
+		// 	portlet = "Pages");
 
-		SitePages.addPublicPage(pageName = "Session Replication Test");
+		// SitePages.addPublicPage(pageName = "Session Replication Test");
 
-		Navigator.gotoPage(pageName = "Session Replication Test");
+		// Navigator.gotoPage(pageName = "Session Replication Test");
 
-		Portlet.addPG(portletName = "TestSessionReplication");
+		// Portlet.addPG(portletName = "TestSessionReplication");
 
-		Clustering.viewSessionData(sessionContent = "No session data exists, generating a new one with random string:");
+		// Clustering.viewSessionData(sessionContent = "No session data exists, generating a new one with random string:");
 
-		Clustering.deployModuleOnSpecificServer(
-			moduleName = "test-session-replication",
-			nodePort = "9080");
+		// Clustering.deployModuleOnSpecificServer(
+		// 	moduleName = "test-session-replication",
+		// 	nodePort = "9080");
 
-		Navigator.gotoPage(pageName = "Session Replication Test");
+		// Navigator.gotoPage(pageName = "Session Replication Test");
 
-		AssertElementPresent(locator1 = "Portlet#SPECIFIC_TEXT");
+		// AssertElementPresent(locator1 = "Portlet#SPECIFIC_TEXT");
 
-		var sessionData = selenium.getText("Portlet#SPECIFIC_TEXT");
+		// var sessionData = selenium.getText("Portlet#SPECIFIC_TEXT");
 
-		echo("${sessionData}");
+		// echo("${sessionData}");
 
-		User.logoutPG(
-			password = "test",
-			userEmailAddress = "test@liferay.com");
+		// User.logoutPG(
+		// 	password = "test",
+		// 	userEmailAddress = "test@liferay.com");
 
-		User.loginPG(
-			nodePort = "9080",
-			password = "test",
-			userEmailAddress = "test@liferay.com");
+		// User.loginPG(
+		// 	nodePort = "9080",
+		// 	password = "test",
+		// 	userEmailAddress = "test@liferay.com");
 
-		Navigator.openSpecificURL(
-			pageName = "Session Replication Test",
-			url = "http://localhost:9080");
+		// Navigator.openSpecificURL(
+		// 	pageName = "Session Replication Test",
+		// 	url = "http://localhost:9080");
 
-		AssertTextEquals(
-			locator1 = "Portlet#SPECIFIC_TEXT",
-			value1 = "${sessionData}");
+		// AssertTextEquals(
+		// 	locator1 = "Portlet#SPECIFIC_TEXT",
+		// 	value1 = "${sessionData}");
 
-		for (var serverPort : list "8080,9080") {
-			Clustering.viewNoSessionReplicateLogErrorOnSpecificNode(
-				exceptionText = "Unable to receive message through TCP channel",
-				nodePort = "${serverPort}");
-		}
+		// for (var serverPort : list "8080,9080") {
+		// 	Clustering.viewNoSessionReplicateLogErrorOnSpecificNode(
+		// 		exceptionText = "Unable to receive message through TCP channel",
+		// 		nodePort = "${serverPort}");
+		// }
 	}
 
 	@priority = "4"
