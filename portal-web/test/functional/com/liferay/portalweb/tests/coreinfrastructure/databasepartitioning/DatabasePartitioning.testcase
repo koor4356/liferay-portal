@@ -20,6 +20,7 @@ definition {
 	test AddMultipleCompanies {
 		property custom.properties = "database.partition.schema.name.prefix=testPartition";
 		property database.types = "mysql";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "DatabasePartitioning#AddMultipleCompanies";
 
 		PortalInstances.openVirtualInstancesAdmin();
@@ -94,7 +95,7 @@ definition {
 	test AddNewCompany {
 		property custom.properties = "database.partition.schema.name.prefix=testPartition";
 		property database.types = "mysql";
-		property portal.acceptance = "true";
+		property portal.acceptance = "koorgai";
 		property test.assert.warning.exceptions = "true";
 		property test.name.skip.portal.instance = "DatabasePartitioning#AddNewCompany";
 
@@ -138,6 +139,7 @@ definition {
 		property cluster.enabled = "true";
 		property custom.properties = "database.partition.schema.name.prefix=testPartition";
 		property database.types = "mysql";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "DatabasePartitioning#AddNewCompanyWithCluster";
 
 		Clustering.viewClusterStatusInConsole();
