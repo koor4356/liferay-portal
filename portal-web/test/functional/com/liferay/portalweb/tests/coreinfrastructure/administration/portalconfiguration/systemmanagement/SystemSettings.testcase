@@ -24,6 +24,7 @@ definition {
 		property custom.properties = "configuration.override.com.liferay.journal.configuration.JournalServiceConfiguration_articleCommentsEnabled=B&quot;false&quot;";
 		property osgi.module.configuration.file.names = "com.liferay.journal.configuration.JournalServiceConfiguration.config";
 		property osgi.module.configurations = "articleCommentsEnabled=B&quot;true&quot;";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "SystemSettings#CanOverrideValueSetInConfigFile";
 
 		ApplicationsMenu.gotoPortlet(
@@ -73,6 +74,7 @@ definition {
 	@priority = "5"
 	test CanOverrideValueWithoutConfigFile {
 		property custom.properties = "configuration.override.com.liferay.journal.configuration.JournalServiceConfiguration_articleCommentsEnabled=B&quot;false&quot;";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "SystemSettings#CanOverrideValueWithoutConfigFile";
 
 		ApplicationsMenu.gotoPortlet(
@@ -94,6 +96,7 @@ definition {
 
 	@priority = "5"
 	test CanUpdateConfigValueViaUI {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "SystemSettings#CanUpdateConfigValueViaUI";
 
 		ApplicationsMenu.gotoPortlet(
