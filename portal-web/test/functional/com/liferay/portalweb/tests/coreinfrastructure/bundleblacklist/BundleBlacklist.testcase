@@ -171,6 +171,7 @@ definition {
 
 	@priority = "3"
 	test EnableBlacklistedComponentAfterShutdown {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#EnableBlacklistedComponentAfterShutdown";
 
 		OSGiConfig.deployOSGiConfigFile(
