@@ -10,6 +10,14 @@ definition {
 		FileUtil.write("${liferayHome}/osgi/configs/${OSGiConfigFileName}", "${configs}");
 	}
 
+	macro deleteOSGiConfigFile {
+		Variables.assertDefined(parameterList = "${OSGiConfigFileName}");
+
+		var liferayHome = PropsUtil.get("liferay.home.dir.name");
+
+		FileUtil.delete("${liferayHome}/osgi/configs/${OSGiConfigFileName}");
+	}
+
 	macro deployOSGiConfigFile {
 		Variables.assertDefined(parameterList = "${OSGiConfigs},${OSGiConfigFileName}");
 
