@@ -169,6 +169,37 @@ definition {
 			value1 = "Classic Theme");
 	}
 
+	@priority = "3"
+	test EnableBlacklistedComponentAtRuntime {
+		property test.name.skip.portal.instance = "BundleBlacklist#EnableBlacklistedComponentAtRuntime";
+
+		OSGiConfig.deployOSGiConfigFile(
+			OSGiConfigFileName = "com.liferay.portal.component.blacklist.internal.configuration.ComponentBlacklistConfiguration.config",
+			OSGiConfigs = "blacklistComponentNames=[&quot;com.liferay.portal.security.ldap.internal.authenticator.LDAPAuth&quot; ]");
+
+		Pause(locator1 = "10000");
+
+		ApplicationsMenu.gotoPortlet(
+			category = "System",
+			panel = "Control Panel",
+			portlet = "Gogo Shell");
+
+		GogoShell.executeCommand(commandName = "scr:info authenticator.LDAPAuth");
+
+		GogoShell.viewNoOutput(outputContent = "ACTIVE");
+
+		OSGiConfig.deleteOSGiConfigFile(OSGiConfigFileName = "com.liferay.portal.component.blacklist.internal.configuration.ComponentBlacklistConfiguration.config");
+
+		ApplicationsMenu.gotoPortlet(
+			category = "System",
+			panel = "Control Panel",
+			portlet = "Gogo Shell");
+
+		GogoShell.executeCommand(commandName = "scr:info authenticator.LDAPAuth");
+
+		GogoShell.viewOutput(outputContent = "ACTIVE");
+	}
+
 	@priority = "5"
 	test ExportBundleBlacklistConfig {
 		property test.name.skip.portal.instance = "BundleBlacklist#ExportBundleBlacklistConfig";
