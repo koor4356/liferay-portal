@@ -171,6 +171,7 @@ definition {
 
 	@priority = "3"
 	test CanRemoveBlacklistedComponentViaUI {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#CanRemoveBlacklistedComponentViaUI";
 
 		ApplicationsMenu.gotoPortlet(
