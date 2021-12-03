@@ -147,6 +147,7 @@ definition {
 	@priority = "3"
 	test CanRemoveBlacklistedModuleLPKGViaUI {
 		property osgi.app.includes = "gogo-shell";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#CanRemoveBlacklistedModuleLPKGViaUI";
 
 		var testRunEnvironment = PropsUtil.get("test.run.environment");
@@ -200,6 +201,7 @@ definition {
 
 	@priority = "3"
 	test CanRemoveBlacklistedModuleWarViaUI {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#CanRemoveBlacklistedModuleWarViaUI";
 
 		OSGiConfig.deployOSGiConfigFile(
@@ -282,6 +284,7 @@ definition {
 
 	@priority = "3"
 	test RestartCanNotEnableBlacklistedModuleJarViaUI {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#RestartCanNotEnableBlacklistedModuleJarViaUI";
 
 		ApplicationsMenu.gotoPortlet(
