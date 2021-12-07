@@ -324,6 +324,7 @@ definition {
 	@priority = "3"
 	test RestartCanNotEnableBlacklistedModuleLPKGViaUI {
 		property osgi.app.includes = "gogo-shell";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#RestartCanNotEnableBlacklistedModuleLPKGViaUI";
 
 		ApplicationsMenu.gotoPortlet(
@@ -374,6 +375,7 @@ definition {
 
 	@priority = "3"
 	test RestartCanNotEnableBlacklistedModuleWarViaUI {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#RestartCanNotEnableBlacklistedModuleWarViaUI";
 
 		ApplicationsMenu.gotoPortlet(
