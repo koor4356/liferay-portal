@@ -372,4 +372,50 @@ definition {
 			portlet = "Gogo Shell");
 	}
 
+	@priority = "3"
+	test RestartCanNotEnableBlacklistedModuleWarViaUI {
+		property test.name.skip.portal.instance = "BundleBlacklist#RestartCanNotEnableBlacklistedModuleWarViaUI";
+
+		ApplicationsMenu.gotoPortlet(
+			category = "Configuration",
+			panel = "Control Panel",
+			portlet = "System Settings");
+
+		SystemSettings.gotoConfiguration(
+			configurationCategory = "Module Container",
+			configurationName = "Bundle Blacklist",
+			configurationScope = "System Scope");
+
+		BundleBlacklist.blacklistModuleAndComponentConfiguration(
+			label = "Blacklist Bundle Symbolic Names",
+			symbolicName = "minium-theme");
+
+		AssertConsoleTextPresent(value1 = "STOPPED minium-theme");
+
+		Portlet.shutdownServer();
+
+		Portlet.startServer(
+			deleteLiferayHome = "false",
+			keepOSGiState = "true");
+
+		SitePages.openPagesAdmin(siteURLKey = "guest");
+
+		SitePages.gotoPageMenuItem(
+			menuItem = "Configure",
+			pageName = "Search");
+
+		Navigator.gotoNavTab(navTab = "Look and Feel");
+
+		Click(locator1 = "SitePagesEditPage#REGULAR_UNIQUE_LOOK_AND_FEEL");
+
+		Click(locator1 = "SitePagesEditPage#CHANGE_CURRENT_THEME_BUTTON");
+
+		SelectFrame(locator1 = "IFrame#MODAL_BODY");
+
+		AssertElementNotPresent(
+			key_card = "Minium",
+			locator1 = "Card#CARD_TITLE",
+			value1 = "Minium");
+	}
+
 }
