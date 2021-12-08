@@ -240,6 +240,55 @@ definition {
 	}
 
 	@priority = "3"
+	test CanEnableBlacklistedModuleWarAfterRestart {
+		property osgi.module.configurations = "blacklistBundleSymbolicNames=[&quot;minium-theme&quot;]";
+		property test.name.skip.portal.instance = "BundleBlacklist#CanEnableBlacklistedModuleWarAfterRestart";
+
+		AssertConsoleTextPresent(value1 = "Stopping blacklisted bundle minium-theme");
+
+		ApplicationsMenu.gotoPortlet(
+			category = "Configuration",
+			panel = "Control Panel",
+			portlet = "System Settings");
+
+		SystemSettings.gotoConfiguration(
+			configurationCategory = "Module Container",
+			configurationName = "Bundle Blacklist",
+			configurationScope = "System Scope");
+
+		BundleBlacklist.blacklistModuleAndComponentConfiguration(
+			label = "Blacklist Bundle Symbolic Names",
+			symbolicName = " ");
+
+		Portlet.shutdownServer();
+
+		Portlet.startServer(
+			deleteLiferayHome = "false",
+			keepOSGiState = "true");
+
+		AssertConsoleTextPresent(value1 = "STARTED minium-theme");
+
+		SitePages.openPagesAdmin(siteURLKey = "guest");
+
+		SitePages.gotoPageMenuItem(
+			menuItem = "Configure",
+			pageName = "Search");
+
+		Navigator.gotoNavTab(navTab = "Look and Feel");
+
+		Click(locator1 = "SitePagesEditPage#REGULAR_UNIQUE_LOOK_AND_FEEL");
+
+		Click(locator1 = "SitePagesEditPage#CHANGE_CURRENT_THEME_BUTTON");
+
+		SelectFrame(locator1 = "IFrame#MODAL_BODY");
+
+		AssertElementPresent(
+			key_card = "Minium",
+			locator1 = "Card#CARD_TITLE",
+			value1 = "Minium");
+	}
+
+	@priority = "3"
 	test CanRemoveBlacklistedModuleLPKGViaUI {
 		property osgi.app.includes = "gogo-shell";
 		property test.name.skip.portal.instance = "BundleBlacklist#CanRemoveBlacklistedModuleLPKGViaUI";
