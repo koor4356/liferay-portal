@@ -145,6 +145,7 @@ definition {
 	@priority = "3"
 	test CanEnableBlacklistedModuleJarAfterRestart {
 		property osgi.module.configurations = "blacklistBundleSymbolicNames=[&quot;com.liferay.gogo.shell.web&quot;]";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#CanEnableBlacklistedModuleJarAfterRestart";
 
 		BundleBlacklist.viewProductMenuBlacklistedModule(
@@ -186,6 +187,7 @@ definition {
 	@priority = "3"
 	test CanEnableBlacklistedModuleLPKGAfterRestart {
 		property osgi.app.includes = "gogo-shell";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#CanEnableBlacklistedModuleLPKGAfterRestart";
 
 		var testRunEnvironment = PropsUtil.get("test.run.environment");
@@ -242,6 +244,7 @@ definition {
 	@priority = "3"
 	test CanEnableBlacklistedModuleWarAfterRestart {
 		property osgi.module.configurations = "blacklistBundleSymbolicNames=[&quot;minium-theme&quot;]";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#CanEnableBlacklistedModuleWarAfterRestart";
 
 		AssertConsoleTextPresent(value1 = "Stopping blacklisted bundle minium-theme");
