@@ -394,6 +394,7 @@ definition {
 	@priority = "3"
 	test EnableBlacklistedModuleAfterShutdown {
 		property osgi.module.configurations = "blacklistBundleSymbolicNames=[&quot;com.liferay.gogo.shell.web&quot;]";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "BundleBlacklist#EnableBlacklistedModuleAfterShutdown";
 
 		BundleBlacklist.viewProductMenuBlacklistedModule(
