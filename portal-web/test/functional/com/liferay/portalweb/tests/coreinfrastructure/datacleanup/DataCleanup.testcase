@@ -169,6 +169,7 @@ definition {
 
 	@priority = "4"
 	test CanRemoveExpiredJournalArticle {
+		property portal.acceptance = "koorgai";
 		var journalArticleQuery = "SELECT * FROM JournalArticle WHERE urlTitle LIKE '%wc-webcontent-title%';";
 
 		JSONWebcontent.addWebContent(
