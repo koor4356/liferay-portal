@@ -19,6 +19,7 @@ definition {
 	test CanCleanupOpensocialDataAfterUpgrade {
 		property data.archive.type = "data-archive-opensocial";
 		property database.types = "mysql";
+		property portal.acceptance = "koorgai";
 		property portal.version = "6.2.10.21";
 
 		var classNameQuery = "SELECT * FROM ClassName_ WHERE value LIKE '%com.liferay.opensocial.model.%';";
