@@ -28,6 +28,7 @@ definition {
 	@priority = "5"
 	test AddFormWithSpanishAsOnlyLocale {
 		property custom.properties = "company.default.locale=es_ES${line.separator}locales.enabled=es_ES${line.separator}locales=es_ES";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "Locale#AddFormWithSpanishAsOnlyLocale";
 
 		User.firstLoginUI(
