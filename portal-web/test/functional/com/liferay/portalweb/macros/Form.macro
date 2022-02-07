@@ -511,7 +511,12 @@ definition {
 	macro gotoAddField {
 		WaitForElementPresent(locator1 = "Form#SIDEBAR_CONTENT_OPEN");
 
-		Form.gotoFieldsTab();
+		if (isSet(localeFields)) {
+			Form.gotoFieldsTab(localeFields = "${localeFields}");
+		}
+		else {
+			Form.gotoFieldsTab();
+		}
 
 		if (isSet(fieldPositionNumber)) {
 			var key_fieldPositionNumber = "${fieldPositionNumber}";
@@ -534,8 +539,13 @@ definition {
 			locator2 = "Form#ADD_FIELD_POSITION",
 			value1 = "${fieldType}");
 
-		if (IsElementNotPresent(key_tab = "Basic", locator1 = "NavTab#ACTIVE_TAB_LINK")) {
-			Navigator.gotoNavTab(navTab = "Basic");
+		if (isSet(localeBasic)) {
+			Form.gotoBasicTab(key_localeBasic = "${localeBasic}");
+		}
+		else {
+			if (IsElementNotPresent(key_tab = "Basic", locator1 = "NavTab#ACTIVE_TAB_LINK")) {
+				Navigator.gotoNavTab(navTab = "Basic");
+			}
 		}
 	}
 
@@ -599,9 +609,18 @@ definition {
 	}
 
 	macro gotoFieldsTab {
-		AssertClick(
-			locator1 = "Form#SIDEBAR_FIELDS_TAB",
-			value1 = "Fields");
+		var key_localeFields = "${localeFields}";
+
+		if (isSet(key_localeFields)) {
+			AssertClick(
+				locator1 = "Form#SIDEBAR_FIELDS_TAB_LOCALE",
+				value1 = "${localeFields}");
+		}
+		else {
+			AssertClick(
+				locator1 = "Form#SIDEBAR_FIELDS_TAB",
+				value1 = "Fields");
+		}
 	}
 
 	macro gotoFormPage {
