@@ -50,7 +50,8 @@ definition {
 			fieldType = "Campo de texto",
 			local = "true",
 			localeBasic = "Básico",
-			localeElements = "Elementos");
+			localeElements = "Elementos",
+			localeFields = "Campos");
 
 		Form.editFieldLabelMetal(
 			fieldValue = "label",
