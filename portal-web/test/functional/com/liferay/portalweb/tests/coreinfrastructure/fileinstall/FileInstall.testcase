@@ -56,6 +56,7 @@ definition {
 	@priority = "3"
 	test CustomizeRecursiveSubdirectoryMode {
 		property custom.properties = "module.framework.file.install.subdir.mode=recurse";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "FileInstall#CustomizeRecursiveSubdirectoryMode";
 
 		Clustering.deployClusteringModule(nodePort = "8080");
@@ -109,6 +110,7 @@ definition {
 
 	@priority = "4"
 	test UninstallJarOffline {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "FileInstall#UninstallJarOffline";
 
 		Clustering.deployClusteringModule(nodePort = "8080");
