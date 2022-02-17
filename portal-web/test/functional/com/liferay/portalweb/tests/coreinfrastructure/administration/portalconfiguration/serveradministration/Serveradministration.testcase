@@ -13,6 +13,7 @@ definition {
 	@priority = "4"
 	test ViewGlobalLibDirectory {
 		property environment.acceptance = "quarantine";
+		property portal.acceptance = "koorgai";
 
 		ServerAdministration.openServerAdmin();
 
