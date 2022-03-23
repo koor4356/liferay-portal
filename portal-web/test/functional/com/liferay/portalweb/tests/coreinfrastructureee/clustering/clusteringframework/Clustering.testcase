@@ -157,6 +157,7 @@ definition {
 
 	@priority = "3"
 	test CanAccessGogoShellOnAnyClusteredNode {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "Clustering#CanAccessGogoShellOnAnyClusteredNode";
 
 		ApplicationsMenu.gotoPortlet(
