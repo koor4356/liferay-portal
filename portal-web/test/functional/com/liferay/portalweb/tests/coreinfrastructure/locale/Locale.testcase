@@ -65,6 +65,7 @@ definition {
 
 	@priority = "3"
 	test CanChangeCompanyLocaleOnRestart {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "Locale#CanChangeCompanyLocaleOnRestart";
 
 		ContentPages.viewFragmentText(
@@ -279,6 +280,7 @@ definition {
 
 	@priority = "3"
 	test InstanceCreatedOnRestartPickUpNewCompanyLocale {
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "Locale#InstanceCreatedOnRestartPickUpNewCompanyLocale";
 
 		User.firstLoginPG();
