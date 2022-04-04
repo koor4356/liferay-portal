@@ -22,6 +22,7 @@ definition {
 	@priority = "4"
 	test CanTrackerUserClicks {
 		property custom.properties = "live.users.enabled=true";
+		property portal.acceptance = "koorgai";
 		property test.name.skip.portal.instance = "UserTracker#CanTrackerUserClicks";
 
 		ApplicationsMenu.gotoPortlet(
