@@ -138,4 +138,81 @@ definition {
 			value1 = "10");
 	}
 
+	@priority = "3"
+	test CanTrackerUserClicksInDatabase {
+		property custom.properties = "session.tracker.persistence.enabled=true";
+		property test.name.skip.portal.instance = "UserTracker#CanTrackerUserClicksInDatabase";
+
+		var baseUserClicks = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
+
+		echo("User’s data is persistence: ${baseUserClicks}");
+
+		ProductMenu.gotoPortlet(
+			category = "Content & Data",
+			portlet = "Web Content");
+
+		WebContentNavigator.gotoAddCP();
+
+		WebContent.addCP(
+			webContentContent = "Web Content Content",
+			webContentTitle = "Web Content Title");
+
+		PortletEntry.publish();
+
+		WebContent.viewTitle(webContentTitle = "Web Content Title");
+
+		SignOut.signOut();
+
+		var userClicksTracker = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
+
+		if ("${baseUserClicks}" == "${userClicksTracker}") {
+			fail("User’s data is notpersistence: ${baseUserClicks}");
+		}
+		else {
+			echo("User’s data is persistence: ${userClicksTracker}");
+		}
+
+		User.firstLoginPG();
+
+		ApplicationsMenu.gotoPortlet(
+			category = "System",
+			panel = "Control Panel",
+			portlet = "Virtual Instances");
+
+		PortalInstances.addCP(
+			mailDomain = "www.baker.com",
+			virtualHost = "www.baker.com",
+			webId = "www.baker.com");
+
+		PortalInstances.viewCP(virtualHost = "www.baker.com");
+
+		User.firstLoginUI(
+			password = "test",
+			specificURL = "http://www.baker.com:8080",
+			userEmailAddress = "test@www.baker.com");
+
+		ProductMenu.gotoPortlet(
+			category = "Content & Data",
+			portlet = "Web Content");
+
+		WebContentNavigator.gotoAddCP();
+
+		WebContent.addCP(
+			webContentContent = "Web Content Content",
+			webContentTitle = "Web Content Title");
+
+		PortletEntry.publish();
+
+		SignOut.signOut();
+
+		var userClicksTracker = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
+
+		if ("${baseUserClicks}" == "${userClicksTracker}") {
+			fail("User’s data is notpersistence: ${baseUserClicks}");
+		}
+		else {
+			echo("User’s data is persistence: ${userClicksTracker}");
+		}
+	}
+
 }
