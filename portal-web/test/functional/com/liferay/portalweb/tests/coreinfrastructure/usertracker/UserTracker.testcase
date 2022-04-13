@@ -22,7 +22,7 @@ definition {
 
 	@priority = "3"
 	test CanConvertTrackPathToFriendlyURL {
-		property custom.properties = "session.tracker.friendly.paths.enabled=true";
+		property custom.properties = "live.users.enabled=true${line.separator}session.tracker.friendly.paths.enabled=true";
 		property test.name.skip.portal.instance = "UserTracker#CanConvertTrackPathToFriendlyURL";
 
 		ApplicationsMenu.gotoPortlet(
@@ -140,7 +140,7 @@ definition {
 
 	@priority = "3"
 	test CanTrackerUserClicksInDatabase {
-		property custom.properties = "session.tracker.persistence.enabled=true";
+		property custom.properties = "live.users.enabled=true${line.separator}session.tracker.persistence.enabled=true";
 		property test.name.skip.portal.instance = "UserTracker#CanTrackerUserClicksInDatabase";
 
 		var baseUserClicks = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
@@ -166,7 +166,7 @@ definition {
 		var userClicksTracker = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
 
 		if ("${baseUserClicks}" == "${userClicksTracker}") {
-			fail("User’s data is notpersistence: ${baseUserClicks}");
+			fail("User’s data is not persistence: ${baseUserClicks}");
 		}
 		else {
 			echo("User’s data is persistence: ${userClicksTracker}");
@@ -208,7 +208,7 @@ definition {
 		var userClicksTracker = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
 
 		if ("${baseUserClicks}" == "${userClicksTracker}") {
-			fail("User’s data is notpersistence: ${baseUserClicks}");
+			fail("User’s data is not persistence: ${baseUserClicks}");
 		}
 		else {
 			echo("User’s data is persistence: ${userClicksTracker}");
