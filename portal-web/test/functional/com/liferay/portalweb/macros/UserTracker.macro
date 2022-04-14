@@ -1,6 +1,6 @@
 definition {
 
-	macro viewConvertFriendlyURL {
+	macro viewAccessedURL {
 		var key_friendlyURL = "${friendlyURL}";
 
 		Click(locator1 = "LexiconTable#TABLE_HITS_COUNT");

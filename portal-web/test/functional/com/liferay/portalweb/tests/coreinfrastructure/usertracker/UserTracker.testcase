@@ -30,7 +30,7 @@ definition {
 			panel = "Control Panel",
 			portlet = "Monitoring");
 
-		UserTracker.viewConvertFriendlyURL(friendlyURL = "http://localhost:8080/web/guest/home");
+		UserTracker.viewAccessedURL(friendlyURL = "http://localhost:8080/web/guest/home");
 
 		ApplicationsMenu.gotoPortlet(
 			category = "System",
@@ -54,7 +54,7 @@ definition {
 			panel = "Control Panel",
 			portlet = "Monitoring");
 
-		UserTracker.viewConvertFriendlyURL(friendlyURL = "http://www.able.com:8080/web/guest/home");
+		UserTracker.viewAccessedURL(friendlyURL = "http://www.able.com:8080/web/guest/home");
 	}
 
 	@priority = "4"
