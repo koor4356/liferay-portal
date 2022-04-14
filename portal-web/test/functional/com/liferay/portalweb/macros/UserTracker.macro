@@ -9,7 +9,7 @@ definition {
 			locator1 = "ListGroupItem#SESSION_ACCESSED_URLS",
 			value1 = "ACCESSED URLS");
 
-		ScrollBy(value1 = "0, 180");
+		ScrollWebElementIntoView(locator1 = "ListGroupItem#ACCESSED_FRIENDLY_URLS");
 
 		AssertTextEquals.assertPartialText(
 			locator1 = "ListGroupItem#ACCESSED_FRIENDLY_URLS",
