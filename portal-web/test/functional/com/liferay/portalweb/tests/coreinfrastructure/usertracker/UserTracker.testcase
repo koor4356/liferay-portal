@@ -21,9 +21,9 @@ definition {
 	}
 
 	@priority = "3"
-	test CanConvertTrackPathToFriendlyURL {
+	test CanConvertTrackedPathToFriendlyURL {
 		property custom.properties = "live.users.enabled=true${line.separator}session.tracker.friendly.paths.enabled=true";
-		property test.name.skip.portal.instance = "UserTracker#CanConvertTrackPathToFriendlyURL";
+		property test.name.skip.portal.instance = "UserTracker#CanConvertTrackedPathToFriendlyURL";
 
 		ApplicationsMenu.gotoPortlet(
 			category = "Users",
@@ -58,8 +58,8 @@ definition {
 	}
 
 	@priority = "4"
-	test CanTrackerUserClicks {
-		property test.name.skip.portal.instance = "UserTracker#CanTrackerUserClicks";
+	test CanTrackUserClicks {
+		property test.name.skip.portal.instance = "UserTracker#CanTrackUserClicks";
 
 		ApplicationsMenu.gotoPortlet(
 			category = "Users",
@@ -139,9 +139,9 @@ definition {
 	}
 
 	@priority = "3"
-	test CanTrackerUserClicksInDatabase {
+	test CanTrackUserSessionInDatabase {
 		property custom.properties = "live.users.enabled=true${line.separator}session.tracker.persistence.enabled=true";
-		property test.name.skip.portal.instance = "UserTracker#CanTrackerUserClicksInDatabase";
+		property test.name.skip.portal.instance = "UserTracker#CanTrackUserSessionInDatabase";
 
 		var emptyTable = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
 
