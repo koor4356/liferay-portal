@@ -143,33 +143,17 @@ definition {
 		property custom.properties = "live.users.enabled=true${line.separator}session.tracker.persistence.enabled=true";
 		property test.name.skip.portal.instance = "UserTracker#CanTrackerUserClicksInDatabase";
 
-		var baseUserClicks = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
-
-		echo("User’s data is persistence: ${baseUserClicks}");
-
-		ProductMenu.gotoPortlet(
-			category = "Content & Data",
-			portlet = "Web Content");
-
-		WebContentNavigator.gotoAddCP();
-
-		WebContent.addCP(
-			webContentContent = "Web Content Content",
-			webContentTitle = "Web Content Title");
-
-		PortletEntry.publish();
-
-		WebContent.viewTitle(webContentTitle = "Web Content Title");
+		var emptyTable = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
 
 		SignOut.signOut();
 
-		var userClicksTracker = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
+		var afterLoginUserTrackerTable = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
 
-		if ("${baseUserClicks}" == "${userClicksTracker}") {
-			fail("User’s data is not persistence: ${baseUserClicks}");
+		if ("${emptyUserTrackerTable}" == "${afterLoginUserTrackerTable}") {
+			fail("User’s data is not persisted. UserTrackerTable is still empty.");
 		}
 		else {
-			echo("User’s data is persistence: ${userClicksTracker}");
+			echo("User’s data is in persistence: ${afterLoginUserTrackerTable}");
 		}
 
 		User.firstLoginPG();
@@ -180,38 +164,26 @@ definition {
 			portlet = "Virtual Instances");
 
 		PortalInstances.addCP(
-			mailDomain = "www.baker.com",
-			virtualHost = "www.baker.com",
-			webId = "www.baker.com");
+			mailDomain = "www.able.com",
+			virtualHost = "www.able.com",
+			webId = "www.able.com");
 
-		PortalInstances.viewCP(virtualHost = "www.baker.com");
+		PortalInstances.viewCP(virtualHost = "www.able.com");
 
 		User.firstLoginUI(
 			password = "test",
-			specificURL = "http://www.baker.com:8080",
-			userEmailAddress = "test@www.baker.com");
-
-		ProductMenu.gotoPortlet(
-			category = "Content & Data",
-			portlet = "Web Content");
-
-		WebContentNavigator.gotoAddCP();
-
-		WebContent.addCP(
-			webContentContent = "Web Content Content",
-			webContentTitle = "Web Content Title");
-
-		PortletEntry.publish();
+			specificURL = "http://www.able.com:8080",
+			userEmailAddress = "test@www.able.com");
 
 		SignOut.signOut();
 
-		var userClicksTracker = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
+		var afterVirutalInstanceUserTrackerTable = SQL.executeMySQLStatement(mysqlStatement = "SELECT * FROM lportal.UserTracker;");
 
-		if ("${baseUserClicks}" == "${userClicksTracker}") {
-			fail("User’s data is not persistence: ${baseUserClicks}");
+		if ("${afterLoginUserTrackerTable}" == "${afterVirutalInstanceUserTrackerTable}") {
+			fail("User’s data is not persisted. UserTrackerTable remains unmodified after new Virutal Instance is created.");
 		}
 		else {
-			echo("User’s data is persistence: ${userClicksTracker}");
+			echo("User’s data is in persistence: ${afterVirutalInstanceUserTrackerTable}");
 		}
 	}
 
