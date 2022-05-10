@@ -5,6 +5,7 @@ definition {
 	property database.partition.enabled = "true";
 	property database.types = "mysql";
 	property liferay.online.properties = "true";
+	property portal.acceptance = "koorgai";
 	property portal.release = "true";
 	property portal.upstream = "true";
 	property test.assert.warning.exceptions = "true";
