@@ -7,11 +7,11 @@ definition {
 			Refresh();
 
 			Click.mouseOverClick(locator1 = "Icon#CURRENT_DISPLAY_STYLE");
+		} else {
+			Click(locator1 = "Icon#CURRENT_DISPLAY_STYLE");
 		}
 
-		Click(locator1 = "Icon#CURRENT_DISPLAY_STYLE");
-
-		MenuItem.click(menuItem = StringUtil.upperCaseFirstLetter("${displayStyle}"));
+		MenuItem.click(menuItem = "${displayStyle}");
 
 		ManagementBar.viewDisplayStyle(displayStyle = "${displayStyle}");
 	}
