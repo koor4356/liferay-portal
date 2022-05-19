@@ -5583,19 +5583,7 @@ definition {
 		Navigator.gotoPage(pageName = "Document");
 
 		task ("Change document view type but account for flakiness seen in test execution history") {
-			WaitForPageLoad();
-
-			Click(locator1 = "Icon#CURRENT_DISPLAY_STYLE");
-
-			if (IsElementNotPresent(key_menuItem = "List", locator1 = "MenuItem#ANY_MENU_ITEM")) {
-				Refresh();
-
-				WaitForPageLoad();
-
-				Click.mouseOverClick(locator1 = "Icon#CURRENT_DISPLAY_STYLE");
-			}
-
-			MenuItem.click(menuItem = "List");
+			LexiconEntry.changeCurrentDisplayStyle(displayStyle = "List");
 		}
 
 		DMDocument.viewPG(dmDocumentTitle = "Document1");

@@ -1,5 +1,22 @@
 definition {
 
+	macro changeCurrentDisplayStyle {
+		WaitForPageLoad();
+
+		if (IsElementNotPresent(locator1 = "MenuItem#ANY_MENU_ITEM")) {
+			Refresh();
+
+			Click.mouseOverClick(locator1 = "Icon#CURRENT_DISPLAY_STYLE");
+		}
+		else {
+			Click(locator1 = "Icon#CURRENT_DISPLAY_STYLE");
+		}
+
+		MenuItem.click(menuItem = "${displayStyle}");
+
+		ManagementBar.viewDisplayStyle(displayStyle = "${displayStyle}");
+	}
+
 	macro changeDisplayStyle {
 		WaitForPageLoad();
 
